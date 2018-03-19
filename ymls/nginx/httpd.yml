@@ -1,0 +1,75 @@
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: httpd-deployment
+spec:
+  selector:
+    matchLabels:
+      app: httpd
+  replicas: 3 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      # unlike pod-httpd.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        app: httpd
+    spec:
+      hostNetwork: true
+      containers:
+       - name: httpd
+         image: httpd
+         ports:
+          - containerPort: 80
+      nodeSelector:
+         tier: frontend
+         #router: traefik
+#         volumeMounts:
+#          - name: nfs-pvc
+#            mountPath: "/usr/share/httpd/html"
+#      volumes:
+#        - name: nfs-pvc
+#          persistentVolumeClaim:
+#            claimName: nfs-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-service
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: httpd
+  type: NodePort
+   #- 192.168.100.211
+
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: httpd-ingress
+  annotations:
+    #kubernetes.io/tls-acme: "true"
+    #kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: apache.kube.paosin.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: httpd-service
+          servicePort: 80
+
+#spec:
+#  rules:
+#  - host: nginx.paosin.local
+#    http:
+#      paths:
+#      - path: /
+#        backend:
+#          serviceName: nginx-service
+#          servicePort: 80

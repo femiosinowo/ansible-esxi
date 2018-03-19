@@ -1,0 +1,36 @@
+[masters]
+kube-master.paosin.local ansible_ssh_host=10.10.10.30 ansible_user=root
+
+[routers]
+kube-router.paosin.local ansible_ssh_host=10.10.10.40
+
+[nodes]
+kube-node1.paosin.local ansible_ssh_host=10.10.10.31
+kube-node2.paosin.local ansible_ssh_host=10.10.10.32
+
+[nfs]
+kube-nfs.paosin.local ansible_ssh_host=10.10.10.35
+
+[dns]
+#dns.paosin.local ansible_ssh_host=10.10.10.11
+
+[dns:vars]
+
+
+[all:vars]
+ansible_sudo_pass=P@ssw0rd
+
+[k8s:children]
+masters
+nodes
+nfs
+routers
+
+[k8s:vars]
+selinux_state=permissive
+nfsmount=/mnt/nfs/var/nfsshare
+nfsserver=10.10.10.35
+nfspath=/DATA/nfsshare
+nfsoptions="defaults,nodev,nosuid,noexec"
+yumrepo_repos=[{'name': 'kubernetes', 'baseurl': 'https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64', 'enabled': '1', 'gpgcheck': '1', 'gpgkey': 'https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg'}]
+

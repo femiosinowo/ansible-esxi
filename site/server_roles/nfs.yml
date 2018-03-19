@@ -1,0 +1,8 @@
+---
+- hosts: nfs
+  roles:
+    - nfs
+
+    
+
+

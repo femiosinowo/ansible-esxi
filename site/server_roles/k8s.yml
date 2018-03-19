@@ -1,0 +1,8 @@
+---
+- hosts: masters:routers:nodes
+  roles:
+    - k8s
+
+    
+
+

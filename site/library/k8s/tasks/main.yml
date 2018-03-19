@@ -1,0 +1,86 @@
+---
+- name: "create k8s repo"
+  copy:
+    src="{{ role_path }}/files/k8.repo" 
+    dest=/etc/yum.repos.d/k8s.repo
+
+- name:  yum update all
+  shell: yum update -y
+  args:
+   executable: /bin/bash
+
+#- name: Reboot server
+#  command: /sbin/reboot
+
+#- name: Wait for the server to finish rebooting
+#  sudo: no
+#  local_action: wait_for host="{{ inventory_hostname }}" search_regex=OpenSSH port=22 timeout=300
+     
+- name:  yum clean all
+  shell: yum clean all
+  args:
+   executable: /bin/bash
+
+- name:  yum install packages for k8s
+  shell: "yum install -y  {{ item }}"
+  args:
+   executable: /bin/bash
+  with_items:
+    - docker
+    - kubelet
+    - kubeadm 
+    - kubectl          
+
+#- name: installing yum apps
+#  yum:
+#    name: "{{ item }}"
+#    state: present
+#    disable_gpg_check: yes
+#  with_items:
+#    - docker
+#    - vim
+#    - tree
+#    - net-tools 
+#    - kubelet
+#    - kubeadm 
+#    - kubectl
+
+- name: Remove swapfile from /etc/fstab
+  mount:
+    name: swap
+    fstype: swap
+    state: absent
+    
+- name: Disable swap
+  command: swapoff -a
+  
+    
+- name: configure /etc/fstab on clients
+  action: mount name={{nfsmount}} src={{nfsserver}}:{{nfspath}} fstype=nfs opts={{nfsoptions}} state=mounted
+  tags:
+    - nfs
+  ignore_errors: True 
+  
+- sysctl:
+    name: net.bridge.bridge-nf-call-ip6tables
+    sysctl_file: /etc/sysctl.d/k8s.conf
+    value: 1
+    state: present
+  ignore_errors: True 
+
+- sysctl:
+    name: net.bridge.bridge-nf-call-iptables
+    sysctl_file: /etc/sysctl.d/k8s.conf
+    value: 1
+    state: present
+  ignore_errors: True 
+
+        
+- name: enable and start docker 
+  service: name=docker state=started  enabled=yes  
+
+        
+- name: enable and start kubelet 
+  service: name=kubelet state=started  enabled=yes 
+
+   
