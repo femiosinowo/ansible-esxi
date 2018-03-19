@@ -67,7 +67,7 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: wordpress-mysql
+          value: mysql
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -88,7 +88,6 @@ spec:
 
 ---
 #####Services & Ingress
-
 ---
 apiVersion: v1
 kind: Service
@@ -104,6 +103,7 @@ spec:
     app: wordpress
     tier: frontend
   type: NodePort
+  
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
