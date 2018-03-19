@@ -83,6 +83,8 @@ spec:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
           claimName: wp-pv-claim
+      nodeSelector:
+         tier: frontend
 
 ---
 #####Services & Ingress
