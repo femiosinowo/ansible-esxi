@@ -33,7 +33,7 @@ metadata:
   name: mysql
   namespace: wordpress
   labels:
-    app: wordpress
+    app: mysql
 spec:
   type: ClusterIP
   ports:
