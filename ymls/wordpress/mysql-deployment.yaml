@@ -66,6 +66,8 @@ spec:
         app: mysql
         tier: mysql
     spec:
+      nodeSelector:
+        tier: frontend
       containers:
       - image: mysql:5.6
         name: mysql
