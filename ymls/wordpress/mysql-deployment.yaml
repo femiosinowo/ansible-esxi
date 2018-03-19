@@ -30,10 +30,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mysql-service
   namespace: wordpress
   labels:
-    app: mysql
+    app: mysql-service
 spec:
   type: ClusterIP
   ports:
@@ -42,8 +42,7 @@ spec:
     app: mysql
     tier: mysql
 
-
-
+---
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
