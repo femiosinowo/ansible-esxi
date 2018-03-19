@@ -85,8 +85,8 @@ spec:
         volumeMounts:
         - name: db
           mountPath: /var/lib/mysql
-        nodeSelector:
-          tier: frontend
+      nodeSelector:
+        tier: frontend
   volumeClaimTemplates:
   - metadata:
       name: db
