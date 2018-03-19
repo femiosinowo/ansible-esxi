@@ -1,3 +1,19 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv2
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 10.10.10.35
+    # Exported path of your NFS server
+    path: "/DATA/nfsshare"
+---
+
 # Headless service used by WordPress
 apiVersion: v1
 kind: Service
