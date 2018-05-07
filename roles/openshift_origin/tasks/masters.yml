@@ -1,0 +1,12 @@
+- name: clone a openshift repository
+  git: >
+    repo=https://github.com/openshift/openshift-ansible
+    dest=/opt/openshift-ansible
+    
+- name: add openshift-ansible hosts
+  copy: >
+    src=files/inventory/hosts
+    dest=/opt/openshift-ansible/hosts
+    owner=root
+    group=root
+    mode=0600
