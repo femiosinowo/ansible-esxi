@@ -6,7 +6,7 @@
 - name: add openshift-ansible hosts
   copy: >
     src=files/inventory/hosts
-    dest=/opt/openshift-ansible/hosts
+    dest=/opt/openshift-ansible/inventory/hosts
     owner=root
     group=root
     mode=0600
