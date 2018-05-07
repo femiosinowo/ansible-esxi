@@ -42,10 +42,6 @@ bind_zone_hosts:
     ip: 10.10.10.31
   - name: kube-node2
     ip: 10.10.10.32
-  - name: glusterfs1
-    ip: 10.10.10.35
-  - name: glusterfs2
-    ip: 10.10.10.36
   - name: docker-registry
     ip: 10.10.10.37
   - name: os-master1
@@ -63,7 +59,7 @@ bind_zone_hosts:
     donotadd_reverse: true
   - name: etcd
     ip: 10.10.10.60
-  - name: ocp-master
+  - name: ocp-master1
     ip: 10.10.10.70    
   - name: ocp-node1
     ip: 10.10.10.71 
