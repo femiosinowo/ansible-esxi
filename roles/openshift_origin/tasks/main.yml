@@ -30,7 +30,7 @@
     - bind-utils 
     - python-rhsm-certificates 
     - ansible
-    #- sos
+    - glusterfs-client
     #- psacct
 
 

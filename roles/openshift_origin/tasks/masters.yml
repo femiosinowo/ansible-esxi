@@ -10,3 +10,26 @@
     owner=root
     group=root
     mode=0600
+    
+- name: install ansible and Heketi utilities
+  yum: name={{ item }} state=present
+  with_items:
+    - heketi-client
+    - heketi-templates
+    - heketi
+    - python-heketi
+
+- name: copy private key
+  copy: src=heketi/insecure_private_key owner=heketi group=heketi dest=/etc/heketi/insecure_private_key force=yes mode=600
+
+- name: copy heketi configuration
+  copy: src=heketi/heketi.json owner=root group=root dest=/etc/heketi/heketi.json force=yes mode=644
+
+- name: copy topology configuration
+  copy: src=heketi/topology.json owner=root group=root dest=/etc/heketi/topology.json force=yes mode=644
+
+- name: start heketi service 
+  service: name=heketi state=started enabled=yes
+    
+    
+     
