@@ -31,5 +31,6 @@
 - name: start heketi service 
   service: name=heketi state=started enabled=yes
     
+#heketi-cli --server http://10.10.10.70:8080  topology load  --json=/etc/heketi/topology.json
     
      
