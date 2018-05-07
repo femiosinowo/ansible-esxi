@@ -1,0 +1,4 @@
+- hosts: openshift-origin-masters:openshift-origin-nodes
+  roles:
+    - common
+    - openshift_origin
