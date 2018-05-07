@@ -18,7 +18,7 @@
   "glusterfs": {
    "executor": "ssh",
    "sshexec": {
-     "keyfile": "/root/.ssh/id_rsa",
+     "keyfile": "/etc/heketi/insecure_private_key",
      "user": "root",
      "port": "22",
      "fstab": "/etc/fstab"
