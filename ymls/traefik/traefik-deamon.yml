@@ -92,7 +92,7 @@ spec:
   type: NodePort
   selector:
     app: traefik-ingress-lb
-    tier: proxy
+    tier: router
   ports:
   - port: 80
     targetPort: 80

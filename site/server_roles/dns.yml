@@ -2,6 +2,7 @@
 - hosts: dns
   roles:
     - bind
+    - post_tasks
 
     
 

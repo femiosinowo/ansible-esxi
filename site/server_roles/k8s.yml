@@ -1,5 +1,5 @@
 ---
-- hosts: masters:routers:nodes
+- hosts: masters:routers:nodes:gluster
   roles:
     - k8s
 

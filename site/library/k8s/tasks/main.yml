@@ -27,9 +27,13 @@
    executable: /bin/bash
   with_items:
     - docker
-    - kubelet
-    - kubeadm 
-    - kubectl          
+    - kubelet-1.9.4
+    - kubeadm-1.9.4 
+    - kubectl-1.9.4   
+    - glusterfs-fuse       
+
+## modprobe dm_thin_pool
+
 
 #- name: installing yum apps
 #  yum:
@@ -55,11 +59,11 @@
   command: swapoff -a
   
     
-- name: configure /etc/fstab on clients
-  action: mount name={{nfsmount}} src={{nfsserver}}:{{nfspath}} fstype=nfs opts={{nfsoptions}} state=mounted
-  tags:
-    - nfs
-  ignore_errors: True 
+#- name: configure /etc/fstab on clients
+#  action: mount name={{nfsmount}} src={{nfsserver}}:{{nfspath}} fstype=nfs opts={{nfsoptions}} state=mounted
+#  tags:
+#    - nfs
+#  ignore_errors: True 
   
 - sysctl:
     name: net.bridge.bridge-nf-call-ip6tables

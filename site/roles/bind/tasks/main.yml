@@ -71,4 +71,5 @@
     state: started
     enabled: yes
   tags: bind
+  ignore_errors: true
 

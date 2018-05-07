@@ -7,12 +7,15 @@ kube-router.paosin.local ansible_ssh_host=10.10.10.40
 [nodes]
 kube-node1.paosin.local ansible_ssh_host=10.10.10.31
 kube-node2.paosin.local ansible_ssh_host=10.10.10.32
+glusterfs1.paosin.local ansible_ssh_host=10.10.10.35
+glusterfs2.paosin.local ansible_ssh_host=10.10.10.36
 
-[nfs]
-kube-nfs.paosin.local ansible_ssh_host=10.10.10.35
+[gluster]
+glusterfs1.paosin.local ansible_ssh_host=10.10.10.35
+glusterfs2.paosin.local ansible_ssh_host=10.10.10.36
 
 [dns]
-#dns.paosin.local ansible_ssh_host=10.10.10.11
+dns.paosin.local ansible_ssh_host=10.10.10.11
 
 [dns:vars]
 
@@ -23,7 +26,7 @@ ansible_sudo_pass=P@ssw0rd
 [k8s:children]
 masters
 nodes
-nfs
+gluster
 routers
 
 [k8s:vars]

@@ -73,24 +73,7 @@ spec:
          tier: frontend
 
 ---
-#####Services & Ingress
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: wordpress-service
-  namespace: wordpress
-  labels:
-    app: wordpress
-spec:
-  ports:
-    - port: 80
-  selector:
-    app: wordpress
-    tier: frontend
-  type: NodePort
-  
----
+
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -105,5 +88,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: wordpress-service
+          serviceName: wordpress
           servicePort: 80

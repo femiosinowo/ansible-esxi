@@ -1,0 +1,37 @@
+---
+  
+- name:  yum clean all
+  shell: yum clean all
+  args:
+   executable: /bin/bash
+   
+- name: installing yum apps
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - NetworkManager
+    - docker
+    - bash-completion
+    - vim
+    - tree
+    - wget 
+    - git 
+    - net-tools 
+    - bind-utils 
+    #- sos
+    #- psacct
+
+
+- include: masters.yml
+  when: node_type == "master"
+  
+- include: infranodes.yml
+  when: node_type == "infranode"
+  
+- include: nodes.yml  
+  when: node_only is defined
+  
+- include: lab.yml  
+  when: node_type == "lab"
+   

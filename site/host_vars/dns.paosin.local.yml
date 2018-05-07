@@ -5,7 +5,9 @@ bind_listen_ipv4:
 bind_allow_query:
   - "localhost"
   - "10.10.10.0/24"
-  
+
+dns_server: true  
+
 bind_zone_master_server_ip: 10.10.10.11
 my_ip4_address: 10.10.10.11
 acls:
@@ -26,13 +28,12 @@ bind_zone_hosts:
   - name: '@'
     ip:
       - 10.10.10.11
-      - 10.10.10.30
-      - 10.10.10.31
-      - 10.10.10.32
-      - 10.10.10.39
-      - 10.10.10.40
   - name: masterdns
     ip: 10.10.10.11
+  - name: vcenter
+    ip: 10.10.10.15
+  - name: ansible
+    ip: 10.10.10.21
   - name: kube-master
     ip: 10.10.10.30
   - name: kube-router
@@ -41,8 +42,12 @@ bind_zone_hosts:
     ip: 10.10.10.31
   - name: kube-node2
     ip: 10.10.10.32
-  - name: nfs
+  - name: glusterfs1
     ip: 10.10.10.35
+  - name: glusterfs2
+    ip: 10.10.10.36
+  - name: docker-registry
+    ip: 10.10.10.37
   - name: os-master1
     ip: 10.10.10.50
   - name: os-node1
@@ -53,7 +58,20 @@ bind_zone_hosts:
     ip: 10.10.10.53
   - name: os-lab
     ip: 10.10.10.54
-
-
-  #- name: '*.kube.paosin.local'
-  #  ip: 10.10.10.211
+  - name: '*.apps.paosin.local'
+    ip: 10.10.10.70
+    donotadd_reverse: true
+  - name: etcd
+    ip: 10.10.10.60
+  - name: ocp-master
+    ip: 10.10.10.70    
+  - name: ocp-node1
+    ip: 10.10.10.71 
+  - name: ocp-node2
+    ip: 10.10.10.72
+  - name: ocp-glusterfs1
+    ip: 10.10.10.76
+  - name: ocp-glusterfs2
+    ip: 10.10.10.77 
+  - name: ocp-glusterfs3
+    ip: 10.10.10.78 
