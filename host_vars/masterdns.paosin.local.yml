@@ -34,6 +34,8 @@ bind_zone_hosts:
     ip: 10.10.10.15
   - name: ansible
     ip: 10.10.10.21
+  - name: awx-ansible
+    ip: 10.10.10.22
   - name: kube-master
     ip: 10.10.10.30
   - name: kube-router
