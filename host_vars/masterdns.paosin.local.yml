@@ -65,6 +65,8 @@ bind_zone_hosts:
     ip: 10.10.10.71 
   - name: ocp-node2
     ip: 10.10.10.72
+  - name: ocp-node3
+    ip: 10.10.10.73
   - name: ocp-glusterfs1
     ip: 10.10.10.76
   - name: ocp-glusterfs2

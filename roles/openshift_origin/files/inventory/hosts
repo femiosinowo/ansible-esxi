@@ -561,6 +561,11 @@ openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 
 # By default metrics are not automatically deployed, set this to enable them
 #openshift_metrics_install_metrics=true
 #
+openshift_metrics_install_metrics=True
+openshift_metrics_hawkular_hostname=hawkular-metrics.paosin.local
+openshift_metrics_cassandra_storage_type=dynamic
+openshift_hosted_metrics_deployer_version=v3.9
+
 # Storage Options
 # If openshift_metrics_storage_kind is unset then metrics will be stored
 # in an EmptyDir volume and will be deleted when the cassandra pod terminates.
