@@ -8,6 +8,9 @@
   shell: "cd /etc/yum.repos.d && curl -O https://storage.googleapis.com/origin-ci-test/releases/openshift/origin/master/origin.repo"
   args:
    executable: /bin/bash
+
+
+
    
 - name:  yum clean all
   shell: yum clean all
@@ -31,9 +34,20 @@
     - python-rhsm-certificates 
     - ansible
     - glusterfs-client
-    #- psacct
+    - psacct
+    - yum-utils 
+    - iptables-services 
+    - bash-completion 
+    - kexec-tools 
+    - sos
+    - pyOpenSSL
 
-
+- name:  disable epel repo
+  shell: "sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo"
+  args:
+   executable: /bin/bash
+   
+   
 - include: masters.yml
   when: openshift_origin_node_type == "master"
   

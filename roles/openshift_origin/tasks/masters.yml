@@ -2,6 +2,7 @@
   git: >
     repo=https://github.com/openshift/openshift-ansible
     dest=/opt/openshift-ansible
+    version=release-3.9
     
 - name: add openshift-ansible hosts
   copy: >
