@@ -12,7 +12,7 @@ ocp-master1.paosin.local
 
 [nodes]
 ocp-master1.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
-ocp-node[1:3].paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+ocp-node[1:2].paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 
 [nfs]
 ocp-master1.paosin.local
@@ -52,6 +52,9 @@ openshift_deployment_type=origin
 # release.
 #openshift_release=latest
 #openshift_image_tag=latest
+#openshift_release=3.9
+openshift_release=v3.9
+
 
 # default subdomain to use for exposed routes, you should have wildcard dns
 # for *.apps.paosin.local that points at your infra nodes which will run
@@ -564,7 +567,7 @@ openshift_hosted_registry_storage_volume_size=10Gi
 openshift_metrics_install_metrics=True
 openshift_metrics_hawkular_hostname=hawkular-metrics.paosin.local
 openshift_metrics_cassandra_storage_type=dynamic
-openshift_hosted_metrics_deployer_version=v3.9
+#openshift_hosted_metrics_deployer_version=v3.9
 
 # Storage Options
 # If openshift_metrics_storage_kind is unset then metrics will be stored
@@ -754,7 +757,7 @@ openshift_hosted_metrics_deployer_version=v3.9
 #openshift_master_console_port=8443
 
 # set exact RPM version (include - prefix)
-#openshift_pkg_version=-3.9.0
+openshift_pkg_version=-3.9.0
 # you may also specify version and release, ie:
 #openshift_pkg_version=-3.9.0-0.126.0.git.0.9351aae.el7
 
