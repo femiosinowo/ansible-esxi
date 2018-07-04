@@ -564,7 +564,7 @@ openshift_hosted_registry_storage_volume_size=10Gi
 openshift_metrics_install_metrics=True
 openshift_metrics_hawkular_hostname=hawkular-metrics.paosin.local
 openshift_metrics_cassandra_storage_type=dynamic
-openshift_hosted_metrics_deployer_version=v3.9
+#openshift_hosted_metrics_deployer_version=v3.9
 
 # Storage Options
 # If openshift_metrics_storage_kind is unset then metrics will be stored
