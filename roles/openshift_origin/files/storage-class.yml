@@ -1,0 +1,24 @@
+apiVersion: storage.k8s.io/v1beta1
+kind: StorageClass  
+metadata:
+  name: heketi  
+provisioner: kubernetes.io/glusterfs   
+parameters:
+  resturl: "http://$MASTER_1_IP:8080"  
+  restuser: "admin"  
+  restuserkey: "$PASSWORD_ADMIN"
+  
+  
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+ name: heketi-pvc 
+ annotations:
+   volume.beta.kubernetes.io/storage-class: heketi  
+spec:
+ accessModes:
+  - ReadWriteMany
+ resources:
+   requests:
+     storage: 4Gi
