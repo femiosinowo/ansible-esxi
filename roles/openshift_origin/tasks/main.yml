@@ -4,14 +4,11 @@
     name: epel-release
     state: present
 
-- name:  origin.repo
-  shell: "cd /etc/yum.repos.d && curl -O https://storage.googleapis.com/origin-ci-test/releases/openshift/origin/master/origin.repo"
-  args:
-   executable: /bin/bash
+#- name:  origin.repo
+#  shell: "cd /etc/yum.repos.d && curl -O https://storage.googleapis.com/origin-ci-test/releases/openshift/origin/master/origin.repo"
+#  args:
+#   executable: /bin/bash
 
-
-
-   
 - name:  yum clean all
   shell: yum clean all
   args:

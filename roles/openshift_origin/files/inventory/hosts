@@ -43,6 +43,8 @@ openshift_enable_excluders=false
 
 # Specify the deployment type. Valid values are origin and openshift-enterprise.
 openshift_deployment_type=origin
+openshift_release=v3.9
+
 #openshift_deployment_type=openshift-enterprise
 
 # Specify the generic release of OpenShift to install. This is used mainly just during installation, after which we
@@ -52,9 +54,6 @@ openshift_deployment_type=origin
 # release.
 #openshift_release=latest
 #openshift_image_tag=latest
-#openshift_release=3.9
-openshift_release=v3.9
-
 
 # default subdomain to use for exposed routes, you should have wildcard dns
 # for *.apps.paosin.local that points at your infra nodes which will run
@@ -224,7 +223,7 @@ openshift_disable_check=memory_availability
 #osm_etcd_image=rhel7/etcd
 
 # htpasswd auth
-openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider','filename': '/etc/origin/master/htpasswd'}]
 # Defining htpasswd users
 #openshift_master_htpasswd_users={'user1': '<pre-hashed password>', 'user2': '<pre-hashed password>'}
 # or
@@ -393,7 +392,7 @@ openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 
 # default storage plugin dependencies to install, by default the ceph and
 # glusterfs plugin dependencies will be installed, if available.
 #osn_storage_plugin_deps=['ceph','glusterfs','iscsi']
-openshift_enable_unsupported_configurations=True
+
 # OpenShift Router Options
 #
 # An OpenShift router will be created during install if there are
@@ -459,7 +458,7 @@ openshift_enable_unsupported_configurations=True
 # Registry selector (optional)
 # Registry will only be created if nodes matching this label are present.
 # Default value: 'node-role.kubernetes.io/infra=true'
-openshift_hosted_registry_selector='node-role.kubernetes.io/infra=true'
+#openshift_hosted_registry_selector='node-role.kubernetes.io/infra=true'
 #
 # Registry replicas (optional)
 # Unless specified, openshift-ansible will calculate the replica count
@@ -470,9 +469,9 @@ openshift_hosted_registry_selector='node-role.kubernetes.io/infra=true'
 #openshift_hosted_registry_cert_expire_days=730
 #
 # Manage the OpenShift Registry (optional)
-openshift_hosted_manage_registry=true
+#openshift_hosted_manage_registry=true
 # Manage the OpenShift Registry Console (optional)
-openshift_hosted_manage_registry_console=true
+#openshift_hosted_manage_registry_console=true
 #
 # Registry Storage Options
 #
@@ -482,14 +481,14 @@ openshift_hosted_manage_registry_console=true
 # path using these options would be "/exports/registry".  "exports" is
 # is the name of the export served by the nfs server.  "registry" is
 # the name of a directory inside of "/exports".
-openshift_hosted_registry_storage_kind=nfs
-openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+#openshift_hosted_registry_storage_kind=nfs
+#openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
 # nfs_directory must conform to DNS-1123 subdomain must consist of lower case
 # alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character
-openshift_hosted_registry_storage_nfs_directory=/exports
-openshift_hosted_registry_storage_nfs_options='*(rw,root_squash)'
-openshift_hosted_registry_storage_volume_name=registry
-openshift_hosted_registry_storage_volume_size=10Gi
+#openshift_hosted_registry_storage_nfs_directory=/exports
+#openshift_hosted_registry_storage_nfs_options='*(rw,root_squash)'
+#openshift_hosted_registry_storage_volume_name=registry
+#openshift_hosted_registry_storage_volume_size=10Gi
 #
 # External NFS Host
 # NFS volume must already exist with path "nfs_directory/_volume_name" on
@@ -567,7 +566,7 @@ openshift_hosted_registry_storage_volume_size=10Gi
 openshift_metrics_install_metrics=True
 openshift_metrics_hawkular_hostname=hawkular-metrics.paosin.local
 openshift_metrics_cassandra_storage_type=dynamic
-#openshift_hosted_metrics_deployer_version=v3.9
+openshift_hosted_metrics_deployer_version=v3.9
 
 # Storage Options
 # If openshift_metrics_storage_kind is unset then metrics will be stored
@@ -757,7 +756,7 @@ openshift_metrics_cassandra_storage_type=dynamic
 #openshift_master_console_port=8443
 
 # set exact RPM version (include - prefix)
-openshift_pkg_version=-3.9.0
+#openshift_pkg_version=-3.9.0
 # you may also specify version and release, ie:
 #openshift_pkg_version=-3.9.0-0.126.0.git.0.9351aae.el7
 

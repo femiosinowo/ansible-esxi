@@ -1,3 +1,6 @@
+install_lb: true
+install_app: false
+
 yumrepo_repos:
   kubernetes:
     name: kubernetes repo

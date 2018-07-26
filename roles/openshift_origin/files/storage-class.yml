@@ -2,6 +2,8 @@ apiVersion: storage.k8s.io/v1beta1
 kind: StorageClass  
 metadata:
   name: heketi  
+  annotations:
+    storageclass.beta.kubernetes.io/is-default-class: "true"
 provisioner: kubernetes.io/glusterfs   
 parameters:
   resturl: "http://$MASTER_1_IP:8080"  
@@ -22,3 +24,17 @@ spec:
  resources:
    requests:
      storage: 4Gi
+     
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0003
+spec:
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: heketi
