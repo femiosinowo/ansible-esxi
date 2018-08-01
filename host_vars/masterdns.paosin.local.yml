@@ -6,7 +6,10 @@ bind_allow_query:
   - "localhost"
   - "10.10.10.0/24"
 
+  
 dns_server: true  
+
+bind_recursion: true
 
 bind_zone_master_server_ip: 10.10.10.11
 my_ip4_address: 10.10.10.11
