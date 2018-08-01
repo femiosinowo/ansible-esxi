@@ -40,7 +40,7 @@
     - pyOpenSSL
 
 - name:  disable epel repo
-  shell: "sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo"
+  shell: 'sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo'
   args:
    executable: /bin/bash
    
