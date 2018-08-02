@@ -19,7 +19,7 @@
     - heketi-client
     - heketi-templates
     - heketi
-    - python-heketi
+    #- python-heketi
     - python2-passlib
     - java-1.8.0-openjdk-headless
 
