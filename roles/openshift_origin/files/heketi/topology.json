@@ -6,51 +6,51 @@
           "node": {
             "hostnames": {
               "manage": [
-                "ocp-master1.paosin.local"
+                "ocp-glusterfs1.paosin.local"
               ],
               "storage": [
-                "10.10.10.70"
+                "10.10.10.76"
               ]
             },
             "zone": 1
           },
           "devices": [
 
-            "/dev/sbc"
+            "/dev/docker/gluster"
           ]
         },
         {
           "node": {
             "hostnames": {
               "manage": [
-                "ocp-node1.paosin.local"
+                "ocp-glusterfs2.paosin.local"
               ],
               "storage": [
-                "10.10.10.71"
+                "10.10.10.77"
               ]
             },
             "zone": 1
           },
           "devices": [
 
-            "/dev/sbc"
+            "/dev/docker/gluster"
           ]
         },
         {
           "node": {
             "hostnames": {
               "manage": [
-                "ocp-node2.paosin.local"
+                "ocp-glusterfs3.paosin.local"
               ],
               "storage": [
-                "10.10.10.72"
+                "10.10.10.78"
               ]
             },
             "zone": 1
           },
           "devices": [
 
-            "/dev/sbc"
+            "/dev/docker/gluster"
           ]
         }
       ]
