@@ -1,6 +1,8 @@
 java_packages:
   - java-1.8.0-openjdk
 
+artifactory_version: "6.2.0"
+
 pg_username: postgres
 pg_password: admin
 
