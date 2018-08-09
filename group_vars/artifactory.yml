@@ -4,16 +4,13 @@ java_packages:
 pg_username: postgres
 pg_password: admin
 
-artifactory_username: "admin"
-artifactory_password: "admin"
+artifactory_username: "artifactory"
+artifactory_password: "password"
 
 postgresql_users:
   - name: "{{pg_username}}"
     pass: "{{pg_password}}"
     encrypted: no
-  - name: "{{artifactory_username}}"
-    pass: "{{artifactory_password}}"
-    encrypted: no 
  
 
   
