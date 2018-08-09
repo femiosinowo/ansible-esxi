@@ -13,7 +13,7 @@
   become_user: postgres
   postgresql_user:
     name: "{{ artifactory_username }}"
-    password: "{{ pg_password }}"
+    password: "{{ artifactory_password }}"
   tags:
     - artifactory
 
@@ -22,7 +22,7 @@
   become_user: postgres
   postgresql_db:
     name: artifactory
-    owner: artifactory
+    owner: "{{ artifactory_username }}"
     template: 'template0'
     encoding: 'UTF-8'
   tags:
