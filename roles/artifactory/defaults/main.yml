@@ -1,7 +1,7 @@
 ---
 
 # defaults file for base_artifactory
-artifactory_version: "5.2.1"
+artifactory_version: "6.2.0"
 artifactory_license: oss
 artifactory_username: "artifactory"
 artifactory_password: "password"
