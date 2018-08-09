@@ -21,5 +21,4 @@ galaxy_info:
     - packaging
     - web
 
-dependencies:
-  - dockpack.base_java8
+
