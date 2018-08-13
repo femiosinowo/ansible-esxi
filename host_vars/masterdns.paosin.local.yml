@@ -61,6 +61,8 @@ bind_zone_hosts:
     ip: 10.10.10.53
   - name: os-lab
     ip: 10.10.10.54
+  - name: jenkins
+    ip: 10.10.10.26
   - name: '*.apps.paosin.local'
     ip: 10.10.10.70
     donotadd_reverse: true
