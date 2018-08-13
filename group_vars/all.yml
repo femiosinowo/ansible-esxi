@@ -20,3 +20,6 @@ resolv_nameservers:
 resolv_domain: paosin.local
 resolv_search:
   - paosin.local
+
+java_packages:
+  - java-1.8.0-openjdk
