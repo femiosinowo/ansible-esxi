@@ -82,3 +82,5 @@ bind_zone_hosts:
     ip: 10.10.10.77 
   - name: ocp-glusterfs3
     ip: 10.10.10.78 
+  - name: faast
+    ip: 10.10.10.45 
