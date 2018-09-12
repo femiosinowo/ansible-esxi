@@ -64,9 +64,12 @@ openshift_release=v3.9
 openshift_master_default_subdomain=apps.paosin.local
 
 #Set cluster_hostname to point at your load balancer
-openshift_master_cluster_hostname=ocp-lb.paosin.local
-
 openshift_master_cluster_method=native
+openshift_master_cluster_hostname=ocp-lb.paosin.local
+openshift_master_cluster_public_hostname=openshift.paosin.local
+openshift_master_named_certificates=[{"certfile": "/root/openshift.paosin.local.crt", "keyfile": "/root/openshift.paosin.local.key", "names": ["openshift.paosin.local"]}]
+#openshift_master_overwrite_named_certificates=true
+
 
 ###############################################################################
 # Additional configuration variables follow                                   #

@@ -66,6 +66,10 @@ bind_zone_hosts:
   - name: '*.apps.paosin.local'
     ip: 10.10.10.70
     donotadd_reverse: true
+  - name: ocp-lb
+    ip: 10.10.10.70
+  - name: openshift.paosin.local
+    ip: 10.10.10.70
   - name: etcd
     ip: 10.10.10.60
   - name: ocp-master1
@@ -78,8 +82,6 @@ bind_zone_hosts:
     ip: 10.10.10.72
   - name: ocp-node3
     ip: 10.10.10.73
-  - name: ocp-lb
-    ip: 10.10.10.70
   - name: ocp-glusterfs1
     ip: 10.10.10.76
   - name: ocp-glusterfs2
