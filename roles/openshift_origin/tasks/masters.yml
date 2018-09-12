@@ -59,7 +59,8 @@
     src: "{{ heketi_tarball_url }}"
     dest: "{{ heketi_install_path }}"
     copy: no
-
+    mode: +x
+    
 - name: set heketi-client download url
   set_fact:
     heketi_client_tarball_url: "https://github.com/heketi/heketi/releases/download/{{ heketi_client_version }}/heketi-client-{{ heketi_client_version }}.linux.amd64.tar.gz"
@@ -69,7 +70,7 @@
     src: "{{ heketi_client_tarball_url }}"
     dest: "{{ heketi_install_path }}"
     copy: no
-    
+    mode: +x
     
     
 - name: install ansible and Heketi utilities
@@ -93,7 +94,7 @@
   copy: src=heketi/topology.json owner=root group=root dest=/etc/heketi/topology.json force=yes mode=644
 
 - name: copy startup script to server
-  copy: src=heketi/heketi.service  owner=root group=root dest=/etc/systemd/system/heketi.service force=yes mode="a+x"
+  copy: src=heketi/heketi.service  owner=root group=root dest=/etc/systemd/system/heketi.service force=yes 
   notify:
     - Reload systemd
     - Restart heketi  
