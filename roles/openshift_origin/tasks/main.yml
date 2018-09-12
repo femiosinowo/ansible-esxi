@@ -51,7 +51,7 @@
   args:
    executable: /bin/bash
      
-#- include: infranodes.yml
+- include: volume_docker_setup.yml
 #  when: openshift_origin_node_type == "infranode"
   
 #- include: nodes.yml  
