@@ -6,7 +6,7 @@
 
 - name: stop docker 
   service: name=docker state=stopped 
-  when: format_hdd is defined   
+  when: docker_storage_setup is defined   
 
 - name:  remove /var/lib/docker/
   shell: rm -rf /var/lib/docker
@@ -31,7 +31,7 @@
 #  shell: "sed -i 's/selinux-enabled/selinux-enabled\ --insecure-registry\ 172.50.0.0\/16/g' /etc/sysconfig/docker"
 #  args:
 #   executable: /bin/bash
-#  when: format_hdd is defined
+#  when: docker_storage_setup is defined
   
 
    
