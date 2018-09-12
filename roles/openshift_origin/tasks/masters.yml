@@ -57,10 +57,14 @@
 - name: download and untar Heketi tarball
   unarchive:
     src: "{{ heketi_tarball_url }}"
-    dest: "{{ heketi_install_path }}"
+    dest: "/tmp"
     copy: no
-    mode: +x
-    
+
+
+- name: copy heketi files
+  copy: src=/tmp/heketi/* dest=/usr/local/bin/ remote_src=yes
+  
+      
 - name: set heketi-client download url
   set_fact:
     heketi_client_tarball_url: "https://github.com/heketi/heketi/releases/download/{{ heketi_client_version }}/heketi-client-{{ heketi_client_version }}.linux.amd64.tar.gz"
@@ -70,8 +74,10 @@
     src: "{{ heketi_client_tarball_url }}"
     dest: "{{ heketi_install_path }}"
     copy: no
-    mode: +x
-    
+
+
+- name: copy heketi-client files
+  copy: src=/tmp/heketi-client/* dest=/usr/local/bin/ remote_src=yes    
     
 - name: install ansible and Heketi utilities
   yum: name={{ item }} state=present
