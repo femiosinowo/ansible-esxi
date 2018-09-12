@@ -1,0 +1,4 @@
+heketi_version: v7.0.0
+heketi_install_path: /usr/local/bin/
+heketi_user: heketi
+heketi_group: heketi
