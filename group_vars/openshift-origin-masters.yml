@@ -1,2 +1,3 @@
 ---
 openshift_origin_node_type: master
+docker_storage_setup: true

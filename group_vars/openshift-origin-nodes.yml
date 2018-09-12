@@ -1,1 +1,2 @@
 openshift_origin_node_type: node
+docker_storage_setup: true
