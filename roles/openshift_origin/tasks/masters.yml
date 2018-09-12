@@ -80,7 +80,7 @@
   copy: src=heketi/topology.json owner=root group=root dest=/etc/heketi/topology.json force=yes mode=644
 
 - name: copy startup script to server
-  template: src="heketi/heketi.service"  dest="/etc/systemd/system/heketi.service"  mode="a+x"
+  template: src=heketi/heketi.service  owner=root group=root dest=/etc/systemd/system/heketi.service force=yes mode="a+x"
   notify:
     - Reload systemd
     - Restart heketi  
