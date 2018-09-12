@@ -62,10 +62,10 @@
 
 
 - name: copy heketi files
-  copy: src=/tmp/heketi/heketi dest=/usr/local/bin/heketi remote_src=yes
+  copy: src=/tmp/heketi/heketi dest=/usr/local/bin/heketi remote_src=yes mode=+x
   
 - name: copy heketi-client files
-  copy: src=/tmp/heketi/heketi-cli dest=/usr/local/bin/heketi-cli remote_src=yes    
+  copy: src=/tmp/heketi/heketi-cli dest=/usr/local/bin/heketi-cli remote_src=yes mode=+x   
     
 - name: install ansible and Heketi utilities
   yum: name={{ item }} state=present
