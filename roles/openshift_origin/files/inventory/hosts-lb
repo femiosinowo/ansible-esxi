@@ -6,26 +6,29 @@
 
 [masters]
 ocp-master1.paosin.local 
+ocp-master2.paosin.local
 
 [etcd]
 ocp-master1.paosin.local
+ocp-master2.paosin.local
 
 [nodes]
 ocp-master1.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+ocp-master2.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
 ocp-node[1:2].paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 
 [nfs]
 ocp-master1.paosin.local
 
 [lb]
-#ose3-lb.paosin.local
+ocp-lb.paosin.local
 
 # Create an OSEv3 group that contains the masters and nodes groups
 [OSEv3:children]
 masters
 nodes
 etcd
-#lb
+lb
 nfs
 
 [OSEv3:vars]
@@ -61,9 +64,9 @@ openshift_release=v3.9
 openshift_master_default_subdomain=apps.paosin.local
 
 #Set cluster_hostname to point at your load balancer
-#openshift_master_cluster_hostname=ocp-master1.paosin.local
+openshift_master_cluster_hostname=ocp-lb.paosin.local
 
-
+openshift_master_cluster_method=native
 
 ###############################################################################
 # Additional configuration variables follow                                   #
@@ -224,7 +227,7 @@ openshift_disable_check=memory_availability
 
 # htpasswd auth
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider','filename': '/etc/origin/master/htpasswd'}]
-# Defining htpasswd users femi:$apr1$JAORj55W$NtKKK/wMVOYvJOkTB5nGG0
+# Defining htpasswd users
 
 openshift_master_htpasswd_users={'femi': '$apr1$JAORj55W$NtKKK/wMVOYvJOkTB5nGG0'}
 # or
@@ -754,8 +757,8 @@ os_sdn_network_plugin_name='redhat/openshift-ovs-networkpolicy'
 #osm_host_subnet_length=9
 
 # Configure master API and console ports.
-#openshift_master_api_port=8443
-#openshift_master_console_port=8443
+openshift_master_api_port=443
+openshift_master_console_port=443
 
 # set exact RPM version (include - prefix)
 #openshift_pkg_version=-3.9.0
@@ -763,7 +766,7 @@ os_sdn_network_plugin_name='redhat/openshift-ovs-networkpolicy'
 #openshift_pkg_version=-3.9.0-0.126.0.git.0.9351aae.el7
 
 # Configure custom ca certificate
-#openshift_master_ca_certificate={'certfile': '/path/to/ca.crt', 'keyfile': '/path/to/ca.key'}
+openshift_master_ca_certificate={'certfile': '/path/to/ca.crt', 'keyfile': '/path/to/ca.key'}
 #
 # NOTE: CA certificate will not be replaced with existing clusters.
 # This option may only be specified when creating a new cluster or
