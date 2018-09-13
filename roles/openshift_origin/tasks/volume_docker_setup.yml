@@ -1,11 +1,19 @@
-- name: install docker
-  yum: name={{ item }} state=absent
+#- name: install docker
+#  yum: name={{ item }} state=absent
+#  when: docker_storage_setup is defined
+# with_items:
+#    - docker
+
+- name: stop docker 
+  service: name=docker state=stopped 
+  when: docker_storage_setup is defined   
+
+- name: unmount docker stuff
+  mount:
+    path: /var/lib/docker/containers
+    state: absent
   when: docker_storage_setup is defined
-  with_items:
-    - docker
-
-   
-
+    
 - name:  remove /var/lib/docker/
   shell: rm -rf /var/lib/docker
   args:
