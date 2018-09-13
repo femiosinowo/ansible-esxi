@@ -1,6 +1,6 @@
 - name: install docker
-  yum: name={{ item }} state=present
-  enablerepo: epel
+  yum: name={{ item }} state=absent
+  when: docker_storage_setup is defined
   with_items:
     - docker
 
@@ -33,7 +33,11 @@
 #   executable: /bin/bash
 #  when: docker_storage_setup is defined
   
-
+- name: install docker
+  yum: name={{ item }} state=present
+  when: docker_storage_setup is defined
+  with_items:
+    - docker
    
 - name: enable and start docker 
   service: name=docker state=started  enabled=yes 
