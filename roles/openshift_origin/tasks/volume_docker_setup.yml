@@ -4,9 +4,7 @@
   with_items:
     - docker
 
-- name: stop docker 
-  service: name=docker state=stopped 
-  when: docker_storage_setup is defined   
+   
 
 - name:  remove /var/lib/docker/
   shell: rm -rf /var/lib/docker
