@@ -1,0 +1,6 @@
+---
+resolv_nameservers:
+  - "{{ ansible_default_ipv4.address }}"
+resolv_search:
+  - svc.cluster.local 
+  - cluster.local
