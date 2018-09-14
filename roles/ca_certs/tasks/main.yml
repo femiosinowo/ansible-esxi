@@ -17,3 +17,5 @@
   
 - name: Copy CA Key
   copy: src=certs/myCA.key dest=/root/
+- name: Copy CA PEM
+  copy: src=certs/myCA.pem dest=/root/
