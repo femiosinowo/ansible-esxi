@@ -64,7 +64,7 @@ bind_zone_hosts:
   - name: os-lab
     ip: 10.10.10.54
   - name: '*.apps.paosin.local'
-    ip: 10.10.10.70
+    ip: 10.10.10.80
     donotadd_reverse: true
   - name: ose3-lb
     ip: 10.10.10.70

@@ -5,23 +5,22 @@
 # should use an external load balancing solution that itself is highly available.
 
 [masters]
-ocp-master1.paosin.local 
-ocp-master2.paosin.local
+ose3-master1.paosin.local 
+ose3-master[1:2].paosin.local
 
 [etcd]
-ocp-master1.paosin.local
-ocp-master2.paosin.local
+ose3-master[1:2].paosin.local
 
 [nodes]
-ocp-master1.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
-ocp-master2.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
-ocp-node[1:2].paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+ose3-infra.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+ose3-master[1:2].paosin.local
+ose3-node[1:2].paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 
 [nfs]
-ocp-master1.paosin.local
+ose3-master1.paosin.local
 
 [lb]
-ocp-lb.paosin.local
+ose3-lb.paosin.local
 
 # Create an OSEv3 group that contains the masters and nodes groups
 [OSEv3:children]
@@ -65,7 +64,7 @@ openshift_master_default_subdomain=apps.paosin.local
 
 #Set cluster_hostname to point at your load balancer
 openshift_master_cluster_method=native
-openshift_master_cluster_hostname=ocp-lb.paosin.local
+openshift_master_cluster_hostname=ose3-lb.paosin.local
 openshift_master_cluster_public_hostname=openshift.paosin.local
 openshift_master_named_certificates=[{"certfile": "/root/openshift.paosin.local.crt", "keyfile": "/root/openshift.paosin.local.key", "names": ["openshift.paosin.local"]}]
 #openshift_master_overwrite_named_certificates=true
@@ -769,7 +768,7 @@ openshift_master_console_port=443
 #openshift_pkg_version=-3.9.0-0.126.0.git.0.9351aae.el7
 
 # Configure custom ca certificate
-openshift_master_ca_certificate={'certfile': '/path/to/ca.crt', 'keyfile': '/path/to/ca.key'}
+openshift_master_ca_certificate={'certfile': '/root/myCA.pem', 'keyfile': '/root/myCA.key'}
 #
 # NOTE: CA certificate will not be replaced with existing clusters.
 # This option may only be specified when creating a new cluster or
