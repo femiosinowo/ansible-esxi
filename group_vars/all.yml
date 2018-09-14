@@ -1,6 +1,8 @@
 install_lb: true
 install_app: false
 
+network_interface_name: "{{ ansible_ens160.ipv4.address }}"
+
 yumrepo_repos:
   kubernetes:
     name: kubernetes repo
