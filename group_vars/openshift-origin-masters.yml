@@ -1,6 +1,6 @@
 ---
 openshift_origin_node_type: master
-docker_storage_setup: false
+#docker_storage_setup: true
 
 resolv_nameservers:
   - "{{ ansible_default_ipv4.address }}"

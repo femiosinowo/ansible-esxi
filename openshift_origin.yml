@@ -2,5 +2,5 @@
   roles:
     - common
     - ca_certs
-    - resolv
     - openshift_origin
+    - resolv
