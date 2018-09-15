@@ -1,12 +1,12 @@
-#- name: install docker
-#  yum: name={{ item }} state=absent
-#  when: docker_storage_setup is defined
-# with_items:
-#    - docker
+- name: remove docker
+  yum: name={{ item }} state=absent
+  when: docker_storage_setup is defined
+  with_items:
+    - docker
 
-- name: stop docker 
-  service: name=docker state=stopped 
-  when: docker_storage_setup is defined   
+#- name: stop docker 
+#  service: name=docker state=stopped 
+#  when: docker_storage_setup is defined   
 
 - name: unmount docker stuff
   mount:
@@ -20,6 +20,13 @@
    executable: /bin/bash
   when: docker_storage_setup is defined
   
+
+- name: install docker
+  yum: name={{ item }} state=present
+  when: docker_storage_setup is defined
+  with_items:
+    - docker
+    
 - name: "Create Docker Storage File"
   copy:
     src=docker-storage-setup
@@ -39,11 +46,7 @@
 #   executable: /bin/bash
 #  when: docker_storage_setup is defined
   
-- name: install docker
-  yum: name={{ item }} state=present
-  when: docker_storage_setup is defined
-  with_items:
-    - docker
+
    
 - name: enable and start docker 
   service: name=docker state=started  enabled=yes 
