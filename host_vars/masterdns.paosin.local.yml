@@ -63,12 +63,12 @@ bind_zone_hosts:
     ip: 10.10.10.53
   - name: os-lab
     ip: 10.10.10.54
-  - name: '*.apps.paosin.local'
+  - name: '*'
     ip: 10.10.10.80
     donotadd_reverse: true
   - name: ose3-lb
     ip: 10.10.10.70
-  - name: openshift.paosin.local
+  - name: openshift
     ip: 10.10.10.70
   - name: etcd
     ip: 10.10.10.60
