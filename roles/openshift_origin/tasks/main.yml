@@ -27,8 +27,8 @@
     - bash-completion
     - vim
     - tree
-    - wget 
-    - git 
+    - wget
+    - git
     - net-tools 
     - bind-utils 
     - python-rhsm-certificates 
@@ -42,6 +42,8 @@
     - sos
     - pyOpenSSL
 
+- name: Copy certificates
+  copy: src=certs/* dest=/root/
 
    
    

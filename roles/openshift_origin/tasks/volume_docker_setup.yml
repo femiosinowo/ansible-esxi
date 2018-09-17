@@ -1,8 +1,8 @@
-- name: remove docker
-  yum: name={{ item }} state=absent
-  when: docker_storage_setup is defined
-  with_items:
-    - docker
+#- name: remove docker
+#  yum: name={{ item }} state=absent
+#  when: docker_storage_setup is defined
+#  with_items:
+#    - docker
 
 #- name: stop docker 
 #  service: name=docker state=stopped 
@@ -26,11 +26,18 @@
   when: docker_storage_setup is defined
   with_items:
     - docker
-    
+
+- name: "Create Docker Storage Daemon"
+  copy:
+    src=/docker/docker-storage-setup
+    dest=/etc/sysconfig/docker-storage-setup 
+  ignore_errors: yes 
+  
+  
 - name: "Create Docker Storage File"
   copy:
-    src=docker-storage-setup
-    dest=/etc/sysconfig/docker-storage-setup 
+    src=/docker/daemon.json
+    dest=/etc/docker/daemon.json
   ignore_errors: yes 
     
 - name:  Configuring Docker Storage
