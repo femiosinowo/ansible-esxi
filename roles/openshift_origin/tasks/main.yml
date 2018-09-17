@@ -43,7 +43,7 @@
     - pyOpenSSL
 
 - name: Copy certificates
-  copy: src=certs/* dest=/root/
+  copy: src=certs dest=/root/
 
    
    
