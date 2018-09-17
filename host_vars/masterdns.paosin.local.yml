@@ -51,39 +51,24 @@ bind_zone_hosts:
     ip: 10.10.10.31
   - name: kube-node2
     ip: 10.10.10.32
-  - name: docker-registry
-    ip: 10.10.10.37
-  - name: os-master1
-    ip: 10.10.10.50
-  - name: os-node1
-    ip: 10.10.10.51
-  - name: os-node2
-    ip: 10.10.10.52
-  - name: os-infranode1
-    ip: 10.10.10.53
-  - name: os-lab
-    ip: 10.10.10.54
+
+### Openshift
   - name: '*'
-    ip: 10.10.10.80
+    ip: 10.10.10.81
     donotadd_reverse: true
-  - name: ose3-lb
-    ip: 10.10.10.70
-  - name: openshift
-    ip: 10.10.10.70
-  - name: etcd
-    ip: 10.10.10.60
-  - name: ose3-master1
+#  - name: openshift
+#    ip: 10.10.10.81
+  - name: ose-master1
     ip: 10.10.10.81  
-  - name: ose3-master2
+  - name: ose-master2
     ip: 10.10.10.82
-  - name: ose3-node1
+  - name: ose-node1
     ip: 10.10.10.71
-  - name: ose3-node2
+  - name: ose-node2
     ip: 10.10.10.72
-  - name: ose3-node3
+  - name: ose-node3
     ip: 10.10.10.73
-  - name: ose3-infra
-    ip: 10.10.10.80
+
     
   - name: ocp-glusterfs1
     ip: 10.10.10.76

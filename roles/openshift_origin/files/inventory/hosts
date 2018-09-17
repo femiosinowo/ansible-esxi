@@ -5,17 +5,17 @@
 # should use an external load balancing solution that itself is highly available.
 
 [masters]
-ocp-master1.paosin.local 
+ose-master1.paosin.local 
 
 [etcd]
-ocp-master1.paosin.local
+ose-master1.paosin.local
 
 [nodes]
-ocp-master1.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
-ocp-node[1:2].paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+ose-master1.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+ose-node[1:2].paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 
 [nfs]
-ocp-master1.paosin.local
+ose-master1.paosin.local
 
 [lb]
 #ose3-lb.paosin.local
@@ -61,7 +61,7 @@ openshift_release=v3.9
 openshift_master_default_subdomain=apps.paosin.local
 
 #Set cluster_hostname to point at your load balancer
-#openshift_master_cluster_hostname=ocp-master1.paosin.local
+#openshift_master_cluster_hostname=ose-master1.paosin.local
 
 
 
@@ -787,6 +787,13 @@ os_sdn_network_plugin_name='redhat/openshift-ovs-networkpolicy'
 # the provided value, specify openshift_master_overwrite_named_certificates.
 #openshift_master_overwrite_named_certificates=true
 #
+
+
+openshift_master_cluster_hostname=ose-master1.paosin.local
+openshift_master_cluster_public_hostname=openshift.paosin.local
+openshift_master_named_certificates=[{"certfile": "/root/openshift.paosin.local.crt", "keyfile": "/root/openshift.paosin.local.key", "names": ["openshift.paosin.local"]}]
+openshift_master_ca_certificate={'certfile': '/root/myCA.pem', 'keyfile': '/root/myCA.key'}
+
 # Provide local certificate paths which will be deployed to masters
 #openshift_master_named_certificates=[{"certfile": "/path/to/custom1.crt", "keyfile": "/path/to/custom1.key", "cafile": "/path/to/custom-ca1.crt"}]
 #
