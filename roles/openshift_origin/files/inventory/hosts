@@ -76,9 +76,9 @@ debug_level=2
 
 openshift_master_cluster_hostname=ose-master1.paosin.local
 openshift_master_cluster_public_hostname=openshift.paosin.local
-openshift_master_named_certificates=[{"certfile": "/root/openshift.paosin.local.crt", "keyfile": "/root/openshift.paosin.local.key", "names": ["openshift.paosin.local"]}]
-openshift_master_ca_certificate={'certfile': '/root/myCA.pem', 'keyfile': '/root/myCA.key'}
-openshift_hosted_router_certificate={"certfile": "/root/apps.paosin.local.crt", "keyfile": "/root/apps.paosin.local.key", "cafile": "/root/myCA.pem"}
+openshift_master_named_certificates=[{"certfile": "/root/certs/openshift.paosin.local.crt", "keyfile": "/root/certs/openshift.paosin.local.key", "names": ["openshift.paosin.local"]}]
+openshift_master_ca_certificate={'certfile': '/root/certs/myCA.pem', 'keyfile': '/root/certs/myCA.key'}
+openshift_hosted_router_certificate={"certfile": "/root/certs/apps.paosin.local.crt", "keyfile": "/root/certs/apps.paosin.local.key", "cafile": "/root/certs/myCA.pem"}
 
 
 # Specify an exact container image tag to install or configure.

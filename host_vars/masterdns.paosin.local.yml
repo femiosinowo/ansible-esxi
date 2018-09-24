@@ -59,7 +59,7 @@ bind_zone_hosts:
   - name: ose-infra1
     ip: 10.10.10.80
   - name: openshift
-    ip: 10.10.10.80
+    ip: 10.10.10.81
   - name: ose-master1
     ip: 10.10.10.81  
   - name: ose-master2
