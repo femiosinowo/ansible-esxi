@@ -11,7 +11,8 @@ ose-master1.paosin.local
 ose-master1.paosin.local
 
 [nodes]
-ose-master1.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+ose-master1.paosin.local
+ose-infra1.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
 ose-node[1:2].paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 
 [nfs]
@@ -71,6 +72,14 @@ openshift_master_default_subdomain=apps.paosin.local
 
 # Debug level for all OpenShift components (Defaults to 2)
 debug_level=2
+
+
+openshift_master_cluster_hostname=ose-master1.paosin.local
+openshift_master_cluster_public_hostname=openshift.paosin.local
+openshift_master_named_certificates=[{"certfile": "/root/openshift.paosin.local.crt", "keyfile": "/root/openshift.paosin.local.key", "names": ["openshift.paosin.local"]}]
+openshift_master_ca_certificate={'certfile': '/root/myCA.pem', 'keyfile': '/root/myCA.key'}
+openshift_hosted_router_certificate={"certfile": "/root/apps.paosin.local.crt", "keyfile": "/root/apps.paosin.local.key", "cafile": "/root/myCA.pem"}
+
 
 # Specify an exact container image tag to install or configure.
 # WARNING: This value will be used for all hosts in containerized environments, even those that have another version installed.
@@ -789,11 +798,7 @@ os_sdn_network_plugin_name='redhat/openshift-ovs-networkpolicy'
 #
 
 
-openshift_master_cluster_hostname=ose-master1.paosin.local
-openshift_master_cluster_public_hostname=openshift.paosin.local
-openshift_master_named_certificates=[{"certfile": "/root/openshift.paosin.local.crt", "keyfile": "/root/openshift.paosin.local.key", "names": ["openshift.paosin.local"]}]
-openshift_master_ca_certificate={'certfile': '/root/myCA.pem', 'keyfile': '/root/myCA.key'}
-openshift_hosted_router_certificate={"certfile": "/root/apps.paosin.local.crt", "keyfile": "/root/apps.paosin.local.key", "cafile": "/root/myCA.pem"}
+
 
 # Provide local certificate paths which will be deployed to masters
 #openshift_master_named_certificates=[{"certfile": "/path/to/custom1.crt", "keyfile": "/path/to/custom1.key", "cafile": "/path/to/custom-ca1.crt"}]
