@@ -37,7 +37,7 @@ variable "{{ vms['hostname'] }}_network_params" {
 #    Resources
 ##################################
 
-resource "vsphere_virtual_machine" "kube-node1" {
+resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
   name                   = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}"
   num_cpus               = "${var.{{ vms['hostname'] }}_vm_params["vcpu"]}"
   memory                 = "${var.{{ vms['hostname'] }}_vm_params["ram"]}"
