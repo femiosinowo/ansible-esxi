@@ -57,7 +57,7 @@
    executable: /bin/bash
      
 - include: volume_docker_setup.yml
-  when: openshift_origin_node_type == "infranode"
+#  when: openshift_origin_node_type == "infranode"
   
 #- include: nodes.yml  
 #  when: openshift_origin_node_type is defined
