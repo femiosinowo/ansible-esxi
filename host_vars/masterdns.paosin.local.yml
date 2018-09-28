@@ -81,36 +81,59 @@ bind_zone_hosts:
   - name: faast
     ip: 10.10.10.45 
     
-    
-    
+gateway: 10.10.10.1
+vlan_id: 1
+domain: "paosin.local"
+prefix_length: 24
+interface_label: "VM Network"
+
+
 terraform_vms:
-  - hostname: kube-node2
+  - hostname: ose-master1
     disk_datastore: "hdd2"
-    inventory_parent_folder: kubernetes
+    ram: 8192
+    vcpu: 4
+    disk_size: "50"
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.81"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
+  - hostname: ose-infra1
+    disk_datastore: "hdd2"
+    ram: 2048
+    vcpu: 1
+    disk_size: "50"
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.80"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
+  - hostname: ose-node1
+    disk_datastore: "hdd2"
     ram: 4096
     vcpu: 1
-    disk_size: "16"
+    disk_size: "50"
     network_params:
-      label: "VM Network"
-      ipv4_address: "10.10.10.90"
-      domain: "paosin.local"
-      vlan_id: "1"
-      prefix_length: "24"
-      gateway: "10.10.10.1"
-      dns1: "10.10.10.11"
-      dns2: "8.8.8.8" 
-  - hostname: kube-master1
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.71"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
+  - hostname: ose-node2
     disk_datastore: "hdd2"
-    inventory_parent_folder: kubernetes
     ram: 4096
-    vcpu: 2
-    disk_size: "16"
+    vcpu: 1
+    disk_size: "50"
     network_params:
-      label: "VM Network"
-      ipv4_address: "10.10.10.91"
-      domain: "paosin.local"
-      vlan_id: "1"
-      prefix_length: "24"
-      gateway: "10.10.10.1"
-      dns1: "10.10.10.11"
-      dns2: "8.8.8.8" 
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.72"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
