@@ -73,10 +73,11 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
       network_interface {
         ipv4_address    = "${var.{{ vms['hostname'] }}_network_params["ipv4_address"]}"
         ipv4_netmask    = "${var.{{ vms['hostname'] }}_network_params["prefix_length"]}"
-        dns_server_list = "${var.dns_servers}"
+        
       }
 
       ipv4_gateway      = "${var.{{ vms['hostname'] }}_network_params["gateway"]}"
+      dns_server_list = "${var.dns_servers}"
     }
   }
   #depends_on            = ["vsphere_host_port_group.network_port"]
