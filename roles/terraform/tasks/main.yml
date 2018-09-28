@@ -3,7 +3,12 @@
     path: /root/terraform_ansible
     state: directory
     mode: 0755
-    
+
+- name: Generating Terraform Network File
+  template:
+    src: templates/network.tf.j2
+    dest: "/root/terraform_ansible/network.tf"
+        
 - name: Generating Terraform Variables
   template:
     src: templates/variables.tf.j2
