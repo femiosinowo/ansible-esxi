@@ -42,12 +42,13 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
   name                   = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}"
   num_cpus               = "${var.{{ vms['hostname'] }}_vm_params["vcpu"]}"
   memory                 = "${var.{{ vms['hostname'] }}_vm_params["ram"]}"
-  datastore_id           = "${data.vsphere_datastore.datastore.id}"
+  datastore_id           = "${data.vsphere_datastore_cluster.datastore.id}"
   host_system_id         = "${data.vsphere_host.host.id}"
   resource_pool_id       = "${data.vsphere_resource_pool.pool.id}"
   guest_id               = "${data.vsphere_virtual_machine.template.guest_id}"
   scsi_type              = "${data.vsphere_virtual_machine.template.scsi_type}"
-
+  folder                 = "${var.{{ vms['hostname'] }}_vm_params["folder"]}"
+  
 # Configure network interface
   network_interface {
     network_id          = "${data.vsphere_network.network.id}"

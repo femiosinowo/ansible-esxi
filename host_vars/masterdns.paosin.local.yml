@@ -90,6 +90,7 @@ interface_label: "VM Network"
 
 terraform_vms:
   - hostname: ose-master1
+    folder: openshift
     disk_datastore: "hdd2"
     ram: 8192
     vcpu: 4
@@ -102,6 +103,7 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
   - hostname: ose-infra1
+    folder: openshift
     disk_datastore: "hdd2"
     ram: 2048
     vcpu: 1
@@ -114,6 +116,7 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
   - hostname: ose-node1
+    folder: openshift
     disk_datastore: "hdd2"
     ram: 4096
     vcpu: 1
@@ -126,6 +129,7 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
   - hostname: ose-node2
+    folder: openshift
     disk_datastore: "hdd2"
     ram: 4096
     vcpu: 1

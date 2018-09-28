@@ -8,3 +8,11 @@ vsphere_vcenter_cluster: paosin-cluster
 vsphere_linux_vapp_template_name: centos-7-template-esxi
 vsphere_vcenter_datacenter: paosin.local
 
+terraform_dir: /root/terraform
+
+
+vsphere_vcenter: "10.10.10.15"
+vcenter_user: "administrator@paosin.local"
+vcenter_password: "P@ssw0rd"
+vcenter_datacenter: "paosin.local"
+vsphere_server: "10.10.10.15"

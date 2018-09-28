@@ -1,41 +1,41 @@
 # create a directory if it doesn't exist
 - file:
-    path: /root/terraform_ansible
+    path: "{{ terraform_dir }}"
     state: directory
     mode: 0755
 
 - name: Generating Terraform Network File
   template:
     src: templates/network.tf.j2
-    dest: "/root/terraform_ansible/network.tf"
+    dest: "{{ terraform_dir }}/network.tf"
         
 - name: Generating Terraform Variables
   template:
     src: templates/variables.tf.j2
-    dest: "/root/terraform_ansible/variables.tf"
+    dest: "{{ terraform_dir }}/variables.tf"
 
 - name: Generating Terraform Data Retrieve
   template:
     src: templates/data-retrieve.tf.j2
-    dest: "/root/terraform_ansible/data-retrieve.tf"
+    dest: "{{ terraform_dir }}/data-retrieve.tf"
     
     
 - name: Generating Secret Terraform Variables
   template:
     src: templates/terraform.tfvars.j2
-    dest: "/root/terraform_ansible/terraform.tfvars"
+    dest: "{{ terraform_dir }}/terraform.tfvars"
     
 - name: Generating Terraform VM Definitions
   template:
     src: templates/vm_resources.tf.j2
-    dest: "/root/terraform_ansible/vm_resources.tf"
+    dest: "{{ terraform_dir }}/vm_resources.tf"
     
 - name: Capturing Terraform Init State
   command: "terraform init -get=true -input=false"
   register: _terraform_init_state
   changed_when: false
   args:
-    chdir: ""
+    chdir: "{{ terraform_dir }}"
   tags:
     - terraform_init
 
@@ -44,7 +44,7 @@
   register: _terraform_plan
   changed_when: false
   args:
-    chdir: ""
+    chdir: "{{ terraform_dir }}"
   tags:
     - terraform_apply
     - terraform_plan
@@ -61,7 +61,7 @@
   register: _terraform_apply
   changed_when: false
   args:
-    chdir: ""
+    chdir: "{{ terraform_dir }}"
   tags:
     - terraform_apply
   when: >
