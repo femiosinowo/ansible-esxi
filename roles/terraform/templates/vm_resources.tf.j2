@@ -79,7 +79,7 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
       ipv4_gateway      = "${var.{{ vms['hostname'] }}_network_params["gateway"]}"
     }
   }
-  depends_on            = ["vsphere_host_port_group.network_port"]
+  #depends_on            = ["vsphere_host_port_group.network_port"]
 }
 
 
