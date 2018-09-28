@@ -21,7 +21,7 @@ data "vsphere_datastore" "datastore" {
   name          = "DatastoreCluster" #"${var.datastore_vm_params["disk_datastore"]}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
-
+ 
 # Retrieve network information on vsphere
 data "vsphere_network" "network" {
   name          = "VM Network" #"${var.kube_node1_network_params["label"]}"
