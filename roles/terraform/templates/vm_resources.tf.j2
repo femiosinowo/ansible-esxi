@@ -1,0 +1,95 @@
+{% for vms in terraform_vms %}
+
+#### SERVER_ONE ####
+#
+# Create vm with template
+#
+#### PARAMS {{ vms['hostname'] }} INSTANCES #####################################
+#
+#
+#
+
+
+variable "{{ vms['hostname'] }}_vm_params" {
+  default = {
+    hostname       = "{{ vms['hostname'] }}"
+    vcpu           = "{{ vms['vcpu'] }}"
+    ram            = "{{ vms['ram'] }}"
+    # You can't set a datastore name with interspace
+    disk_datastore = "{{ vms['disk_datastore'] }}"
+    disk_size      = "{{ vms['disk_size'] }}"
+  }
+}
+
+variable "{{ vms['hostname'] }}_network_params" {
+  default = {
+    domain           = "{{ vms['network_params']['domain'] }}"
+    label            = "{{ vms['network_params']['label'] }}"
+    vlan_id          = "1"
+    ipv4_address     = "{{ vms['network_params']['ipv4_address'] }}"
+    prefix_length    = "{{ vms['network_params']['prefix_length'] }}"
+    gateway          = "{{ vms['network_params']['gateway'] }}"
+  }
+}
+
+
+##################################
+#    Resources
+##################################
+
+resource "vsphere_virtual_machine" "kube-node1" {
+  name                   = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}"
+  num_cpus               = "${var.{{ vms['hostname'] }}_vm_params["vcpu"]}"
+  memory                 = "${var.{{ vms['hostname'] }}_vm_params["ram"]}"
+  datastore_id           = "${data.vsphere_datastore.datastore.id}"
+  host_system_id         = "${data.vsphere_host.host.id}"
+  resource_pool_id       = "${data.vsphere_resource_pool.pool.id}"
+  guest_id               = "${data.vsphere_virtual_machine.template.guest_id}"
+  scsi_type              = "${data.vsphere_virtual_machine.template.scsi_type}"
+  dns_servers            = "${var.dns_servers}"
+
+# Configure network interface
+  network_interface {
+    network_id          = "${data.vsphere_network.network.id}"
+  }
+
+# Configure Disk
+  disk {
+    name                = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
+    size                = "16"
+    thin_provisioned    = false
+  }
+
+# Define template and customisation params
+  clone {
+    template_uuid       = "${data.vsphere_virtual_machine.template.id}"
+
+    customize {
+      linux_options {
+        host_name       = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}"
+        domain          = "${var.{{ vms['hostname'] }}_network_params["domain"]}"
+      }
+
+      network_interface {
+        ipv4_address    = "${var.{{ vms['hostname'] }}_network_params["ipv4_address"]}"
+        ipv4_netmask    = "${var.{{ vms['hostname'] }}_network_params["prefix_length"]}"
+        dns_server_list = "${var.dns_servers}"
+      }
+
+      ipv4_gateway      = "${var.{{ vms['hostname'] }}_network_params["gateway"]}"
+    }
+  }
+  depends_on            = ["vsphere_host_port_group.network_port"]
+}
+
+
+#### END SERVER_ONE ####
+#
+# END
+#
+#####################################
+
+
+
+
+{% endfor %}

@@ -1,0 +1,26 @@
+# create a directory if it doesn't exist
+- file:
+    path: /root/terraform_ansible
+    state: directory
+    mode: 0755
+    
+- name: Generating Terraform Variables
+  template:
+    src: templates/variables.tf.j2
+    dest: "/root/terraform_ansible/variables.tf"
+
+- name: Generating Terraform Data Retrieve
+  template:
+    src: templates/data-retrieve.tf.j2
+    dest: "/root/terraform_ansible/data-retrieve.tf"
+    
+    
+- name: Generating Secret Terraform Variables
+  template:
+    src: templates/terraform.tfvars.j2
+    dest: "/root/terraform_ansible/terraform.tfvars"
+    
+- name: Generating Terraform VM Definitions
+  template:
+    src: templates/vm_resources.tf.j2
+    dest: "/root/terraform_ansible/vm_resources.tf"

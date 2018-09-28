@@ -1,0 +1,26 @@
+vsphere_dns_servers:
+  - "10.10.10.11"
+  - "8.8.4.4"
+
+esxi_hosts: 10.10.10.2
+ 
+vsphere_vcenter_cluster: paosin-cluster 
+vsphere_linux_vapp_template_name: centos-7-template-esxi
+vsphere_vcenter_datacenter: paosin.local
+
+
+terraform_vms:
+  - group: docker_lbs
+    count: 2
+    inventory_parent_folder: Docker
+    memory_mb: 512
+    naming: docker-lb
+    vcpu: 1
+  - group: docker_storage
+    addl_disk:
+      - size: 100
+    count: 2
+    inventory_parent_folder: Docker
+    memory_mb: 512
+    naming: docker-storage
+    vcpu: 1
