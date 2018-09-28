@@ -56,18 +56,28 @@ bind_zone_hosts:
   - name: '*'
     ip: 10.10.10.80
     donotadd_reverse: true
+    
   - name: ose-infra1
     ip: 10.10.10.80
+    
   - name: openshift
     ip: 10.10.10.81
+
+  - name: openshift-int
+    ip: 10.10.10.81
+        
   - name: ose-master1
     ip: 10.10.10.81  
+    
   - name: ose-master2
     ip: 10.10.10.82
+    
   - name: ose-node1
     ip: 10.10.10.71
+    
   - name: ose-node2
     ip: 10.10.10.72
+    
   - name: ose-node3
     ip: 10.10.10.73
 

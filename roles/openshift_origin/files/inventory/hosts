@@ -61,8 +61,7 @@ openshift_release=v3.9
 # your router
 openshift_master_default_subdomain=apps.paosin.local
 
-#Set cluster_hostname to point at your load balancer
-#openshift_master_cluster_hostname=ose-master1.paosin.local
+
 
 
 
@@ -73,13 +72,23 @@ openshift_master_default_subdomain=apps.paosin.local
 # Debug level for all OpenShift components (Defaults to 2)
 debug_level=2
 
+openshift_master_api_port=443
+openshift_master_console_port=443
 
-openshift_master_cluster_hostname=ose-master1.paosin.local
+openshift_master_cluster_hostname=openshift-int.paosin.local
 openshift_master_cluster_public_hostname=openshift.paosin.local
-openshift_master_named_certificates=[{"certfile": "/root/certs/openshift.paosin.local.crt", "keyfile": "/root/certs/openshift.paosin.local.key", "names": ["openshift.paosin.local"]}]
+
+openshift_master_named_certificates=[{"certfile": "/root/certs/openshift.paosin.local.crt", "keyfile": "/root/certs/openshift.paosin.local.key", "names": ["openshift.paosin.local"]}, "cafile": "/root/certs/myCA.pem"}]
 openshift_master_ca_certificate={'certfile': '/root/certs/myCA.pem', 'keyfile': '/root/certs/myCA.key'}
 openshift_hosted_router_certificate={"certfile": "/root/certs/apps.paosin.local.crt", "keyfile": "/root/certs/apps.paosin.local.key", "cafile": "/root/certs/myCA.pem"}
 
+openshift_hosted_registry_routehost=registry.apps.paosin.local
+openshift_hosted_registry_routecertificates={"certfile": "/root/certs/registry.apps.paosin.local.crt", "keyfile": "/root/certs/registry.apps.paosin.local.key", "cafile": "/root/certs/myCA.pem"}
+
+
+
+#Set cluster_hostname to point at your load balancer
+#openshift_master_cluster_hostname=ose-master1.paosin.local
 
 # Specify an exact container image tag to install or configure.
 # WARNING: This value will be used for all hosts in containerized environments, even those that have another version installed.
@@ -109,7 +118,7 @@ system_images_registry="docker.io"
 
 # Manage openshift example imagestreams and templates during install and upgrade
 #openshift_install_examples=true
-openshift_disable_check=memory_availability
+openshift_disable_check=memory_availability,disk_availability
 # Configure logoutURL in the master config for console customization
 # See: https://docs.openshift.org/latest/install_config/web_console_customization.html#changing-the-logout-url
 #openshift_master_logout_url=http://example.com

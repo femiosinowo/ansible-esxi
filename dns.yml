@@ -2,8 +2,8 @@
 - hosts: dns
   roles:
     #- bind
-    #- post_tasks
-    - terraform
+    - post_tasks
+    #- terraform
 
     
 
