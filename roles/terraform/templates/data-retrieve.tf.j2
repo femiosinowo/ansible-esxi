@@ -24,7 +24,7 @@ data "vsphere_datastore" "datastore" {
  
 # Retrieve network information on vsphere
 data "vsphere_network" "network" {
-  name          = "VM Network" #"${var.kube_node1_network_params["label"]}"
+  name          = "VM Network1" #"${var.kube_node1_network_params["label"]}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
   depends_on    = ["vsphere_host_port_group.network_port"]
 }
