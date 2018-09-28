@@ -33,7 +33,7 @@ variable "{{ vms['hostname'] }}_network_params" {
 }
 
 # Retrieve datastore information on vsphere
-data "vsphere_datastore" "datastore" {
+data "{{ vms['hostname'] }}_vsphere_datastore" "datastore" {
   name          = "${var.{{ vms['hostname'] }}_vm_params["disk_datastore"]}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
@@ -46,7 +46,7 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
   name                   = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}"
   num_cpus               = "${var.{{ vms['hostname'] }}_vm_params["vcpu"]}"
   memory                 = "${var.{{ vms['hostname'] }}_vm_params["ram"]}"
-  datastore_id           = "${data.vsphere_datastore.datastore.id}"
+  datastore_id           = "${data.{{ vms['hostname'] }}_vsphere_datastore.datastore.id}"
   host_system_id         = "${data.vsphere_host.host.id}"
   resource_pool_id       = "${data.vsphere_resource_pool.pool.id}"
   guest_id               = "${data.vsphere_virtual_machine.template.guest_id}"
