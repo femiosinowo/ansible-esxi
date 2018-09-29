@@ -13,7 +13,8 @@ ose-master1.paosin.local
 [nodes]
 ose-master1.paosin.local
 ose-infra1.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
-ose-node[1:2].paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
+ose-node1.paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'west'}"
+ose-node2.paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 
 [nfs]
 ose-master1.paosin.local

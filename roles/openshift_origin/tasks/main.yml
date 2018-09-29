@@ -45,7 +45,12 @@
 - name: Copy certificates
   copy: src=certs dest=/root/
 
-   
+- name: enable and start NetworkManager 
+  service: name=NetworkManager state=started  enabled=yes
+
+- name: shutdown
+  command: /sbin/shutdown -h now 
+  when: shutdown is defined
    
 - include: masters.yml
   when: openshift_origin_node_type == "master"
@@ -57,7 +62,7 @@
    executable: /bin/bash
      
 - include: volume_docker_setup.yml
-#  when: openshift_origin_node_type == "infranode"
+  when: docker_volume == "true"
   
 #- include: nodes.yml  
 #  when: openshift_origin_node_type is defined
