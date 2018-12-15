@@ -153,7 +153,7 @@ terraform_vms:
       gateway: "{{ gateway }}"
 ## Kuberenetes
   - hostname: kube-master1
-    folder: kube
+    #folder: kube
     disk_datastore: "hdd2"
     ram: 8192
     vcpu: 4
@@ -166,7 +166,7 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
   - hostname: kube-router
-    folder: kube
+    #folder: kube
     disk_datastore: "hdd2"
     ram: 2048
     vcpu: 1
@@ -179,7 +179,7 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
   - hostname: kube-node1
-    folder: kube
+    #folder: kube
     disk_datastore: "hdd2"
     ram: 4096
     vcpu: 1
@@ -192,7 +192,7 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
   - hostname: kube-node2
-    folder: kube
+    #folder: kube
     disk_datastore: "hdd2"
     ram: 4096
     vcpu: 1
