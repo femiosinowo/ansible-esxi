@@ -40,8 +40,12 @@
     - bash-completion 
     - kexec-tools 
     - sos
-    - pyOpenSSL
+    - python-pip
+    #- pyOpenSSL
 
+- pip:
+    name: pyopenssl
+    
 - name: Copy certificates
   copy: src=certs dest=/root/
 

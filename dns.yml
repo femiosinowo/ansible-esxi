@@ -3,7 +3,7 @@
   roles:
     - bind
     - post_tasks
-    #- terraform
+    - terraform
 
     
 
