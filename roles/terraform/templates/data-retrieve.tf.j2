@@ -32,7 +32,7 @@ data "vsphere_datastore_cluster" "datastore_cluster" {
 data "vsphere_network" "network" {
   name          = "VM Network" #"${var.kube_node1_network_params["label"]}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
-  depends_on    = ["vsphere_host_port_group.network_port"]
+  #depends_on    = ["vsphere_host_port_group.network_port"]
 }
 
 # Retrieve template information on vsphere

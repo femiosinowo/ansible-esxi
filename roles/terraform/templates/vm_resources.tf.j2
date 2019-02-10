@@ -53,12 +53,16 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
     network_id          = "${data.vsphere_network.network.id}"
   }
 
+
 # Configure Disk
+{% for disks in {{ vms['disks] }} %}
+
   disk {
-    name                = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
-    size                = "${var.{{ vms['hostname'] }}_vm_params["disk_size"]}"
+    name                = "{{ disks["name"] }}"  #"${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
+    size                = "{{ disks["size"] }}" #"${var.{{ vms['hostname'] }}_vm_params["disk_size"]}"
     thin_provisioned    = false
   }
+{% endfor %}
 
 # Define template and customisation params
   clone {
