@@ -167,7 +167,6 @@ terraform_vms:
     #folder: kube
     ram: 2096
     vcpu: 1
-    disk_size: "50"
     disks:
      - name: 1
        size: 50
