@@ -60,6 +60,7 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
 
   disk {
     #name                = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
+    label               ="disk{{ disk_count }}"
     size                = "{{ disk }}"  
     thin_provisioned    = false
   }
