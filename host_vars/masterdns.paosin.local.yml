@@ -51,7 +51,7 @@ bind_zone_hosts:
     ip: 10.10.10.31
   - name: kube-node2
     ip: 10.10.10.32
-  - name: nfs
+  - name: ocp-nfs
     ip: 10.10.10.55
 ### Openshift
   - name: '*'
@@ -67,16 +67,16 @@ bind_zone_hosts:
   - name: openshift-int
     ip: 10.10.10.81
         
-  - name: ose-master1
+  - name: ocp-master1
     ip: 10.10.10.81  
     
   - name: ose-master2
     ip: 10.10.10.82
     
-  - name: ose-node1
+  - name: ocp-node1
     ip: 10.10.10.71
     
-  - name: ose-node2
+  - name: ocp-node2
     ip: 10.10.10.72
     
   - name: ose-node3
@@ -100,7 +100,7 @@ interface_label: "VM Network"
 
 
 terraform_vms:
-  - hostname: ose-master1
+  - hostname: ocp-master1
     #folder: openshift
     disk_datastore: "hdd2"
     ram: 8192
@@ -113,7 +113,7 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
-  - hostname: ose-infra1
+  - hostname: ocp-infra1
     #folder: openshift
     disk_datastore: "hdd2"
     ram: 2048
@@ -126,7 +126,7 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
-  - hostname: ose-node1
+  - hostname: ocp-node1
     #folder: openshift
     disk_datastore: "hdd2"
     ram: 4096
@@ -139,7 +139,7 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
-  - hostname: ose-node2
+  - hostname: ocp-node2
     #folder: openshift
     disk_datastore: "hdd2"
     ram: 4096
@@ -152,7 +152,7 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
-  - hostname: nfs
+  - hostname: ocp-nfs
     #folder: kube
     disk_datastore: "hdd2"
     ram: 2096
