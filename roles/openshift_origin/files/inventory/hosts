@@ -5,22 +5,22 @@
 # should use an external load balancing solution that itself is highly available.
 
 [masters]
-ose-master1.paosin.local 
+ocp-master1.paosin.local 
 
 [etcd]
-ose-master1.paosin.local
+ocp-master1.paosin.local
 
 [nodes]
-ose-master1.paosin.local
-ose-infra1.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
-ose-node1.paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'west'}"
-ose-node2.paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
+ocp-master1.paosin.local
+ocp-infra1.paosin.local openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+ocp-node1.paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'west'}"
+ocp-node2.paosin.local openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 
 [nfs]
-ose-master1.paosin.local
+#ocp-master1.paosin.local
 
 [lb]
-#ose3-lb.paosin.local
+#ocp3-lb.paosin.local
 
 # Create an OSEv3 group that contains the masters and nodes groups
 [OSEv3:children]
@@ -28,7 +28,7 @@ masters
 nodes
 etcd
 #lb
-nfs
+#nfs
 
 [OSEv3:vars]
 ###############################################################################
@@ -516,14 +516,14 @@ openshift_master_htpasswd_users={'femi': '$apr1$JAORj55W$NtKKK/wMVOYvJOkTB5nGG0'
 # options would be "nfs.example.com:/exports/registry".  "exports" is
 # is the name of the export served by the nfs server.  "registry" is
 # the name of a directory inside of "/exports".
-#openshift_hosted_registry_storage_kind=nfs
-#openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-#openshift_hosted_registry_storage_host=nfs.example.com
+openshift_hosted_registry_storage_kind=nfs
+openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+openshift_hosted_registry_storage_host=ocp-nfs.paosin.local
 # nfs_directory must conform to DNS-1123 subdomain must consist of lower case
 # alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character
-#openshift_hosted_registry_storage_nfs_directory=/exports
-#openshift_hosted_registry_storage_volume_name=registry
-#openshift_hosted_registry_storage_volume_size=10Gi
+openshift_hosted_registry_storage_nfs_directory=/SHARE
+openshift_hosted_registry_storage_volume_name=registry
+openshift_hosted_registry_storage_volume_size=10Gi
 #
 # Openstack
 # Volume must already exist.
@@ -585,7 +585,7 @@ openshift_master_htpasswd_users={'femi': '$apr1$JAORj55W$NtKKK/wMVOYvJOkTB5nGG0'
 #
 openshift_metrics_install_metrics=True
 openshift_metrics_hawkular_hostname=hawkular-metrics.paosin.local
-openshift_metrics_cassandra_storage_type=dynamic
+#openshift_metrics_cassandra_storage_type=dynamic
 openshift_hosted_metrics_deployer_version=v3.9
 
 # Storage Options
@@ -615,13 +615,13 @@ openshift_hosted_metrics_deployer_version=v3.9
 # options would be "nfs.example.com:/exports/metrics".  "exports" is
 # is the name of the export served by the nfs server.  "metrics" is
 # the name of a directory inside of "/exports".
-#openshift_metrics_storage_kind=nfs
-#openshift_metrics_storage_access_modes=['ReadWriteOnce']
-#openshift_metrics_storage_host=nfs.example.com
-#openshift_metrics_storage_nfs_directory=/exports
-#openshift_metrics_storage_volume_name=metrics
-#openshift_metrics_storage_volume_size=10Gi
-#openshift_metrics_storage_labels={'storage': 'metrics'}
+openshift_metrics_storage_kind=nfs
+openshift_metrics_storage_access_modes=['ReadWriteOnce']
+openshift_metrics_storage_host=ocp-nfs.paosin.local
+openshift_metrics_storage_nfs_directory=/SHARE
+openshift_metrics_storage_volume_name=metrics
+openshift_metrics_storage_volume_size=10Gi
+openshift_metrics_storage_labels={'storage': 'metrics'}
 #
 # Option C - Dynamic -- If openshift supports dynamic volume provisioning for
 # your cloud platform use this.
