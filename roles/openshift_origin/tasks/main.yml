@@ -66,7 +66,7 @@
    executable: /bin/bash
      
 - include: volume_docker_setup.yml
-  when: docker_storage_setup == "true"
+  when: docker_storage_setup == "yes"
   
 #- include: nodes.yml  
 #  when: openshift_origin_node_type is defined
