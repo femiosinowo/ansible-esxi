@@ -64,6 +64,3 @@
     chdir: "{{ terraform_dir }}"
   tags:
     - terraform_apply
-  when: >
-        _terraform_plan['rc'] == 2 and
-        terraform_apply
