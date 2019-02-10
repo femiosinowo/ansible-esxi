@@ -54,16 +54,22 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
   }
 
 {% set disk_count = 0 %}
+{% set unit_number = 0 %}
 # Configure Disk
 {% for disk in vms.disks  %}
 {% set disk_count = disk_count + 1 %}
 
+
   disk {
     #name                = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
-    label               ="disk{{ disk_count }}"
+    label               = "disk{{ disk_count }}"
     size                = "{{ disk }}"  
     thin_provisioned    = false
+    unit_number         = {{ unit_number }}
   }
+
+{% set unit_number = unit_number + 1 %}
+
 {% endfor %}
 
 # Define template and customisation params
