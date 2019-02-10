@@ -152,59 +152,6 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
-## Kuberenetes
-  - hostname: kube-master1
-    #folder: kube
-    disk_datastore: "hdd2"
-    ram: 8192
-    vcpu: 4
-    disk_size: "50"
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.30"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"
-  - hostname: kube-router
-    #folder: kube
-    disk_datastore: "hdd2"
-    ram: 2048
-    vcpu: 1
-    disk_size: "50"
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.40"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"
-  - hostname: kube-node1
-    #folder: kube
-    disk_datastore: "hdd2"
-    ram: 4096
-    vcpu: 1
-    disk_size: "50"
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.31"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"
-  - hostname: kube-node2
-    #folder: kube
-    disk_datastore: "hdd2"
-    ram: 4096
-    vcpu: 1
-    disk_size: "50"
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.32"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"      
   - hostname: nfs
     #folder: kube
     disk_datastore: "hdd2"
