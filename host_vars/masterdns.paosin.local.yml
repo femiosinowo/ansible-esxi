@@ -115,11 +115,15 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
+      
   - hostname: ocp-infra1
     #folder: openshift
     ram: 2048
     vcpu: 2
-    disk_size: "50"
+    #disk_size: "50"
+    disks:
+     - 50
+     - 50
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.80"
@@ -127,6 +131,7 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
+      
   - hostname: ocp-node1
     #folder: openshift
     ram: 4096
@@ -155,6 +160,7 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
+      
   - hostname: ocp-nfs
     #folder: kube
     ram: 2096
