@@ -51,12 +51,13 @@ bind_zone_hosts:
     ip: 10.10.10.31
   - name: kube-node2
     ip: 10.10.10.32
-
+  - name: nfs
+    ip: 10.10.10.55
 ### Openshift
   - name: '*'
     ip: 10.10.10.80
     donotadd_reverse: true
-    
+       
   - name: ose-infra1
     ip: 10.10.10.80
     
@@ -204,3 +205,16 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"      
+  - hostname: nfs
+    #folder: kube
+    disk_datastore: "hdd2"
+    ram: 2096
+    vcpu: 1
+    disk_size: "50"
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.55"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}" 
