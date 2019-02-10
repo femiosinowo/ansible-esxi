@@ -16,7 +16,6 @@ variable "{{ vms['hostname'] }}_vm_params" {
     vcpu           = "{{ vms['vcpu'] }}"
     ram            = "{{ vms['ram'] }}"
     # You can't set a datastore name with interspace
-    disk_datastore = "{{ vms['disk_datastore'] }}"
     disk_size      = "{{ vms['disk_size'] }}"
   }
 }
