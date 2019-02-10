@@ -105,10 +105,8 @@ terraform_vms:
     ram: 8192
     vcpu: 4
     disks:
-     - name: 1
-       size: 50
-     - name: 2
-       size: 50
+     - 50
+     - 50
     #disk_size: "50"
     network_params:
       label: "{{ interface_label }}"
@@ -133,12 +131,9 @@ terraform_vms:
     #folder: openshift
     ram: 4096
     vcpu: 2
-    disk_size: "50"
     disks:
-     - name: 1
-       size: 50
-     - name: 2
-       size: 50
+     - 50
+     - 50
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.71"
@@ -150,12 +145,9 @@ terraform_vms:
     #folder: openshift
     ram: 4096
     vcpu: 2
-    disk_size: "50"
     disks:
-     - name: 1
-       size: 50
-     - name: 2
-       size: 50
+     - 50
+     - 50
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.72"
@@ -168,10 +160,8 @@ terraform_vms:
     ram: 2096
     vcpu: 1
     disks:
-     - name: 1
-       size: 50
-     - name: 2
-       size: 200
+     - 50
+     - 200
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.55"
