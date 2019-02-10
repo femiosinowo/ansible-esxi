@@ -55,7 +55,7 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
 
 
 # Configure Disk
-{% for disks in vms['disks]  %}
+{% for disks in vms.disks  %}
 
   disk {
     name                = "{{ disks["name"] }}"  #"${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
