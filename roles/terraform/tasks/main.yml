@@ -56,11 +56,11 @@
     - terraform_apply
     - terraform_plan
     
-- name: Applying Terraform Plan
-  command: "terraform apply -input=false -auto-approve=true tfplan"
-  register: _terraform_apply
-  changed_when: false
-  args:
-    chdir: "{{ terraform_dir }}"
-  tags:
-    - terraform_apply
+#- name: Applying Terraform Plan
+#  command: "terraform apply -input=false -auto-approve=true tfplan"
+#  register: _terraform_apply
+#  changed_when: false
+#  args:
+#    chdir: "{{ terraform_dir }}"
+#  tags:
+#    - terraform_apply
