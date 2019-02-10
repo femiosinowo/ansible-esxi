@@ -59,7 +59,7 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
 {% set disk_count = disk_count + 1 %}
 
   disk {
-    name                = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}{{ disk_count }}.vmdk"
+    #name                = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
     size                = "{{ disk }}"  
     thin_provisioned    = false
   }
