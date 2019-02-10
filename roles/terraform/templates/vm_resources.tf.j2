@@ -16,7 +16,7 @@ variable "{{ vms['hostname'] }}_vm_params" {
     vcpu           = "{{ vms['vcpu'] }}"
     ram            = "{{ vms['ram'] }}"
     # You can't set a datastore name with interspace
-    disk_size      = "{{ vms['disk_size'] }}"
+    #disk_size      = "{{ vms['disk_size'] }}"
   }
 }
 
@@ -59,7 +59,7 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
 
   disk {
     name                = "{{ disks["name"] }}"  #"${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
-    size                = "{{ disks["size"] }}"  
+    size                = "{{ disks["size"] }}" #"${var.{{ vms['hostname'] }}_vm_params["disk_size"]}"
     thin_provisioned    = false
   }
 {% endfor %}
