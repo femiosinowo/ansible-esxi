@@ -4,3 +4,5 @@ resolv_nameservers:
 resolv_search:
   - svc.cluster.local 
   - cluster.local
+  
+docker_storage_setup: true
