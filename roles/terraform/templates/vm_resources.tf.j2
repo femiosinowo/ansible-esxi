@@ -53,12 +53,13 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
     network_id          = "${data.vsphere_network.network.id}"
   }
 
-
+{% set disk_count = 0 %}
 # Configure Disk
 {% for disk in vms.disks  %}
+{% set disk_count = disk_count + 1 %}
 
   disk {
-    name                = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
+    name                = "${var.{{ vms['hostname'] }}_vm_params["hostname"]}{{ disk_count }}.vmdk"
     size                = "{{ disk }}"  
     thin_provisioned    = false
   }
