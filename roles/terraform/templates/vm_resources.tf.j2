@@ -55,11 +55,11 @@ resource "vsphere_virtual_machine" "{{ vms['hostname'] }}" {
 
 
 # Configure Disk
-{% for disks in vms['disks']  %}
+{% for disk in vms['disks']  %}
 
   disk {
-    name                = "{{ disks["name"] }}"  #"${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
-    size                = "{{ disks["size"] }}"  
+    name                = "{{ disk["name"] }}"  #"${var.{{ vms['hostname'] }}_vm_params["hostname"]}.vmdk"
+    size                = "{{ disk["size"] }}"  
     thin_provisioned    = false
   }
 {% endfor %}
