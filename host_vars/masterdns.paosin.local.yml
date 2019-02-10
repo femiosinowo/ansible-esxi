@@ -102,7 +102,6 @@ interface_label: "VM Network"
 terraform_vms:
   - hostname: ocp-master1
     #folder: openshift
-    disk_datastore: "hdd2"
     ram: 8192
     vcpu: 4
     disk_size: "50"
@@ -115,9 +114,8 @@ terraform_vms:
       gateway: "{{ gateway }}"
   - hostname: ocp-infra1
     #folder: openshift
-    disk_datastore: "hdd2"
     ram: 2048
-    vcpu: 1
+    vcpu: 2
     disk_size: "50"
     network_params:
       label: "{{ interface_label }}"
@@ -128,9 +126,8 @@ terraform_vms:
       gateway: "{{ gateway }}"
   - hostname: ocp-node1
     #folder: openshift
-    disk_datastore: "hdd2"
     ram: 4096
-    vcpu: 1
+    vcpu: 2
     disk_size: "50"
     network_params:
       label: "{{ interface_label }}"
@@ -141,9 +138,8 @@ terraform_vms:
       gateway: "{{ gateway }}"
   - hostname: ocp-node2
     #folder: openshift
-    disk_datastore: "hdd2"
     ram: 4096
-    vcpu: 1
+    vcpu: 2
     disk_size: "50"
     network_params:
       label: "{{ interface_label }}"
@@ -154,7 +150,6 @@ terraform_vms:
       gateway: "{{ gateway }}"
   - hostname: ocp-nfs
     #folder: kube
-    disk_datastore: "hdd2"
     ram: 2096
     vcpu: 1
     disk_size: "50"
