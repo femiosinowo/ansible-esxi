@@ -118,7 +118,7 @@ terraform_vms:
       
   - hostname: ocp-infra1
     #folder: openshift
-    ram: 2048
+    ram: 4096
     vcpu: 2
     #disk_size: "50"
     disks:
@@ -134,7 +134,7 @@ terraform_vms:
       
   - hostname: ocp-node1
     #folder: openshift
-    ram: 4096
+    ram: 8192
     vcpu: 2
     disks:
      - 50
@@ -148,7 +148,7 @@ terraform_vms:
       gateway: "{{ gateway }}"
   - hostname: ocp-node2
     #folder: openshift
-    ram: 4096
+    ram: 8192
     vcpu: 2
     disks:
      - 50
