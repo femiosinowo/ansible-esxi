@@ -3,7 +3,9 @@ openshift_origin_node_type: master
 #docker_storage_setup: true
 docker_storage_setup: yes
 resolv_nameservers:
-  - "{{ ansible_default_ipv4.address }}"
+  - 10.10.10.11
+  - 8.8.8.8
+
+resolv_domain: paosin.local
 resolv_search:
-  - svc.cluster.local 
-  - cluster.local
+  - paosin.local
