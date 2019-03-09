@@ -102,7 +102,7 @@ interface_label: "VM Network"
 terraform_vms:
   - hostname: ocp-master1
     #folder: openshift
-    ram: 8192
+    ram: 32000
     vcpu: 4
     disks:
      - 50
