@@ -6,4 +6,4 @@ resolv_search:
   - cluster.local
 
   
-docker_storage_setup: yes
+docker_storage_setup: true
