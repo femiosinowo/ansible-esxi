@@ -1,6 +1,5 @@
 - name: remove docker
   yum: name={{ item }} state=absent
-  ##when: docker_storage_setup == "true"
   with_items:
     - docker
 
@@ -12,18 +11,17 @@
   mount:
     path: /var/lib/docker/containers
     state: absent
-  #when: docker_storage_setup == "true"
+
     
 - name:  remove /var/lib/docker/
   shell: rm -rf /var/lib/docker
   args:
    executable: /bin/bash
-  #when: docker_storage_setup == "true"
+
   
 
 - name: install docker
   yum: name={{ item }} state=present
-  #when: docker_storage_setup == "true"
   with_items:
     - docker
 
@@ -44,7 +42,6 @@
   shell: docker-storage-setup
   args:
    executable: /bin/bash
-  #when: docker_storage_setup == "true"
   ignore_errors: yes
 
 #- name:  Configuring Docker Storage

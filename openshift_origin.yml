@@ -1,4 +1,4 @@
-- hosts: openshift-origin-masters:openshift-origin-nodes
+- hosts: openshift-origin
   roles:
     #- resolv
     - common
