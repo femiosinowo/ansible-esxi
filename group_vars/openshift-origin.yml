@@ -8,4 +8,4 @@ resolv_search:
   
 docker_storage_setup: true
 
-openshift_version: release-3.11
+openshift_version: release-3.10
