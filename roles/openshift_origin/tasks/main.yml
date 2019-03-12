@@ -41,11 +41,13 @@
     - kexec-tools 
     - sos
     - python-pip
-    #- pyOpenSSL
+    - pyOpenSSL
 
-- pip:
-    name: pyopenssl
-    
+#- pip:
+#    name: pyopenssl
+- hostname:
+    name: "{{ inventory_hostname }}"
+        
 - name: Copy certificates
   copy: src=certs dest=/root/
 

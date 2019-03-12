@@ -132,7 +132,7 @@ openshift_disable_check=memory_availability,disk_availability
 # Configure imagePolicyConfig in the master config
 # See: https://godoc.org/github.com/openshift/origin/pkg/cmd/server/api#ImagePolicyConfig
 #openshift_master_image_policy_config={"maxImagesBulkImportedPerRepository": 3, "disableScheduledImport": true}
-
+openshift_master_admission_plugin_config={"MutatingAdmissionWebhook":{"configuration":{"kind": "DefaultAdmissionConfig","apiVersion": "v1","disable": false}},"ValidatingAdmissionWebhook":{"configuration":{"kind": "DefaultAdmissionConfig","apiVersion": "v1","disable": false}}}
 # Configure master API rate limits for external clients
 #openshift_master_external_ratelimit_qps=200
 #openshift_master_external_ratelimit_burst=400
