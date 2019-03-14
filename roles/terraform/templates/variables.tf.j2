@@ -20,6 +20,10 @@ variable "vsphere_server" {}
 variable "linux_vm_template" {
   default = "{{ vsphere_linux_vapp_template_name }}"
 }
+
+variable "disk_datastore" {
+  default = "{{ vsphere_disk_datastore }}"
+}
     
 #### DC AND CLUSTER
 # Set vpshere datacenter

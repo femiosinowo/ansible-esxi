@@ -7,7 +7,7 @@ esxi_hosts: 10.10.10.2
 vsphere_vcenter_cluster: paosin-cluster 
 vsphere_linux_vapp_template_name: centos-7-template-esxi
 vsphere_vcenter_datacenter: paosin.local
-
+vsphere_disk_datastore: datastore
 terraform_dir: /root/terraform
 
 
