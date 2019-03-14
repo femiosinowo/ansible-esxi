@@ -18,7 +18,7 @@ data "vsphere_resource_pool" "pool" {
 
 # Retrieve datastore information on vsphere
 data "vsphere_datastore" "datastore" {
-  name          = "${var.datastore_vm_params["disk_datastore"]}"
+  name          = "${var.disk_datastore}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
  
