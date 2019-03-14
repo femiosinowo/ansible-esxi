@@ -103,13 +103,11 @@ interface_label: "VM Network"
 
 terraform_vms:
   - hostname: ocp-master1
-    #folder: openshift
     ram: 32000
     vcpu: 4
     disks:
      - 50
      - 50
-    #disk_size: "50"
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.81"
@@ -119,10 +117,8 @@ terraform_vms:
       gateway: "{{ gateway }}"
       
   - hostname: ocp-infra1
-    #folder: openshift
     ram: 4096
     vcpu: 2
-    #disk_size: "50"
     disks:
      - 50
      - 50
@@ -135,7 +131,6 @@ terraform_vms:
       gateway: "{{ gateway }}"
       
   - hostname: ocp-node1
-    #folder: openshift
     ram: 8192
     vcpu: 2
     disks:
@@ -149,7 +144,6 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
   - hostname: ocp-node2
-    #folder: openshift
     ram: 8192
     vcpu: 2
     disks:
@@ -161,10 +155,8 @@ terraform_vms:
       domain: "{{ domain }}"
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"
-      
+      gateway: "{{ gateway }}"     
   - hostname: ocp-nfs
-    #folder: kube
     ram: 2096
     vcpu: 1
     disks:
@@ -177,3 +169,60 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}" 
+      
+   ### Kubeneretes
+  - hostname: kube-master
+    ram: 8192
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.30"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}" 
+         
+  - hostname: kube-router
+    ram: 2000
+    vcpu: 2
+    disks:
+     - 20
+     - 20
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.40"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
+      
+  - hostname: kube-node1
+    ram: 8192
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.31"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"       
+
+  - hostname: kube-node2
+    ram: 8192
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.32"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"      
