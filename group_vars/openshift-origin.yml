@@ -1,8 +1,15 @@
 ---
+#resolv_nameservers:
+#  - "{{ ansible_default_ipv4.address }}"
+#resolv_search:
+#  - svc.cluster.local 
+#  - cluster.local
+
 resolv_nameservers:
-  - "{{ ansible_default_ipv4.address }}"
+  - "10.10.10.11"
+  - "8.8.8.8"
 resolv_search:
-  - svc.cluster.local 
+  - paosin.local 
   - cluster.local
 
   
