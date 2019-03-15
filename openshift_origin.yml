@@ -1,6 +1,6 @@
 - hosts: openshift-origin
   roles:
-    #- resolv
+    - resolv
     - common
     - ca_certs
     - openshift_origin
