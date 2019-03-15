@@ -1,3 +1,228 @@
+bind_listen_ipv4:
+  - "127.0.0.1"
+  - "10.10.10.11"
+
+bind_allow_query:
+  - "localhost"
+  - "10.10.10.0/24"
+
+  
+dns_server: true  
+
+bind_recursion: true
+
+bind_zone_master_server_ip: 10.10.10.11
+my_ip4_address: 10.10.10.11
+acls:
+  - name: acl1
+    match_list:
+      - 10.10.10.0/24
+      - "10.10.10.11"
+        
+bind_zone_name_servers:
+  - masterdns
+
+bind_zone_name: paosin.local
+bind_zone_networks:
+  - "10.10.10"
+  
+    
+bind_zone_hosts:
+  - name: '@'
+    ip:
+      - 10.10.10.11
+  - name: masterdns
+    ip: 10.10.10.11
+  - name: vcenter
+    ip: 10.10.10.15
+  - name: vcenter6
+    ip: 10.10.10.6
+  - name: ansible
+    ip: 10.10.10.21
+  - name: awx-ansible
+    ip: 10.10.10.22
+  - name: jfrog
+    ip: 10.10.10.26
+  - name: jenkins
+    ip: 10.10.10.25
+  - name: kube-master
+    ip: 10.10.10.30
+  - name: kube-router
+    ip: 10.10.10.40
+  - name: kube-node1
+    ip: 10.10.10.31
+  - name: kube-node2
+    ip: 10.10.10.32
+  - name: ocp-nfs
+    ip: 10.10.10.55
+### Openshift
+  - name: '*'
+    ip: 10.10.10.80
+    donotadd_reverse: true
+       
+  - name: ose-infra1
+    ip: 10.10.10.80
+    
+  - name: openshift
+    ip: 10.10.10.81
+
+  - name: openshift-int
+    ip: 10.10.10.81
+        
+  - name: ocp-master1
+    ip: 10.10.10.81  
+    
+  - name: ose-master2
+    ip: 10.10.10.82
+    
+  - name: ocp-node1
+    ip: 10.10.10.71
+    
+  - name: ocp-node2
+    ip: 10.10.10.72
+    
+  - name: ose-node3
+    ip: 10.10.10.73
+
+    
+  - name: ocp-glusterfs1
+    ip: 10.10.10.76
+  - name: ocp-glusterfs2
+    ip: 10.10.10.77 
+  - name: ocp-glusterfs3
+    ip: 10.10.10.78 
+  - name: faast
+    ip: 10.10.10.45 
+    
+gateway: 10.10.10.1
+vlan_id: 1
+domain: "paosin.local"
+prefix_length: 24
+interface_label: "VM Network"
 
 
+terraform_vms:
+  - hostname: ocp-master1
+    ram: 32000
+    vcpu: 4
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.81"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
       
+  - hostname: ocp-infra1
+    ram: 4096
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.80"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
+      
+  - hostname: ocp-node1
+    ram: 8192
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.71"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
+  - hostname: ocp-node2
+    ram: 8192
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.72"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"     
+  - hostname: ocp-nfs
+    ram: 2096
+    vcpu: 1
+    disks:
+     - 50
+     - 200
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.55"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}" 
+      
+   ### Kubeneretes
+  - hostname: kube-master
+    ram: 8192
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.30"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}" 
+         
+  - hostname: kube-router
+    ram: 2000
+    vcpu: 2
+    disks:
+     - 20
+     - 20
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.40"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
+      
+  - hostname: kube-node1
+    ram: 8192
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.31"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"       
+
+  - hostname: kube-node2
+    ram: 8192
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.32"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"      
