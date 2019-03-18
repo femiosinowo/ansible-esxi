@@ -31,7 +31,7 @@ bind_zone_hosts:
   - name: '@'
     ip:
       - 10.10.10.11
-  - name: dns
+  - name: masterdns
     ip: 10.10.10.11
   - name: vcenter
     ip: 10.10.10.15
