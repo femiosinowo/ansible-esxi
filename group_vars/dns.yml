@@ -171,12 +171,14 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"     
+      
   - hostname: ocp-nfs
     ram: 2096
     vcpu: 1
     disks:
      - 50
      - 200
+     - 2000
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.55"
