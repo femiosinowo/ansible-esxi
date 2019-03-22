@@ -69,6 +69,12 @@
      
 - include: volume_docker_setup.yml
   when: docker_storage_setup
+
+- name: etc hosts details
+  copy: >
+    src=files/etc/hosts
+    dest=/etc/hosts
+
   
 #- include: nodes.yml  
 #  when: openshift_origin_node_type is defined
