@@ -31,7 +31,7 @@ bind_zone_hosts:
   - name: '@'
     ip:
       - 10.10.10.11
-  - name: dns
+  - name: masterdns
     ip: 10.10.10.11
   - name: vcenter
     ip: 10.10.10.15
@@ -55,6 +55,8 @@ bind_zone_hosts:
     ip: 10.10.10.32
   - name: ocp-nfs
     ip: 10.10.10.55
+  - name: plex
+    ip: 10.10.10.101
 ### Openshift
   - name: '*'
     ip: 10.10.10.80
@@ -102,6 +104,19 @@ interface_label: "VM Network"
 
 
 terraform_vms:
+  - hostname: plex
+    ram: 1024
+    vcpu: 2
+    disks:
+     - 100
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.101"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
+      
   - hostname: ocp-master1
     ram: 32000
     vcpu: 4
@@ -156,12 +171,14 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"     
+      
   - hostname: ocp-nfs
     ram: 2096
     vcpu: 1
     disks:
      - 50
      - 200
+     - 2000
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.55"

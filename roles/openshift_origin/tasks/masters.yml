@@ -69,7 +69,7 @@
     
 - name: install ansible and Heketi utilities
   yum: name={{ item }} state=present
-  enablerepo: epel
+  #enablerepo: epel
   with_items:
     #- heketi-client
     #- heketi-templates
