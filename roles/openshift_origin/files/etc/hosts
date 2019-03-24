@@ -1,3 +1,6 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
 10.10.10.81     ocp-master1.paosin.local ocp-master1 openshift-int.paosin.local openshift-int
 10.10.10.80     ocp-infra1.paosin.local ocp-infra1
 10.10.10.71     ocp-node1.paosin.local ocp-node1
