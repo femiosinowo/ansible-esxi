@@ -12,8 +12,8 @@
     policy: targeted
     state: enforcing
     
-- name:  yum clean all
-  shell: yum clean all
+- name:  yum update -y
+  shell: yum update -y 
   args:
    executable: /bin/bash
    
