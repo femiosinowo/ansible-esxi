@@ -42,7 +42,7 @@
     - sos
     - python-pip
     - pyOpenSSL
-    - openshift-ansible
+    #- openshift-ansible
     - centos-release-openshift-origin311
 #address=/.apps.paosin.local/10.10.10.80
 #address=/openshift.paosin.local/10.10.10.81
