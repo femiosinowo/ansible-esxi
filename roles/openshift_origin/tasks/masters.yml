@@ -5,8 +5,8 @@
   with_items:
     - openshift-ansible
  
- - name: add openshift-ansible hosts
-   copy: >
+- name: add openshift-ansible hosts
+  copy: >
     src=files/inventory/hosts
     dest=/etc/ansible/hosts
     owner=root
