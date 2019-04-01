@@ -58,7 +58,7 @@ bind_zone_hosts:
   - name: plex
     ip: 10.10.10.101
 ### Openshift
-  - name: '*'
+  - name: '*.apps.paosin.local 300'
     ip: 10.10.10.80
     donotadd_reverse: true
        
