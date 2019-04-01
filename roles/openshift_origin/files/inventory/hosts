@@ -86,7 +86,7 @@ openshift_hosted_registry_storage_volume_size=100Gi
 
 openshift_metrics_install_metrics=True
 openshift_metrics_hawkular_hostname=hawkular-metrics.paosin.local
-openshift_metrics_hawkular_ca="/root/certs/myCA.pem"
+#openshift_metrics_hawkular_ca="/root/certs/myCA.pem"
 openshift_metrics_image_version=v3.11
 openshift_metrics_storage_kind=nfs
 openshift_metrics_storage_access_modes=['ReadWriteOnce']
