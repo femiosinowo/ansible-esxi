@@ -41,6 +41,10 @@ bind_zone_hosts:
     ip: 10.10.10.21
   - name: awx-ansible
     ip: 10.10.10.22
+  - name: gitlab
+    ip: 10.10.10.23 
+  - name: gogs
+    ip: 10.10.10.24
   - name: jfrog
     ip: 10.10.10.26
   - name: jenkins
@@ -89,10 +93,7 @@ bind_zone_hosts:
     
   - name: ose-node3
     ip: 10.10.10.73
-
-  - name: gitlab
-    ip: 10.10.10.23  
-    
+   
   - name: ocp-glusterfs1
     ip: 10.10.10.76
   - name: ocp-glusterfs2
@@ -136,7 +137,20 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
-      
+
+  - hostname: gogs
+    ram: 1024
+    vcpu: 2
+    disks:
+     - 300
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.24"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
+            
   - hostname: ocp-master1
     ram: 32000
     vcpu: 4
