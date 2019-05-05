@@ -1,7 +1,9 @@
 ---
-- hosts: masters:routers:nodes:gluster
+- hosts: kube-masters:kube-routers:kube-nodes
   roles:
     - k8s
+  vars:
+   docker_storage_setup: True
 
     
 

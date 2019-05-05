@@ -1,53 +1,32 @@
 ---
 - name: "create k8s repo"
   copy:
-    src="{{ role_path }}/files/k8.repo" 
-    dest=/etc/yum.repos.d/k8s.repo
+   src: "{{ role_path }}/files/k8.repo" 
+   dest: /etc/yum.repos.d/k8s.repo
 
 - name:  yum update all
   shell: yum update -y
   args:
    executable: /bin/bash
 
-#- name: Reboot server
-#  command: /sbin/reboot
-
-#- name: Wait for the server to finish rebooting
-#  sudo: no
-#  local_action: wait_for host="{{ inventory_hostname }}" search_regex=OpenSSH port=22 timeout=300
-     
+ 
 - name:  yum clean all
   shell: yum clean all
   args:
    executable: /bin/bash
 
-- name:  yum install packages for k8s
-  shell: "yum install -y  {{ item }}"
-  args:
-   executable: /bin/bash
-  with_items:
+- name: yum install packages for k8s
+  yum:
+    name: "{{ item }}"
+    state: latest
+  loop:
     - docker
-    - kubelet-1.9.4
-    - kubeadm-1.9.4 
-    - kubectl-1.9.4   
-    - glusterfs-fuse       
+    - kubelet 
+    - kubeadm 
+    - kubectl
+    - glusterfs-fuse     
 
 ## modprobe dm_thin_pool
-
-
-#- name: installing yum apps
-#  yum:
-#    name: "{{ item }}"
-#    state: present
-#    disable_gpg_check: yes
-#  with_items:
-#    - docker
-#    - vim
-#    - tree
-#    - net-tools 
-#    - kubelet
-#    - kubeadm 
-#    - kubectl
 
 - name: Remove swapfile from /etc/fstab
   mount:
@@ -64,27 +43,52 @@
 #  tags:
 #    - nfs
 #  ignore_errors: True 
+
+- name: adding sysctl for kube
+  sysctl:
+    name: "{{ item }}"
+    sysctl_file: /etc/sysctl.d/k8s.conf
+    value: 1
+    state: present
+  loop:
+    - net.bridge.bridge-nf-call-ip6tables
+    - net.bridge.bridge-nf-call-iptables
+  ignore_errors: True 
   
-- sysctl:
-    name: net.bridge.bridge-nf-call-ip6tables
-    sysctl_file: /etc/sysctl.d/k8s.conf
-    value: 1
-    state: present
-  ignore_errors: True 
-
-- sysctl:
-    name: net.bridge.bridge-nf-call-iptables
-    sysctl_file: /etc/sysctl.d/k8s.conf
-    value: 1
-    state: present
-  ignore_errors: True 
-
         
 - name: enable and start docker 
-  service: name=docker state=started  enabled=yes  
+  service: 
+   name: docker 
+   state: started  
+   enabled: yes  
 
         
 - name: enable and start kubelet 
-  service: name=kubelet state=started  enabled=yes 
+  service: 
+    name: kubelet 
+    state: started  
+    enabled: yes 
+
+- name: execute the role and catch errors
+  block:
+  - include_role:
+    name: rhel-system-roles.selinux
+  rescue:
+  # Fail if failed for a different reason than selinux_reboot_required.
+  - name: handle errors
+    fail:
+    msg: "role failed"
+    when: not selinux_reboot_required
+
+  - name: restart managed host
+    reboot:
+
+  - name: reapply the role
+    include_role:
+    name: rhel-system-roles.selinux
+
+
+- import_tasks: volume_docker_setup.yml
+  when: docker_storage_setup
 
    

@@ -1,11 +1,7 @@
 - name: remove docker
-  yum: name={{ item }} state=absent
-  with_items:
-    - docker
-
-#- name: stop docker 
-#  service: name=docker state=stopped 
-#  #when: docker_storage_setup == "true"   
+  yum: 
+   name: docker
+   state: absent
 
 - name: unmount docker stuff
   mount:
@@ -21,9 +17,10 @@
   
 
 - name: install docker
-  yum: name={{ item }} state=present
-  with_items:
-    - docker
+  yum: 
+   name: docker
+   state: latest
+
 
 - name: "Create Docker Storage Daemon"
   copy:
@@ -43,14 +40,10 @@
   args:
    executable: /bin/bash
   ignore_errors: yes
+  notify: restart docker
 
 #- name:  Configuring Docker Storage
 #  shell: "sed -i 's/selinux-enabled/selinux-enabled\ --insecure-registry\ 172.50.0.0\/16/g' /etc/sysconfig/docker"
 #  args:
 #   executable: /bin/bash
 #  #when: docker_storage_setup == "true"
-  
-
-   
-- name: enable and start docker 
-  service: name=docker state=started  enabled=yes 
