@@ -20,7 +20,7 @@
     name: "{{ item }}"
     state: latest
   loop:
-    - docker
+    - rhel-system-roles
     - kubelet 
     - kubeadm 
     - kubectl
