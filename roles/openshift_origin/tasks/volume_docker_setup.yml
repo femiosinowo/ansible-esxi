@@ -18,7 +18,6 @@
   args:
    executable: /bin/bash
 
-  
 
 - name: install docker
   yum: name={{ item }} state=present
