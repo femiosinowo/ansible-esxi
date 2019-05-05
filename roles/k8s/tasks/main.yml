@@ -77,7 +77,7 @@
   # Fail if failed for a different reason than selinux_reboot_required.
   - name: handle errors
     fail:
-    msg: "role failed"
+     msg: "role failed"
     when: not selinux_reboot_required
 
   - name: restart managed host
@@ -88,7 +88,7 @@
     name: rhel-system-roles.selinux
 
 
-- import_tasks: volume_docker_setup.yml
+- include_tasks: volume_docker_setup.yml
   when: docker_storage_setup
 
    
