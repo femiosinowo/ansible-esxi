@@ -1,12 +1,14 @@
-[masters]
+[kube-masters]
 kube-master.paosin.local ansible_ssh_host=10.10.10.30 ansible_user=root
 
-[routers]
+[kube-routers]
 kube-router.paosin.local ansible_ssh_host=10.10.10.40
 
-[nodes]
+[kube-nodes]
 kube-node1.paosin.local ansible_ssh_host=10.10.10.31
 kube-node2.paosin.local ansible_ssh_host=10.10.10.32
+
+[kube-gluster]
 glusterfs1.paosin.local ansible_ssh_host=10.10.10.35
 glusterfs2.paosin.local ansible_ssh_host=10.10.10.36
 
@@ -24,10 +26,10 @@ dns.paosin.local ansible_ssh_host=10.10.10.11
 ansible_sudo_pass=P@ssw0rd
 
 [k8s:children]
-masters
-nodes
-gluster
-routers
+kube-masters
+kube-nodes
+#kube-gluster
+kube-routers
 
 [k8s:vars]
 selinux_state=permissive
