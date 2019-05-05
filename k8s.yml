@@ -1,5 +1,5 @@
 ---
-- hosts: kube-masters:kube-routers:kube-nodes
+- hosts: k8s
   roles:
     - k8s
   vars:
