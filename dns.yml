@@ -1,5 +1,6 @@
 ---
 - hosts: dns
+  force_handlers: True
   roles:
     - bind
     - post_tasks
