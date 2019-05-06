@@ -105,17 +105,7 @@ bind_zone_hosts:
     ip: 10.10.10.78 
   - name: faast
     ip: 10.10.10.45 
-##ansible
-  - name: servera
-    ip: 10.10.10.34
-  - name: serverb
-    ip: 10.10.10.35
-  - name: serverc
-    ip: 10.10.10.36
-  - name: serverd
-    ip: 10.10.10.37
-  - name: workstation
-    ip: 10.10.10.38   
+  
  
         
         
@@ -293,69 +283,4 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"     
-            
-##
-  - hostname: servera
-    ram: 1024
-    vcpu: 1
-    disks:
-     - 50
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.34"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"       
-
-  - hostname: serverb
-    ram: 1024
-    vcpu: 1
-    disks:
-     - 50
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.35"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"   
-      
-  - hostname: serverc
-    ram: 1024
-    vcpu: 1
-    disks:
-     - 50
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.36"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"
-
-  - hostname: serverd
-    ram: 1024
-    vcpu: 1
-    disks:
-     - 50
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.37"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"
-      
-  - hostname: workstation
-    ram: 1024
-    vcpu: 1
-    disks:
-     - 50
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.38"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"        
+    
