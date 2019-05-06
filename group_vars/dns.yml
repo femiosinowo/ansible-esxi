@@ -31,7 +31,7 @@ bind_zone_networks:
 bind_zone_domains:
   - name: kube.local
     networks:
-    - "10.10.10"
+    - "10.10.11"
     hosts:
       - name: '@'
         ip: 10.10.10.11
