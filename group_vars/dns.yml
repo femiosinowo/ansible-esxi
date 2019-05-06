@@ -22,10 +22,107 @@ acls:
 bind_zone_name_servers:
   - masterdns
 
+
+
 bind_zone_name: paosin.local
 bind_zone_networks:
   - "10.10.10"
-  
+
+bind_zone_domains:
+  - name: kube.local
+    networks:
+    - "10.10.10"
+    hosts:
+      - name: '@'
+        ip: 10.10.10.11
+      - name: '*.apps.kube.local 300'
+        ip: 10.10.10.40
+        donotadd_reverse: true
+    ### kube
+      - name: '*'
+        ip: 10.10.10.40
+        donotadd_reverse: true
+
+  - name: paosin.local
+    networks:
+    - "10.10.10"
+    hosts:
+      - name: '@'
+        ip: 10.10.10.11
+      - name: masterdns
+        ip: 10.10.10.11
+      - name: vcenter
+        ip: 10.10.10.15
+      - name: vcenter6
+        ip: 10.10.10.6
+      - name: ansible
+        ip: 10.10.10.21
+      - name: awx-ansible
+        ip: 10.10.10.22
+      - name: gitlab
+        ip: 10.10.10.23 
+      - name: gogs
+        ip: 10.10.10.24
+      - name: jfrog
+        ip: 10.10.10.26
+      - name: jenkins
+        ip: 10.10.10.25
+      - name: kube-master
+        ip: 10.10.10.30
+      - name: kube-router
+        ip: 10.10.10.40
+      - name: kube-node1
+        ip: 10.10.10.31
+      - name: kube-node2
+        ip: 10.10.10.32
+      - name: ocp-nfs
+        ip: 10.10.10.55
+      - name: plex
+        ip: 10.10.10.101
+    ### Openshift
+      - name: '*.apps.paosin.local 300'
+        ip: 10.10.10.80
+        donotadd_reverse: true
+      - name: '*.kube.paosin.local 300'
+        ip: 10.10.10.40
+        donotadd_reverse: true
+    ### Openshift
+      - name: '*'
+        ip: 10.10.10.80
+        donotadd_reverse: true
+               
+      - name: ose-infra1
+        ip: 10.10.10.80
+        
+      - name: openshift
+        ip: 10.10.10.81
+    
+      - name: openshift-int
+        ip: 10.10.10.81
+            
+      - name: ocp-master1
+        ip: 10.10.10.81  
+        
+      - name: ose-master2
+        ip: 10.10.10.82
+        
+      - name: ocp-node1
+        ip: 10.10.10.71
+        
+      - name: ocp-node2
+        ip: 10.10.10.72
+        
+      - name: ose-node3
+        ip: 10.10.10.73
+       
+      - name: ocp-glusterfs1
+        ip: 10.10.10.76
+      - name: ocp-glusterfs2
+        ip: 10.10.10.77 
+      - name: ocp-glusterfs3
+        ip: 10.10.10.78 
+      - name: faast
+        ip: 10.10.10.45 
     
 bind_zone_hosts:
   - name: '@'
@@ -65,7 +162,7 @@ bind_zone_hosts:
   - name: '*.apps.paosin.local 300'
     ip: 10.10.10.80
     donotadd_reverse: true
-  - name: '*.kube.apps.local 300'
+  - name: '*.kube.paosin.local 300'
     ip: 10.10.10.40
     donotadd_reverse: true
 ### Openshift

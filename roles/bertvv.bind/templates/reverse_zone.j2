@@ -67,7 +67,7 @@ $ORIGIN {{ ('.'.join(item.1.replace(item.1+'.','').split('.')[::-1])) }}.in-addr
 
 {% if _zone_data['hosts']|length > 0 %}
 {% for host in _zone_data['hosts'] %}
-{% if host.ip is defined %}
+{% if host.ip is defined and host.donotadd_reverse is not defined %}
 {% if host.ip == item.1 %}
 @                IN  PTR  {{ host.name }}.{{ _zone_data['domain'] }}.
 {% else %}
