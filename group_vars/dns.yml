@@ -65,6 +65,9 @@ bind_zone_hosts:
   - name: '*.apps.paosin.local 300'
     ip: 10.10.10.80
     donotadd_reverse: true
+  - name: '*.kube.apps.local 300'
+    ip: 10.10.10.40
+    donotadd_reverse: true
 ### Openshift
   - name: '*'
     ip: 10.10.10.80
