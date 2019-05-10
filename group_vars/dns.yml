@@ -123,90 +123,18 @@ bind_zone_domains:
         ip: 10.10.10.78 
       - name: faast
         ip: 10.10.10.45 
-    
-bind_zone_hosts:
-  - name: '@'
-    ip:
-      - 10.10.10.11
-  - name: masterdns
-    ip: 10.10.10.11
-  - name: vcenter
-    ip: 10.10.10.15
-  - name: vcenter6
-    ip: 10.10.10.6
-  - name: ansible
-    ip: 10.10.10.21
-  - name: awx-ansible
-    ip: 10.10.10.22
-  - name: gitlab
-    ip: 10.10.10.23 
-  - name: gogs
-    ip: 10.10.10.24
-  - name: jfrog
-    ip: 10.10.10.26
-  - name: jenkins
-    ip: 10.10.10.25
-  - name: kube-master
-    ip: 10.10.10.30
-  - name: kube-router
-    ip: 10.10.10.40
-  - name: kube-node1
-    ip: 10.10.10.31
-  - name: kube-node2
-    ip: 10.10.10.32
-  - name: ocp-nfs
-    ip: 10.10.10.55
-  - name: plex
-    ip: 10.10.10.101
-### Openshift
-  - name: '*.apps.paosin.local 300'
-    ip: 10.10.10.80
-    donotadd_reverse: true
-  - name: '*.kube.paosin.local 300'
-    ip: 10.10.10.40
-    donotadd_reverse: true
-### Openshift
-  - name: '*'
-    ip: 10.10.10.80
-    donotadd_reverse: true
-           
-  - name: ose-infra1
-    ip: 10.10.10.80
-    
-  - name: openshift
-    ip: 10.10.10.81
 
-  - name: openshift-int
-    ip: 10.10.10.81
+      - name: workstation
+        ip: 10.10.10.65
+      - name: node1
+        ip: 10.10.10.66 
+      - name: node2
+        ip: 10.10.10.67 
+      - name: node3
+        ip: 10.10.10.68 
         
-  - name: ocp-master1
-    ip: 10.10.10.81  
     
-  - name: ose-master2
-    ip: 10.10.10.82
-    
-  - name: ocp-node1
-    ip: 10.10.10.71
-    
-  - name: ocp-node2
-    ip: 10.10.10.72
-    
-  - name: ose-node3
-    ip: 10.10.10.73
-   
-  - name: ocp-glusterfs1
-    ip: 10.10.10.76
-  - name: ocp-glusterfs2
-    ip: 10.10.10.77 
-  - name: ocp-glusterfs3
-    ip: 10.10.10.78 
-  - name: faast
-    ip: 10.10.10.45 
-  
- 
-        
-        
-                
+
 gateway: 10.10.10.1
 vlan_id: 1
 domain: "paosin.local"
@@ -379,5 +307,58 @@ terraform_vms:
       domain: "{{ domain }}"
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"     
-    
+      gateway: "{{ gateway }}"   
+      
+  - hostname: workstation
+    ram: 1024
+    vcpu: 2
+    disks:
+     - 20
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.65"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"   
+            
+  - hostname: node1
+    ram: 1024
+    vcpu: 2
+    disks:
+     - 20
+     - 20
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.66"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"      
+      
+  - hostname: node2
+    ram: 1024
+    vcpu: 2
+    disks:
+     - 20
+     - 10
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.67"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"      
+
+  - hostname: node3
+    ram: 1024
+    vcpu: 2
+    disks:
+     - 20
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.68"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"              
