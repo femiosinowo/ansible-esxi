@@ -327,7 +327,6 @@ terraform_vms:
     vcpu: 2
     disks:
      - 20
-     - 880MiB
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.66"
@@ -341,7 +340,6 @@ terraform_vms:
     vcpu: 2
     disks:
      - 20
-     - 1500MiB
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.67"
