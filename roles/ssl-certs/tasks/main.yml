@@ -3,4 +3,8 @@
   file:
     path: /DATA/ssl
     state: directory
+- name: copy certs
+  copy:
+    src: files/*
+    path: /DATA/ssl/
     

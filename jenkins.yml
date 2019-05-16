@@ -6,8 +6,9 @@
   roles:
     - java
     - jenkins
+    - ssl-certs
     - nginx
-  tasks:
+  pre_tasks:
     - name: enable firewalld port
       firewalld:
         port: "{{ jenkins_http_port }}/tcp"
