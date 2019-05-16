@@ -5,7 +5,7 @@ certs:
 nginx_vhosts:
   - listen: "80"
     server_name: "jenkins.paosin.local"
-    server_name_redirect: "jenkins.paosin.local"
+    #server_name_redirect: "jenkins.paosin.local"
     return: "301 https://jenkins.paosin.local$request_uri"
     
   - listen: "443 ssl http2"
