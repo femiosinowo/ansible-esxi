@@ -169,6 +169,20 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
+
+  - hostname: jenkins
+    ram: 3096
+    vcpu: 2
+    disks:
+     - 16
+     - 300
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.25"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
             
   - hostname: ocp-master1
     ram: 16000
