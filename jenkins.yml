@@ -46,6 +46,7 @@
         - name: Mount DATA
           mount:
             path: /DATA
+            src: /dev/sdb1
             fstype: xfs
             state: mounted
             
