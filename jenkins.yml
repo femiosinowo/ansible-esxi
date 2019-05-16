@@ -1,6 +1,15 @@
 ---
 - hosts: jenkins
+  vars:
+    jenkins_http_port: 80
   roles:
     - java
     - jenkins
+  tasks:
+    - name: enable firewalld port
+      firewalld:
+        service: http
+        state: enabled
+        immediate: yes
+        permanent: yes
 
