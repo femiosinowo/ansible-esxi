@@ -5,6 +5,6 @@
     state: directory
 - name: copy certs
   copy:
-    src: files/*
-    dest: /DATA/ssl/
-   
+    src: "files/{{ item }}"
+    dest: "/DATA/ssl/{{ item }}"
+  loop: "{{ certs }}"
