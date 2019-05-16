@@ -51,4 +51,4 @@
             state: mounted
             
       when: create_partition
-        
+#chcon -v --type=httpd_sys_content_t /DATA/ssl/*
