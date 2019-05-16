@@ -47,7 +47,7 @@
           mount:
             path: /DATA
             fstype: xfs
-            state: present
+            state: mounted
             
       when: create_partition
         
