@@ -1,0 +1,6 @@
+---
+- name: makdir /DATA/ssl
+  file:
+    path: /DATA/ssl
+    state: directory
+    
