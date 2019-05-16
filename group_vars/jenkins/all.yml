@@ -23,7 +23,7 @@ nginx_vhosts:
           proxy_pass http://127.0.0.1:8080;
       }
 
-      ssl_certificate     /DATA/ssl/jenkins.paosin.local.pem;
+      ssl_certificate     /DATA/ssl/jenkins.paosin.local.crt;
       ssl_certificate_key /DATA/ssl/jenkins.paosin.local.key;
       ssl_protocols       TLSv1.1 TLSv1.2;
       ssl_ciphers         HIGH:!aNULL:!MD5;
