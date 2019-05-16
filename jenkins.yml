@@ -2,6 +2,7 @@
 - hosts: jenkins
   vars:
     jenkins_http_port: 8080
+    jenkins_home: /DATA/jenkins
     create_partition: true
   roles:
     - java
@@ -30,7 +31,7 @@
             device: /dev/sdb
             number: 1
             state: present
-            part_end: 200GiB
+            part_end: 199GiB
             
         - name: format partition
           filesystem:
