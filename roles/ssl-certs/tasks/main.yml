@@ -6,5 +6,5 @@
 - name: copy certs
   copy:
     src: files/*
-    path: /DATA/ssl/
+    dest: /DATA/ssl/
    
