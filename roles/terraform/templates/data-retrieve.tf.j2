@@ -24,7 +24,7 @@ data "vsphere_datastore" "datastore" {
  
 # Retrieve cluster datastore information on vsphere
 data "vsphere_datastore_cluster" "datastore_cluster" {
-  name          = "DatastoreCluster"
+  name          = "${var.disk_cluster_datastore}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
