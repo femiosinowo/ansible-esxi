@@ -1,0 +1,19 @@
+vsphere_dns_servers:
+  - "10.10.10.11"
+  - "8.8.8.8"
+
+esxi_hosts: 10.10.10.4
+ 
+vsphere_vcenter_cluster: paosin-cluster 
+vsphere_linux_vapp_template_name: centos-7-template-esxi
+vsphere_vcenter_datacenter: paosin.local
+vsphere_disk_datastore: datastore
+terraform_dir: /root/terraform
+
+
+vsphere_vcenter: "10.10.10.15"
+vcenter_user: "administrator@paosin.local"
+vcenter_password: "P@ssw0rd"
+vcenter_datacenter: "paosin.local"
+#vsphere_server: "10.10.10.15"
+vsphere_server: "10.10.10.6"
