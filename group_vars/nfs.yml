@@ -1,1 +1,1 @@
-nfs_exports: { "/DATA/nfsshare *(rw,sync,no_root_squash)" }
+nfs_exports: { "/nfsshare *(rw,sync,no_root_squash)" }
