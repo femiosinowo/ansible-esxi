@@ -62,7 +62,7 @@ terraform_vms:
             
   - hostname: ocp-master1
     ram: 20000
-    vcpu: 4
+    vcpu: 6
     disks:
      - 20
      - 100
@@ -90,7 +90,7 @@ terraform_vms:
       
   - hostname: ocp-node1
     ram: 16000
-    vcpu: 2
+    vcpu: 6
     disks:
      - 20
      - 100
@@ -103,7 +103,7 @@ terraform_vms:
       gateway: "{{ gateway }}"
   - hostname: ocp-node2
     ram: 16000
-    vcpu: 2
+    vcpu: 6
     disks:
      - 20
      - 100
