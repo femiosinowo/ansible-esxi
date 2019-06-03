@@ -1,55 +1,37 @@
-- name: remove docker
-  yum: name={{ item }} state=absent
-  with_items:
-    - docker
 
-#- name: stop docker 
-#  service: name=docker state=stopped 
-#  #when: docker_storage_setup == "true"   
 
-- name: unmount docker stuff
-  mount:
-    path: /var/lib/docker/containers
-    state: absent
+#- name: unmount docker stuff
+#  mount:
+#    path: /var/lib/docker/containers
+#    state: absent
 
     
-- name:  remove /var/lib/docker/
-  shell: rm -rf /var/lib/docker
-  args:
-   executable: /bin/bash
+#- name:  remove /var/lib/docker/
+#  shell: rm -rf /var/lib/docker
+#  args:
+#   executable: /bin/bash
 
 
-- name: install docker
-  yum: name={{ item }} state=present
-  with_items:
-    - docker
+- name: Install Docker
+  yum: 
+   name: docker
+   state: present
+
 
 - name: "Create Docker Storage Daemon"
   copy:
     src: docker/docker-storage-setup
     dest: /etc/sysconfig/docker-storage-setup 
-  ignore_errors: yes 
-  
 
-
-  
     
-#- name: "Create Docker Storage File"
-#  copy:
-#    src=docker/daemon.json
-#    dest=/etc/docker/daemon.json
-#  ignore_errors: yes 
-    
-- name:  Configuring Docker Storage
-  shell: docker-storage-setup
-  args:
-   executable: /bin/bash
+- name:  Run Docker Storage Setup
+  command: /usr/bin/docker-storage-setup
   ignore_errors: yes
 
-- name: "Create Docker Storage "
-  copy:
-    src: docker/docker-storage
-    dest: /etc/sysconfig/docker-storage 
+#- name: "Create Docker Storage "
+#  copy:
+#    src: docker/docker-storage
+#    dest: /etc/sysconfig/docker-storage 
     
 #- name:  Configuring Docker Storage
 #  shell: "sed -i 's/selinux-enabled/selinux-enabled\ --insecure-registry\ 172.50.0.0\/16/g' /etc/sysconfig/docker"
@@ -59,5 +41,8 @@
   
 
    
-- name: enable and start docker 
-  service: name=docker state=started  enabled=yes 
+- name: Enable and Start docker 
+  service: 
+   name: docker 
+   state: started  
+   enabled: yes 
