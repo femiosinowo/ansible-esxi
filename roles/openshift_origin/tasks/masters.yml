@@ -10,6 +10,7 @@
   copy: 
     src: "files/master/ssh-keys/id_rsa" 
     dest: "/root/.ssh/id_rsa"
+    mode: 0644
 
 - name: installing yum apps
   yum:
