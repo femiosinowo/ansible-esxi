@@ -30,7 +30,13 @@
     dest: /etc/sysconfig/docker-storage-setup 
   ignore_errors: yes 
   
+- name: "Create Docker Storage "
+  copy:
+    src: docker/docker-storage
+    dest: /etc/sysconfig/docker-storage 
+
   
+    
 #- name: "Create Docker Storage File"
 #  copy:
 #    src=docker/daemon.json
