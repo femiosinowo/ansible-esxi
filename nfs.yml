@@ -11,7 +11,7 @@
         device: /dev/sdb
         number: 1
         state: present
-        part_end: 200GiB
+        part_end: 199GiB
     - name: Create a ext2 filesystem on /dev/sdb1
       filesystem:
         fstype: xfs
