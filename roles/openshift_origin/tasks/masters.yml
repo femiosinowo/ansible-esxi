@@ -1,3 +1,16 @@
+
+- name: create ssh key directory
+  file:
+    path: "/root/.ssh"
+    state: directory
+    owner: root
+    group: root
+        
+- name: ssh private key
+  copy: 
+    src: "files/master/ssh-keys/id_rsa" 
+    dest: "/root/.ssh/id_rsa"
+
 - name: installing yum apps
   yum:
     name: "{{ item }}"
@@ -75,7 +88,8 @@
     dest: "/tmp"
     copy: no
 
-
+  
+  
 - name: copy heketi files
   copy: src=/tmp/heketi/heketi dest=/usr/local/bin/heketi remote_src=yes mode=+x
   
