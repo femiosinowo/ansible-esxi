@@ -30,10 +30,7 @@
     dest: /etc/sysconfig/docker-storage-setup 
   ignore_errors: yes 
   
-- name: "Create Docker Storage "
-  copy:
-    src: docker/docker-storage
-    dest: /etc/sysconfig/docker-storage 
+
 
   
     
@@ -49,6 +46,11 @@
    executable: /bin/bash
   ignore_errors: yes
 
+- name: "Create Docker Storage "
+  copy:
+    src: docker/docker-storage
+    dest: /etc/sysconfig/docker-storage 
+    
 #- name:  Configuring Docker Storage
 #  shell: "sed -i 's/selinux-enabled/selinux-enabled\ --insecure-registry\ 172.50.0.0\/16/g' /etc/sysconfig/docker"
 #  args:
