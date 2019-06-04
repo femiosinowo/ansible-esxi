@@ -10,8 +10,14 @@
   copy: 
     src: "files/master/ssh-keys/id_rsa" 
     dest: "/root/.ssh/id_rsa"
-    mode: 0644
+    mode: 0400
 
+- name: ssh public key
+  copy: 
+    src: "files/master/ssh-keys/id_rsa.pub" 
+    dest: "/root/.ssh/id_rsa.pub"
+    mode: 0400
+    
 - name: installing yum apps
   yum:
     name: "{{ item }}"

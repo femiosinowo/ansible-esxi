@@ -66,32 +66,34 @@ openshift_master_console_port=443
 openshift_master_cluster_hostname=openshift-int.paosin.local
 openshift_master_cluster_public_hostname=openshift.paosin.local
 
-#openshift_master_named_certificates=[{"certfile": "/root/certs/openshift.paosin.local.crt", "keyfile": "/root/certs/openshift.paosin.local.key", "names": ["openshift.paosin.local"], "cafile": "/root/certs/myCA.pem"}]
-#openshift_master_ca_certificate={'certfile': '/root/certs/myCA.pem', 'keyfile': '/root/certs/myCA.key'}
-#openshift_hosted_router_certificate={"certfile": "/root/certs/apps.paosin.local.crt", "keyfile": "/root/certs/apps.paosin.local.key", "cafile": "/root/certs/myCA.pem"}
+openshift_master_named_certificates=[{"certfile": "/root/certs/openshift.paosin.local.crt", "keyfile": "/root/certs/openshift.paosin.local.key", "names": ["openshift.paosin.local"], "cafile": "/root/certs/myCA.pem"}]
+openshift_master_ca_certificate={'certfile': '/root/certs/myCA.pem', 'keyfile': '/root/certs/myCA.key'}
+openshift_hosted_router_certificate={"certfile": "/root/certs/apps.paosin.local.crt", "keyfile": "/root/certs/apps.paosin.local.key", "cafile": "/root/certs/myCA.pem"}
 
-#openshift_hosted_registry_routehost=registry.apps.paosin.local
-#openshift_hosted_registry_routecertificates={"certfile": "/root/certs/registry.apps.paosin.local.crt", "keyfile": "/root/certs/registry.apps.paosin.local.key", "cafile": "/root/certs/myCA.pem"}
-#openshift_enable_unsupported_configurations=True
+openshift_hosted_registry_routehost=registry.apps.paosin.local
+openshift_hosted_registry_routecertificates={"certfile": "/root/certs/registry.apps.paosin.local.crt", "keyfile": "/root/certs/registry.apps.paosin.local.key", "cafile": "/root/certs/myCA.pem"}
+openshift_enable_unsupported_configurations=True
 
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-openshift_hosted_registry_storage_host=10.10.10.50
+openshift_hosted_registry_storage_host=ocp-nfs.paosin.local
 # nfs_directory must conform to DNS-1123 subdomain must consist of lower case
 # alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character
-openshift_hosted_registry_storage_nfs_directory=/mnt/disk1/openshift
+openshift_hosted_registry_storage_nfs_directory=/nfsshare/openshift
 openshift_hosted_registry_storage_volume_name=registry
 openshift_hosted_registry_storage_volume_size=100Gi
 
 
 openshift_metrics_install_metrics=True
 openshift_metrics_hawkular_hostname=hawkular-metrics.paosin.local
-#openshift_metrics_hawkular_ca="/root/certs/myCA.pem"
+openshift_metrics_hawkular_ca="/root/certs/myCA.pem"
+openshift_metrics_hawkular_cert="/root/certs/hawkular-metrics.paosin.local.crt"
+openshift_metrics_hawkular_key="/root/certs/hawkular-metrics.paosin.local.key"
 openshift_metrics_image_version=v3.11
 openshift_metrics_storage_kind=nfs
 openshift_metrics_storage_access_modes=['ReadWriteOnce']
-openshift_metrics_storage_host=10.10.10.50
-openshift_metrics_storage_nfs_directory=/mnt/disk1/openshift
+openshift_metrics_storage_host=ocp-nfs.paosin.local
+openshift_metrics_storage_nfs_directory=/nfsshare/openshift
 openshift_metrics_storage_volume_name=metrics
 openshift_metrics_storage_volume_size=10Gi
 openshift_metrics_storage_labels={'storage': 'metrics'}
@@ -130,7 +132,7 @@ system_images_registry="docker.io"
 #
 # # Manage openshift example imagestreams and templates during install and upgrade
 # #openshift_install_examples=true
-openshift_disable_check=memory_availability,disk_availability
+openshift_disable_check=memory_availability,disk_availability,docker_storage,docker_image_availability
 # If using Atomic Host, you may specify system container image registry for the nodes:
 #system_images_registry="docker.io"
 # when openshift_deployment_type=='openshift-enterprise'
