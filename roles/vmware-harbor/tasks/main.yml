@@ -24,7 +24,7 @@
 
 - name: Copy certificates
   copy: 
-    src: certs 
+    src: certs/*
     dest: /data/ssl/
 
 # install harbor
