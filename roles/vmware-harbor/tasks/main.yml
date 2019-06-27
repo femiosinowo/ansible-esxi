@@ -5,7 +5,7 @@
 - include: harbor-data-directory.yml
 
 #- name: "harbor_install_skip_docker_compose compose ?"
--  debug: var=harbor_install_skip_docker_compose, verbosity=2
+- debug: var=harbor_install_skip_docker_compose, verbosity=2
 
 # make sure we have docker and docker-compose
 - include: docker-compose.yml
@@ -29,3 +29,13 @@
 
 # install harbor
 - include: harbor-install.yml
+
+- name: enable firewalld
+  firewalld:
+    service: "{{ item }}"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  loop:
+   - https
+   - http
