@@ -31,7 +31,7 @@
    state: latest 
    update_cache: yes
   loop:
-    - docker-engine
+    - docker
     - docker-compose
 #  notify: service docker start/enable
 
