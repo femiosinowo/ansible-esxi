@@ -19,13 +19,13 @@
 # otherwise we assume the certificate is there and ok if configured
 - name: create ssl dir
   file:
-    path: /data/ssl
+    path: /data/
     state: directory
 
 - name: Copy certificates
   copy: 
-    src: certs/*
-    dest: /data/ssl/
+    src: certs
+    dest: /data/
 
 # install harbor
 - include: harbor-install.yml
