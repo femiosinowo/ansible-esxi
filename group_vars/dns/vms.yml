@@ -186,10 +186,11 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"  
       
-  - hostname: gitlab
+  - hostname: harbor
     ram: 2048
     vcpu: 2
     disks:
+     - 20
      - 200
     network_params:
       label: "{{ interface_label }}"

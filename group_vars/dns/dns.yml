@@ -59,7 +59,7 @@ bind_zone_domains:
         ip: 10.10.10.21
       - name: awx-ansible
         ip: 10.10.10.22
-      - name: gitlab
+      - name: harbor
         ip: 10.10.10.23 
       - name: gogs
         ip: 10.10.10.24
