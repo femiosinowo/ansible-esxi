@@ -1,0 +1,10 @@
+---
+- hosts: harbor
+  force_handlers: True
+  roles:
+    - vmware-harbor
+
+
+    
+
+

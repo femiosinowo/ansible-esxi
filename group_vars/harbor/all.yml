@@ -1,0 +1,10 @@
+harbor_install_tmp: /tmp/harbor
+harbor_install_dir: /tmp/harbor_install
+harbor_install_download: https://github.com/vmware/harbor/releases/download/v1.8.1/harbor-offline-installer-v1.8.1.tgz
+harbor_install_tgz: harbor-installer.tgz
+harbor_install_upload_localcopy_of_installer:  #if set it installs from this address
+harbor_install_skip_docker_compose: 'True' # speed up testing / or Docker + Docker Compose already installed
+harbor_ssl_self_days:     # valid days for self signed certificate
+harbor_ssl_self_subject:  # dn for  self signed certificate
+harbor_ssl_cert: /data/ssl/harbor.paosin.local.crt       # certificate location
+harbor_ssl_cert_key: /data/ssl/harbor.paosin.local.key     # private key location 
