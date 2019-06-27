@@ -16,15 +16,21 @@
     state=present
 
 - name: install deps
-  action: yum name="{{ item }}" state=latest update_cache=yes
-  with_items:
+  yum: 
+    name: "{{ item }}" 
+    state: latest 
+    update_cache: yes
+  loop:
     - git
     - python-pycurl
     - docker-python
 
 - name: install docker and docker compose
-  action: yum name="{{ item }}" state=latest update_cache=yes
-  with_items:
+  yum:  
+   name: "{{ item }}" 
+   state: latest 
+   update_cache: yes
+  loop:
     - docker-engine
     - docker-compose
 #  notify: service docker start/enable

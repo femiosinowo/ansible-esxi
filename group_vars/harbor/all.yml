@@ -8,3 +8,5 @@ harbor_ssl_self_days:     # valid days for self signed certificate
 harbor_ssl_self_subject:  # dn for  self signed certificate
 harbor_ssl_cert: /data/ssl/harbor.paosin.local.crt       # certificate location
 harbor_ssl_cert_key: /data/ssl/harbor.paosin.local.key     # private key location 
+harbor_hostname: harbor.paosin.local
+harbor_db_password: harbor
