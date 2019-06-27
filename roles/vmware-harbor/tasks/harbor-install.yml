@@ -33,16 +33,16 @@
     dest: '{{ harbor_install_dir }}'
 
 # config template
-- name: upload harbor.cfg from template
+- name: upload harbor.yml from template
   template: 
-    src: harbor.cfg.j2
-    dest: '{{ harbor_install_dir }}/harbor/harbor.cfg'
+    src: harbor.yml.j2
+    dest: '{{ harbor_install_dir }}/harbor/harbor.yml'
 
 # run installer
 
 - name: run harbor install script
-  command: '{{harbor_install_dir}}/harbor/install.sh'
-  #command: './install.sh > {{ harbor_install_dir }}/harbor_install_log.txt'
+  #command: '{{harbor_install_dir}}/harbor/install.sh'
+  command: './install.sh > {{ harbor_install_dir }}/harbor_install_log.txt'
   args:
     chdir: '{{ harbor_install_dir }}/harbor'
     # don't reinstall / figure out what when wrong and delete or move the logfile
