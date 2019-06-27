@@ -41,7 +41,7 @@
 # run installer
 
 - name: run harbor install script
-  command: '{{harbor_install_path}}/harbor/install.sh > {{ harbor_install_dir }}/harbor_install_log.txt'
+  command: '{{harbor_install_dir}}/harbor/install.sh > {{ harbor_install_dir }}/harbor_install_log.txt'
   #command: './install.sh > {{ harbor_install_dir }}/harbor_install_log.txt'
   args:
     chdir: '{{ harbor_install_dir }}/harbor'
