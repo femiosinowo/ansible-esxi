@@ -26,5 +26,5 @@
   mount:
     path: "{{ harbor_secretkey_path }}"
     src: "{{ harbor_hdd_device }}1" 
-    fstype: ext4
+    fstype: "{{ harbor_fstype }}"
     state: present
