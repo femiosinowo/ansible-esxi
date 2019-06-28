@@ -10,3 +10,7 @@ harbor_ssl_cert: /data/certs/harbor.paosin.local.crt       # certificate locatio
 harbor_ssl_cert_key: /data/certs/harbor.paosin.local.key     # private key location 
 harbor_hostname: harbor.paosin.local
 harbor_db_password: harbor
+harbor_secretkey_path: /data
+harbor_hdd_device: /dev/sdb
+harbor_hdd_size: 199Gib
+harbor_fstype: xfs

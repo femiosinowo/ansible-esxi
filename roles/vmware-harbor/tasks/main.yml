@@ -17,10 +17,7 @@
 - include: https_self_signed.yml
   when: harbor_install_https_self_signed == True
 # otherwise we assume the certificate is there and ok if configured
-- name: create ssl dir
-  file:
-    path: /data/
-    state: directory
+
 
 - name: Copy certificates
   copy: 
@@ -29,6 +26,7 @@
 
 # install harbor
 - include: harbor-install.yml
+
 
 - name: enable firewalld
   firewalld:
