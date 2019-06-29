@@ -3,12 +3,13 @@
   vars:
     jenkins_http_port: 8080
     jenkins_home: /DATA/jenkins
-    create_partition: true
+    create_partition: false
   roles:
     - java
     - jenkins
     - ssl-certs
     - nginx
+    - helm
   pre_tasks:
     - name: enable firewalld port
       firewalld:
