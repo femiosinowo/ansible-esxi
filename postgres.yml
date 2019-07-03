@@ -1,7 +1,7 @@
 ---
 - hosts: postgresql
   vars:
-    postgresql_version: "10"
+    postgresql_version: "11"
     postgresql_data_dir: "/DATA/lib/pgsql/data"
     postgresql_config_path: "/DATA/lib/pgsql/data"
   pre_tasks:
