@@ -4,11 +4,6 @@ postgresql_version: 11
 postgresql_listen_addresses:
   - "*"
 
-# List of databases to be created (optional)
-postgresql_databases: []
-
-# List of database extensions to be created (optional)
-postgresql_database_extensions: []
 
 # List of users to be created (optional)
 postgresql_users:
@@ -35,7 +30,7 @@ postgresql_pg_hba_default:
   - { type: host,  database: all, user: all, address: "127.0.0.1/32", method: "{{ postgresql_default_auth_method }}", comment: "IPv4 local connections:" }
   - { type: host,  database: all, user: all, address: "::1/128",      method: "{{ postgresql_default_auth_method }}", comment: "IPv6 local connections:" }
   - { type: local, database: all, user: "{{ postgresql_admin_user }}", address: "", method: "peer map=root_as_{{ postgresql_admin_user }}", comment: "Local root Unix user, passwordless access" }
-  - { type: host, database: all, user: all, address: '0.0.0.0/0', auth_method: md5}
+  - { type: host, database: all, user: all, address: '0.0.0.0/0', method: md5}
 
 
 
