@@ -1,5 +1,5 @@
 ---
-- hosts: postgresql-old
+- hosts: postgresql
   pre_tasks:
     - name: enable firewalld service
       service:
@@ -34,4 +34,4 @@
         state: mounted
         fstype: xfs
   roles:
-    - postgresql
+    - postgresql-old
