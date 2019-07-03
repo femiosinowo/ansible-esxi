@@ -1,5 +1,5 @@
 ---
-- hosts: postgresql
+- hosts: postgresql-old
   pre_tasks:
     - name: enable firewalld service
       service:
