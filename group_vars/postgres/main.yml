@@ -1,0 +1,5 @@
+postgresql_databases:
+  - name: FAAST_V3
+postgresql_users:
+  - name: postgres
+    password: admin
