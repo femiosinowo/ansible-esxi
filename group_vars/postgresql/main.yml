@@ -10,7 +10,7 @@ postgresql_users:
   - name: postgres
     password: admin
     
-    
+
 postgresql_hba_entries:
   - {type: local, database: all, user: postgres, auth_method: trust}
   - {type: local, database: all, user: all, auth_method: trust}
