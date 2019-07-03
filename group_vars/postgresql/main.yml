@@ -1,6 +1,12 @@
 
 postgresql_version: 11
 
+
+
+ 
+postgresql_data_directory: "/DATA/{{ postgresql_varlib_directory_name }}/{{ postgresql_version }}/{{ postgresql_cluster_name }}"
+postgresql_conf_directory: "/DATA/{{ postgresql_varlib_directory_name }}/{{ postgresql_version }}/{{ postgresql_cluster_name }}"
+
 postgresql_listen_addresses:
   - "*"
 
