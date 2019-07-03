@@ -1,6 +1,6 @@
 
 postgresql_version: "11"
-postgresql_daemon: postgresql
+postgresql_daemon: postgresql-11
 postgresql_data_dir: "/DATA/pgsql/11/data"
 postgresql_config_path: "/DATA/pgsql/11/data"
 postgresql_bin_path: "/usr/bin"
