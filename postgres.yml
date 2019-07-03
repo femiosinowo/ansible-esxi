@@ -1,10 +1,17 @@
 ---
 - hosts: postgresql
-  vars:
-    postgresql_version: "11"
-    postgresql_data_dir: "/var/lib/pgsql/data"
-    postgresql_config_path: "/var/lib/pgsql/data"
   pre_tasks:
+    - name: enable firewalld service
+      service:
+        name: firewalld
+        enabled: true
+        state: started
+    - name: enable firewalld port
+      firewalld:
+        port: "{{ postgres_http_port }}/tcp"
+        state: enabled
+        immediate: yes
+        permanent: yes
     - name: create nfsshare directory
       file:
         state: directory
