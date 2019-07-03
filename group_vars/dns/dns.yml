@@ -64,7 +64,7 @@ bind_zone_domains:
       - name: gogs
         ip: 10.10.10.24
       - name: postgresql
-        ip: 10.10.10.26
+        ip: 10.10.10.27
       - name: jenkins
         ip: 10.10.10.25
       - name: kube-master

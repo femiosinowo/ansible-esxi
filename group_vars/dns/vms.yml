@@ -54,7 +54,7 @@ terraform_vms:
      - 200
     network_params:
       label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.26"
+      ipv4_address: "10.10.10.27"
       domain: "{{ domain }}"
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
