@@ -1,150 +1,145 @@
-## ANXS - PostgreSQL [![Build Status](https://travis-ci.org/ANXS/postgresql.svg?branch=master)](https://travis-ci.org/ANXS/postgresql)
+# Ansible Role: PostgreSQL
 
----
-Help Wanted! If you are able and willing to help maintain this Ansible role then please open a GitHub issue. A lot of people seem to use this role and we (quite obviously) need assistance!
-💖
----
+[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-postgresql.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-postgresql)
 
-Ansible role which installs and configures PostgreSQL, extensions, databases and users.
+Installs and configures PostgreSQL server on RHEL/CentOS or Debian/Ubuntu servers.
 
+## Requirements
 
-#### Installation
+No special requirements; note that this role requires root access, so either run it in a playbook with a global `become: yes`, or invoke the role in your playbook like:
 
-This has been tested on Ansible 2.4.0 and higher.
+    - hosts: database
+      roles:
+        - role: geerlingguy.postgresql
+          become: yes
 
-To install:
+## Role Variables
 
-```
-ansible-galaxy install ANXS.postgresql
-```
+Available variables are listed below, along with default values (see `defaults/main.yml`):
 
+    postgresql_enablerepo: ""
 
-#### Dependencies
+(RHEL/CentOS only) You can set a repo to use for the PostgreSQL installation by passing it in here.
 
-- ANXS.monit ([Galaxy](https://galaxy.ansible.com/list#/roles/502)/[GH](https://github.com/ANXS/monit)) if you want monit protection (in that case, you should set `monit_protection: true`)
+    postgresql_restarted_state: "restarted"
 
+Set the state of the service when configuration changes are made. Recommended values are `restarted` or `reloaded`.
 
-#### Compatibility matrix
+    postgresql_python_library: python-psycopg2
 
-| Distribution / PostgreSQL | <= 9.2 | 9.3 | 9.4 | 9.5 | 9.6 | 10 | 11 |
-| ------------------------- |:------:|:---:|:---:|:---:|:---:|:--:|:--:|
-| Ubuntu 14.04 | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :grey_question:|
-| Ubuntu 16.04 | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :grey_question:|
-| Debian 8.x | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :grey_question:|
-| Debian 9.x | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :grey_question:|
-| CentOS 6.x | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :grey_question:|
-| CentOS 7.x | :no_entry: | :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :grey_question:|
-| Fedora latest | :no_entry: | :no_entry:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :white_check_mark:| :grey_question:|
+Library used by Ansible to communicate with PostgreSQL. If you are using Python 3 (e.g. set via `ansible_python_interpreter`), you should change this to `python3-psycopg2`.
 
-- :white_check_mark: - tested, works fine
-- :grey_question: - will work in the future (help out if you can)
-- :interrobang: - maybe works, not tested
-- :no_entry: - PostgreSQL has reached EOL
+    postgresql_user: postgres
+    postgresql_group: postgres
 
+The user and group under which PostgreSQL will run.
 
-#### Variables
+    postgresql_unix_socket_directories:
+      - /var/run/postgresql
 
-```yaml
-# Basic settings
-postgresql_version: 9.6
-postgresql_encoding: "UTF-8"
-postgresql_locale: "en_US.UTF-8"
-postgresql_ctype: "en_US.UTF-8"
+The directories (usually one, but can be multiple) where PostgreSQL's socket will be created.
 
-postgresql_admin_user: "postgres"
-postgresql_default_auth_method: "trust"
+    postgresql_service_state: started
+    postgresql_service_enabled: true
 
-postgresql_service_enabled: false # should the service be enabled, default is true
+Control the state of the postgresql service and whether it should start at boot time.
 
-postgresql_cluster_name: "main"
-postgresql_cluster_reset: false
+    postgresql_global_config_options:
+      - option: unix_socket_directories
+        value: '{{ postgresql_unix_socket_directories | join(",") }}'
 
-# List of databases to be created (optional)
-# Note: for more flexibility with extensions use the postgresql_database_extensions setting.
-postgresql_databases:
-  - name: foobar
-    owner: baz          # optional; specify the owner of the database
-    hstore: yes         # flag to install the hstore extension on this database (yes/no)
-    uuid_ossp: yes      # flag to install the uuid-ossp extension on this database (yes/no)
-    citext: yes         # flag to install the citext extension on this database (yes/no)
-    encoding: "UTF-8"   # override global {{ postgresql_encoding }} variable per database
-    lc_collate: "en_GB.UTF-8"   # override global {{ postgresql_locale }} variable per database
-    lc_ctype: "en_GB.UTF-8"     # override global {{ postgresql_ctype }} variable per database
+Global configuration options that will be set in `postgresql.conf`. Note that for RHEL/CentOS 6 (or very old versions of PostgreSQL), you need to at least override this variable and set the `option` to `unix_socket_directory`.
 
-# List of database extensions to be created (optional)
-postgresql_database_extensions:
-  - db: foobar
-    extensions:
-      - hstore
-      - citext
+    postgresql_hba_entries:
+      - { type: local, database: all, user: postgres, auth_method: peer }
+      - { type: local, database: all, user: all, auth_method: peer }
+      - { type: host, database: all, user: all, address: '127.0.0.1/32', auth_method: md5 }
+      - { type: host, database: all, user: all, address: '::1/128', auth_method: md5 }
 
-# List of users to be created (optional)
-postgresql_users:
-  - name: baz
-    pass: pass
-    encrypted: no       # denotes if the password is already encrypted.
+Configure [host based authentication](https://www.postgresql.org/docs/current/static/auth-pg-hba-conf.html) entries to be set in the `pg_hba.conf`. Options for entries include:
 
-# List of schemas to be created (optional)
-postgresql_schemas:
-  - database: foobar           # database name
-    schema: acme               # schema name
-    state: present
+  - `type` (required)
+  - `database` (required)
+  - `user` (required)
+  - `address` (one of this or the following two are required)
+  - `ip_address`
+  - `ip_mask`
+  - `auth_method` (required)
+  - `auth_options` (optional)
 
-  - database: foobar           # database name
-    schema: acme_baz           # schema name
-    owner: baz                 # owner name
-    state: present
+If overriding, make sure you copy all of the existing entries from `defaults/main.yml` if you need to preserve existing entries.
 
-# List of user privileges to be applied (optional)
-postgresql_user_privileges:
-  - name: baz                   # user name
-    db: foobar                  # database
-    priv: "ALL"                 # privilege string format: example: INSERT,UPDATE/table:SELECT/anothertable:ALL
-    role_attr_flags: "CREATEDB" # role attribute flags
-```
+    postgresql_locales:
+      - 'en_US.UTF-8'
 
-There's a lot more knobs and bolts to set, which you can find in the [defaults/main.yml](./defaults/main.yml)
+(Debian/Ubuntu only) Used to generate the locales used by PostgreSQL databases.
 
+    postgresql_databases:
+      - name: exampledb # required; the rest are optional
+        lc_collate: # defaults to 'en_US.UTF-8'
+        lc_ctype: # defaults to 'en_US.UTF-8'
+        encoding: # defaults to 'UTF-8'
+        template: # defaults to 'template0'
+        login_host: # defaults to 'localhost'
+        login_password: # defaults to not set
+        login_user: # defaults to 'postgresql_user'
+        login_unix_socket: # defaults to 1st of postgresql_unix_socket_directories
+        port: # defaults to not set
+        owner: # defaults to postgresql_user
+        state: # defaults to 'present'
 
-#### Testing
+A list of databases to ensure exist on the server. Only the `name` is required; all other properties are optional.
 
-This project comes with a Vagrantfile, this is a fast and easy way to test changes to the role, fire it up with `vagrant up`
+    postgresql_users:
+      - name: jdoe #required; the rest are optional
+        password: # defaults to not set
+        encrypted: # defaults to not set
+        priv: # defaults to not set
+        role_attr_flags: # defaults to not set
+        db: # defaults to not set
+        login_host: # defaults to 'localhost'
+        login_password: # defaults to not set
+        login_user: # defaults to '{{ postgresql_user }}'
+        login_unix_socket: # defaults to 1st of postgresql_unix_socket_directories
+        port: # defaults to not set
+        state: # defaults to 'present'
 
-See [vagrant docs](https://docs.vagrantup.com/v2/) for getting setup with vagrant
+A list of users to ensure exist on the server. Only the `name` is required; all other properties are optional.
 
-Once your VM is up, you can reprovision it using either `vagrant provision`, or `ansible-playbook tests/playbook.yml -i vagrant-inventory`
+    postgresql_version: [OS-specific]
+    postgresql_data_dir: [OS-specific]
+    postgresql_bin_path: [OS-specific]
+    postgresql_config_path: [OS-specific]
+    postgresql_daemon: [OS-specific]
+    postgresql_packages: [OS-specific]
 
-If you want to toy with the test play, see [tests/playbook.yml](./tests/playbook.yml), and change the variables in [tests/vars.yml](./tests/vars.yml)
+OS-specific variables that are set by include files in this role's `vars` directory. These shouldn't be overridden unless you're using a version of PostgreSQL that wasn't installed using system packages.
 
-If you are contributing, please first test your changes within the vagrant environment, (using the targeted distribution), and if possible, ensure your change is covered in the tests found in [.travis.yml](./.travis.yml)
+## Dependencies
 
+None.
 
-#### License
+## Example Playbook
 
-Licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+    - hosts: database
+      become: yes
+      vars_files:
+        - vars/main.yml
+      roles:
+        - geerlingguy.postgresql
 
+*Inside `vars/main.yml`*:
 
-#### Thanks
+    postgresql_databases:
+      - name: example_db
+    postgresql_users:
+      - name: example_user
+        password: supersecure
 
-Creator:
-- [Pjan Vandaele](https://github.com/pjan)
+## License
 
-Maintainers:
-- [Jonathan Lozada D.](https://github.com/jlozadad)
-- [Jonathan Freedman](https://github.com/otakup0pe)
-- [Sergei Antipov](https://github.com/UnderGreen)
+MIT / BSD
 
-Top Contributors:
-- [David Farrington](https://github.com/farridav)
-- [Jesse Lang](https://github.com/jesselang)
-- [Greg Clough](https://github.com/gclough)
-- [Michael Conrad](https://github.com/MichaelConrad)
-- [Sébastien Alix](https://github.com/sebalix)
-- [Copperfield](https://github.com/Copperfield)
+## Author Information
 
-- [Ralph von der Heyden](https://github.com/ralph)
-
-
-#### Feedback, bug-reports, requests, ...
-
-Are [welcome](https://github.com/ANXS/postgresql/issues)!
+This role was created in 2016 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).

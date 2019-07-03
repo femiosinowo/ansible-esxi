@@ -1,6 +1,30 @@
 ---
 - hosts: postgresql
   vars:
-    postgresql_version: 11
+    postgresql_version: "11"
+    postgresql_data_dir: "/DATA/lib/pgsql/data"
+    postgresql_config_path: "/DATA/lib/pgsql/data"
+  pre_tasks:
+    - name: create nfsshare directory
+      file:
+        state: directory
+        path: /DATA
+        mode: 0755
+    - name: Create a new primary partition with a size of 200GiB
+      parted:
+        device: /dev/sdb
+        number: 1
+        state: present
+        part_end: 199GiB
+    - name: Create a ext2 filesystem on /dev/sdb1
+      filesystem:
+        fstype: xfs
+        dev: /dev/sdb1
+    - name: Mount and bind a volume
+      mount:
+        path: /DATA
+        src: /dev/sdb1
+        state: mounted
+        fstype: xfs
   roles:
     - postgresql

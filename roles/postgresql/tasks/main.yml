@@ -1,41 +1,23 @@
-# file: postgresql/tasks/main.yml
+---
+# Variable configuration.
+- include_tasks: variables.yml
 
-- include_vars: "{{ item }}"
-  with_first_found:
-    - "../vars/{{ ansible_os_family }}.yml"
-    - "../vars/empty.yml"
-  tags: [always]
+# Setup/install tasks.
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
 
-- import_tasks: install_apt.yml
-  when: ansible_pkg_mgr == "apt"
-  tags: [postgresql, postgresql-install]
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
 
-- import_tasks: install_yum.yml
-  when: ansible_pkg_mgr == "yum" and ( ansible_distribution == "RedHat" or ansible_distribution == "CentOS" )
-  tags: [postgresql, postgresql-install]
+- include_tasks: initialize.yml
+- include_tasks: configure.yml
 
-- import_tasks: install_dnf.yml
-  when: ansible_pkg_mgr == "dnf" and ansible_distribution == "Fedora"
-  tags: [postgresql, postgresql-install]
+- name: Ensure PostgreSQL is started and enabled on boot.
+  service:
+    name: "{{ postgresql_daemon }}"
+    state: "{{ postgresql_service_state }}"
+    enabled: "{{ postgresql_service_enabled }}"
 
-- import_tasks: extensions.yml
-  tags: [postgresql, postgresql-extensions]
-
-- import_tasks: configure.yml
-  tags: [postgresql, postgresql-configure]
-
-- import_tasks: users.yml
-  tags: [postgresql, postgresql-users]
-
+# Configure PostgreSQL.
 - import_tasks: databases.yml
-  tags: [postgresql, postgresql-databases]
-
-- import_tasks: schemas.yml
-  tags: [postgresql, postgresql-schemas]
-
-- import_tasks: users_privileges.yml
-  tags: [postgresql, postgresql-users]
-
-- import_tasks: monit.yml
-  when: monit_protection is defined and monit_protection == true
-  tags: [postgresql, postgresql-monit]
+- import_tasks: users.yml

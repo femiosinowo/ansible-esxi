@@ -1,35 +1,30 @@
 ---
-
 language: python
-python: "2.7"
-sudo: required
-dist: trusty
-services:
-  - docker
+services: docker
 
 env:
+  global:
+    - ROLE_NAME: postgresql
   matrix:
-    - IMAGE_NAME="ubuntu-upstart:14.04"
-    - IMAGE_NAME="ubuntu:16.04-builded"
-    - IMAGE_NAME="debian:8-builded"
-    - IMAGE_NAME="debian:9-builded"
-    - IMAGE_NAME="centos:7-builded"
-    - IMAGE_NAME="centos:6-builded"
-# Missing PostgreSQL v9.3 #    - IMAGE_NAME="fedora:27-builded"
+    - MOLECULE_DISTRO: centos7
+    - MOLECULE_DISTRO: ubuntu1804
+    - MOLECULE_DISTRO: ubuntu1604
+    - MOLECULE_DISTRO: debian10
+    - MOLECULE_DISTRO: debian9
+
 install:
-  - pip install ansible=="2.4.4.0" docker-py
-  - ln -s ${PWD} tests/docker/ANXS.postgresql
+  # Install test dependencies.
+  - pip install molecule docker
+
+before_script:
+  # Use actual Ansible Galaxy role name for the project directory.
+  - cd ../
+  - mv ansible-role-$ROLE_NAME geerlingguy.$ROLE_NAME
+  - cd geerlingguy.$ROLE_NAME
 
 script:
-  # Syntax check
-  - ansible-playbook -i tests/docker/hosts -e image_name=${IMAGE_NAME} tests/docker/site.yml --syntax-check
-
-  # Play test
-  - ansible-playbook -i tests/docker/hosts -e image_name=${IMAGE_NAME} tests/docker/site.yml
-
-  # Idempotence test
-  - ansible-playbook -i tests/docker/hosts -e image_name=${IMAGE_NAME} tests/docker/site.yml > idempotence_out
-  - ./tests/idempotence_check.sh idempotence_out
+  # Run tests.
+  - molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
