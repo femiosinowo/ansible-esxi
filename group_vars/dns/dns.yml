@@ -63,7 +63,7 @@ bind_zone_domains:
         ip: 10.10.10.23 
       - name: gogs
         ip: 10.10.10.24
-      - name: jfrog
+      - name: postgresql
         ip: 10.10.10.26
       - name: jenkins
         ip: 10.10.10.25
