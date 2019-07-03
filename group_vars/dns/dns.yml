@@ -24,7 +24,7 @@ bind_zone_name_servers:
 
 
 
-bind_zone_name: paosin.local
+#bind_zone_name: paosin.local
 bind_zone_networks:
   - "10.10.10"
 

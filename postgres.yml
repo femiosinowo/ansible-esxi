@@ -1,8 +1,6 @@
 ---
-- hosts: postgres
+- hosts: postgresql
   vars:
     postgresql_version: 11
-    jenkins_home: /DATA/jenkins
-    create_partition: false
   roles:
     - postgresql
