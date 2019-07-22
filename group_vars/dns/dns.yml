@@ -67,17 +67,17 @@ bind_zone_domains:
         ip: 10.10.10.27
       - name: jenkins
         ip: 10.10.10.25
-      - name: kube-master1
+      - name: k8s-master1
         ip: 10.10.10.30
-      - name: kube-master2
+      - name: k8s-master2
         ip: 10.10.10.31
-      - name: kube-router
+      - name: k8s-router
         ip: 10.10.10.40
-      - name: kube-node1
+      - name: k8s-node1
         ip: 10.10.10.32
-      - name: kube-node2
+      - name: k8s-node2
         ip: 10.10.10.33
-      - name: kube-node3
+      - name: k8s-node3
         ip: 10.10.10.34
       - name: ocp-nfs
         ip: 10.10.10.55
