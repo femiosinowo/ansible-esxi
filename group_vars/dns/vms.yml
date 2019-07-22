@@ -144,7 +144,7 @@ terraform_vms:
       gateway: "{{ gateway }}" 
       
    ### Kubeneretes
-  - hostname: kube-master
+  - hostname: kube-master1
     ram: 8192
     vcpu: 2
     disks:
@@ -158,7 +158,7 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}" 
 
-  - hostname: kube-master1
+  - hostname: kube-master2
     ram: 8192
     vcpu: 2
     disks:

@@ -67,9 +67,9 @@ bind_zone_domains:
         ip: 10.10.10.27
       - name: jenkins
         ip: 10.10.10.25
-      - name: kube-master
+      - name: kube-master1
         ip: 10.10.10.30
-      - name: kube-master
+      - name: kube-master2
         ip: 10.10.10.31
       - name: kube-router
         ip: 10.10.10.40
