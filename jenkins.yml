@@ -11,6 +11,11 @@
     - nginx
     - helm
   pre_tasks:
+    - name: enable firewalld service
+      service:
+        name: firewalld
+        enabled: true
+        state: started
     - name: enable firewalld port
       firewalld:
         port: "{{ jenkins_http_port }}/tcp"

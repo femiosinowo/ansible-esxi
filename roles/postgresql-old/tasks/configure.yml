@@ -193,7 +193,22 @@
     group: "{{ postgresql_service_group }}"
     mode: u=rwX,g=rwXs,o=rx
   notify: restart postgresql with service
+  
+#- name: restart service cron on centos, in all cases, also issue daemon-reload to pick up config changes
+#  systemd:
+#    state: reloaded
+#    daemon_reload: yes
+##    name: "{{ postgresql_service_name }}"
+#  when: postgresql_configuration_pt1.changed or postgresql_configuration_pt2.changed or postgresql_configuration_pt3.changed or postgresql_systemd_custom_conf.changed
 
+- name: just force systemd to reread configs (2.4 and above)
+  systemd:
+    daemon_reload: yes
+
+- name: reload systemd
+  sudo: yes
+  command: systemctl daemon-reload
+    
 - name: PostgreSQL | Reload all conf files
   service:
     name: "{{ postgresql_service_name }}"
