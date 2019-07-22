@@ -157,7 +157,21 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}" 
-         
+
+  - hostname: kube-master1
+    ram: 8192
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.31"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}" 
+               
   - hostname: kube-router
     ram: 2000
     vcpu: 2
@@ -180,7 +194,7 @@ terraform_vms:
      - 50
     network_params:
       label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.31"
+      ipv4_address: "10.10.10.32"
       domain: "{{ domain }}"
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
@@ -194,12 +208,27 @@ terraform_vms:
      - 50
     network_params:
       label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.32"
+      ipv4_address: "10.10.10.33"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"  
+
+  - hostname: kube-node3
+    ram: 8192
+    vcpu: 2
+    disks:
+     - 50
+     - 50
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.34"
       domain: "{{ domain }}"
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"  
       
+            
   - hostname: harbor
     ram: 2048
     vcpu: 2
