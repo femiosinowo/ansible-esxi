@@ -36,7 +36,7 @@ terraform_vms:
     ram: 1024
     vcpu: 2
     disks:
-     - 16
+     - 20
      - 300
     network_params:
       label: "{{ interface_label }}"
@@ -50,7 +50,7 @@ terraform_vms:
     ram: 2048
     vcpu: 2
     disks:
-     - 16
+     - 20
      - 200
     network_params:
       label: "{{ interface_label }}"
@@ -64,7 +64,7 @@ terraform_vms:
     ram: 3096
     vcpu: 2
     disks:
-     - 16
+     - 20
      - 200
     network_params:
       label: "{{ interface_label }}"
