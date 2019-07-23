@@ -1,2 +1,1 @@
-DEVS=/dev/sdb
-VG=docker-vg
+VG=vg_docker
