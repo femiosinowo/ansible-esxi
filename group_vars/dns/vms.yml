@@ -243,45 +243,4 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"   
       
-  - hostname: kube-master
-    ram: 2048
-    vcpu: 2
-    disks:
-     - 20
-     - 200
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.23"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"   
-      
-  - hostname: kube-node1
-    ram: 2048
-    vcpu: 2
-    disks:
-     - 20
-     - 200
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.23"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"   
-      
-  - hostname: kube-node2
-    ram: 2048
-    vcpu: 2
-    disks:
-     - 20
-     - 200
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.23"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"   
-          
+    
