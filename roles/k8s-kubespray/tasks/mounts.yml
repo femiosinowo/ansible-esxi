@@ -10,7 +10,7 @@
 
 - name: Ensure Volume Group vg_docker Exist
   lvg:
-  vg: "vg_docker"
-  pvs: "/dev/sdb1"
+   vg: "vg_docker"
+   pvs: "/dev/sdb1"
          
     
