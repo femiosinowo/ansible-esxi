@@ -1,23 +1,16 @@
-- name: create nfsshare directory
+- name: partition /sdb
+  command: parted --script /dev/sdb1 mklabel gpt mkpart primary 1MiB 100%
+  args:
+    creates: /dev/sdb1
+    
+- name: create /data/docker
   file:
-    state: directory
-    path: /nfsshare
-    mode: 0755
-- name: Create a new primary partition with a size of 200GiB
-  parted:
-    device: /dev/sdb
-    number: 1
-    state: present
-    part_end: 199GiB
-- name: Create a ext2 filesystem on /dev/sdb1
-  filesystem:
-    fstype: xfs
-    dev: /dev/sdb1
-- name: Mount and bind a volume
-  mount:
-    path: /nfsshare
-    src: /dev/sdb1
-    state: mounted
-    fstype: xfs
-   
- 
+   path: /data/docker
+   state: directory
+
+- name: Ensure Volume Group vg_docker Exist
+  lvg:
+  vg: "vg_docker"
+  pvs: "/dev/sdb1"
+         
+    

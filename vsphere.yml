@@ -1,4 +1,3 @@
-/containerLogs/faast/faast-7d4b74c77d-xrdxv/faast: dial tcp 10.10.10.32:10250: connect: no route to host---
 - hosts: localhost
   roles:
     - vsphere
