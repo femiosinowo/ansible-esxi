@@ -9,6 +9,15 @@
   args:
    executable: /bin/bash
 
+- name: yum install packages for k8s
+  yum:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - python36 
+    - python36-pip
+  ignore_errors: True
+  
 
 
 - name: execute the role and catch errors
