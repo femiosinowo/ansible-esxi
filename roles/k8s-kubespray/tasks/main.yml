@@ -38,6 +38,11 @@
     include_role:
       name: rhel-system-roles.selinux
 
+- name: disable firewalld
+  service:
+    name: firewalld
+    state: disabled
+    enabled: false
 #- include_tasks: mounts.yml
 #- include_tasks: docker-ce.yml
 #  when: docker_storage_setup
