@@ -16,6 +16,7 @@
   loop:
     - python36 
     - python36-pip
+    - rhel-system-roles
   ignore_errors: True
   
 
@@ -41,7 +42,7 @@
 - name: disable firewalld
   service:
     name: firewalld
-    state: disabled
+    state: stopped
     enabled: false
 #- include_tasks: mounts.yml
 #- include_tasks: docker-ce.yml
