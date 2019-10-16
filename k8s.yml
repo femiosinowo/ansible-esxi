@@ -8,6 +8,7 @@
    docker_storage_type: disk
    docker_storage_device: /dev/sdb1 
    docker_storage_location: /data/docker
+   selinux_reboot_required: True
   pre_tasks:
    - name: configure create vg for docker
      block:
