@@ -158,19 +158,6 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}" 
 
-  - hostname: k8s-master2
-    ram: 8192
-    vcpu: 2
-    disks:
-     - 50
-     - 50
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.31"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}" 
                
   - hostname: k8s-router
     ram: 2000
