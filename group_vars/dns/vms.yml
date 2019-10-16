@@ -2,7 +2,7 @@ vsphere_dns_servers:
   - "10.10.10.11"
   - "8.8.8.8"
 
-esxi_hosts: 10.10.10.5
+esxi_hosts: 10.10.10.3
  
 vsphere_vcenter_cluster: paosin-cluster 
 vsphere_linux_vapp_template_name: centos-7-template-esxi
