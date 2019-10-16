@@ -187,11 +187,11 @@ terraform_vms:
       gateway: "{{ gateway }}"
       
   - hostname: k8s-node1
-    ram: 8192
-    vcpu: 2
+    ram: 10000
+    vcpu: 4
     disks:
      - 50
-     - 50
+     - 150
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.32"
@@ -201,11 +201,11 @@ terraform_vms:
       gateway: "{{ gateway }}"       
 
   - hostname: k8s-node2
-    ram: 8192
-    vcpu: 2
+    ram: 10000
+    vcpu: 4
     disks:
      - 50
-     - 50
+     - 150
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.33"
@@ -215,11 +215,11 @@ terraform_vms:
       gateway: "{{ gateway }}"  
 
   - hostname: k8s-node3
-    ram: 8192
-    vcpu: 2
+    ram: 10000
+    vcpu: 4
     disks:
      - 50
-     - 50
+     - 150
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.34"
