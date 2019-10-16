@@ -46,6 +46,9 @@ variable "esxi_hosts" {
   default = "{{ esxi_hosts }}"
 }
 
+variable "resource_pool_designator" {
+  description = "The name or path for the resource pool in which to create the resources"
+}
     
 #### GLOBAL NETWORK PARAMS
 # Virtual switch used

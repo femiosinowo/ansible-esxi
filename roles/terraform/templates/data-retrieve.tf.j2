@@ -12,7 +12,7 @@ data "vsphere_host" "host" {
 
 data "vsphere_resource_pool" "pool" {
   # If you haven't resource pool, put "Resources" after cluster name
-  name          = "${var.vsphere_datacenter_cluster}/Resources"
+  name          = "${var.vsphere_datacenter_cluster}/Resources/${var.resource_pool_designator}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
