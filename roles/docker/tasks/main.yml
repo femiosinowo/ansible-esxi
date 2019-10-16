@@ -63,9 +63,7 @@
 
 - name: Docker - Convert docker storage pool to thinpool
   command: lvconvert -y --zero n -c 512K --thinpool docker/thinpool --poolmetadata docker/thinpoolmeta
-  when:
-    #- allocate_docker_storage.changed
-    - docker_storage_size|default(False)
+  when: docker_storage_size|default(False)
   tags:
     - docker
 
