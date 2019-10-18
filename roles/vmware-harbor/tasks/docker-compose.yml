@@ -4,8 +4,20 @@
 
 # install with yum if...
 
+- name: install deps
+  yum: 
+    name: "{{ item }}" 
+    state: latest 
+    update_cache: yes
+  loop:
+    - git
+    - python-pycurl
+    - docker-python
+    - yum-utils
+    
 - name: add docker group
   action: group name=docker state=present
+  
   
 - name: add docker repo
   action: yum_repository name=docker description='Docker official repo'
@@ -19,15 +31,7 @@
   command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 
-- name: install deps
-  yum: 
-    name: "{{ item }}" 
-    state: latest 
-    update_cache: yes
-  loop:
-    - git
-    - python-pycurl
-    - docker-python
+
 
 - name: install docker and docker compose
   yum:  
