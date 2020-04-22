@@ -84,9 +84,7 @@ bind_zone_domains:
       - name: emby
         ip: 10.10.10.102
       - name: plex
-        ip: 10.10.10.101 
-      - name: airflow
-        ip: 10.10.10.102          
+        ip: 10.10.10.101          
     ### Openshift
       - name: '*.apps.paosin.local 300'
         ip: 10.10.10.80
