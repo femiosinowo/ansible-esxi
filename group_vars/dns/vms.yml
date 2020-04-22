@@ -240,16 +240,4 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"   
-      
-  - hostname: airflow
-    ram: 2048
-    vcpu: 2
-    disks:
-     - 30
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.102"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"     
+          
