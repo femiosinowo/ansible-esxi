@@ -81,6 +81,8 @@ bind_zone_domains:
         ip: 10.10.10.34
       - name: ocp-nfs
         ip: 10.10.10.55
+      - name: emby
+        ip: 10.10.10.102
       - name: plex
         ip: 10.10.10.101 
       - name: airflow
