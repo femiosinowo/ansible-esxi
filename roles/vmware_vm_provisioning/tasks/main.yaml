@@ -1,7 +1,7 @@
 ---
 - name: Set abc
   set_fact:
-    vmware_vm_provisioning_vm_tmpb: "{{ (vmware_vm_provisioning_vms | selectattr('name', 'match', '^%s$' % inventory_hostname) | list)[0] }}"
+    vmware_vm_provisioning_vm_tmpb: "{{ (vmware_vm_provisioning_vms | selectattr('name', 'match', '^%s$' % inventory_hostname) | list) }}"
     
 - debug:
     msg: vmware_vm_provisioning_vm_tmpb
