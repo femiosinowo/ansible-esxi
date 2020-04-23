@@ -50,14 +50,16 @@
       
     # List of VMs to provision
     vmware_vm_provisioning_vms:
-      # First VM
       - <<: *vmware_vm_provisioning__dc1_cluster1
-        name: bootstrap.ocp4-cluster-001.paosin.local
+        name: ocp4-lb.cluster-001.paosin.local
         networks:
-          # Include the default network configuration
           - <<: *vmware_vm_provisioning_networks__mynet1
-            # And jsut add the IP
             ip: 10.10.10.58
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: ocp4-bootstrap.cluster-001.paosin.local
+        networks:
+          - <<: *vmware_vm_provisioning_networks__mynet1
+            ip: 10.10.10.59
   roles:
     - role: vmware_vm_provisioning
       tags: vmware_vm_provisioning      
