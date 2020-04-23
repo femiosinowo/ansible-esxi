@@ -9,6 +9,7 @@
     vmware_vm_provisioning_username: "{{ vcenter_username }}"
     vmware_vm_provisioning_password: "{{ vcenter_password }}"
     vmware_vm_provisioning_validate_certs: no
+    vmware_vm_provisioning_state: present
 
     # Default template
     vmware_vm_provisioning_template: centos-7-template-esxi
