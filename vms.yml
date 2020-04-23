@@ -20,7 +20,15 @@
         - name: VM Network
           ip: 10.10.10.64
           netmask: 255.255.255.0
-      wait_for_ip_address: True
+      wait_for_ip_address: False
+      disk:
+      - size_gb: 50
+        type: thin
+        datastore: datastore
+      hardware:
+        memory_mb: 2048
+        num_cpus: 2
+        num_cpu_cores_per_socket: 1
       customization:
         domain: "{{ guest_domain }}"
         dns_servers:
