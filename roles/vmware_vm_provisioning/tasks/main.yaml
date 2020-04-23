@@ -1,6 +1,10 @@
 ---
+- name: Set variable with VM details
+  set_fact:
+    vmware_vm_provisioning_vm_tmpb: "{{ (vmware_vm_provisioning_vms | selectattr('name', 'match', '^%s$' % inventory_hostname) | list)[0] }}"
+    
 - debug:
-    msg: "{{ vmware_vm_provisioning_vms }}"
+    msg: "{{ vmware_vm_provisioning_vm_tmpb }}"
     
 - name: Set variable with VM details
   set_fact:
