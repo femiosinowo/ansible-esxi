@@ -1,0 +1,49 @@
+---
+
+- name: Create a VM from a template
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  - name: Clone the template
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      validate_certs: False
+      name: lb.ocp4-cluster-001.paosin.local
+      template: centos-7-template-esxi
+      datacenter: "{{ datacenter_name }}"
+      folder: /DC1/vm
+      state: poweredon
+      cluster: "{{ cluster_name }}"
+      networks:
+        - name: VM Network
+          ip: 10.10.10.64
+          netmask: 255.255.255.0
+      wait_for_ip_address: True
+      customization:
+        domain: "{{ guest_domain }}"
+        dns_servers:
+          - 10.10.10.11
+          - 8.8.8.8
+        dns_suffix:
+          - paosin.localm
+#- hosts: localhost
+#  roles:
+#    - vmware-harbor
+#  pre_tasks:
+#   - name: configure create vg for docker
+#     block:
+#      - name: partition /sdb
+#        command: parted --script /dev/sdb mklabel gpt mkpart primary 1MiB 100%
+#        args:
+#          creates: /dev/sdb1      
+#      #- name: Ensure Volume Group vg_docker Exist
+#      #  lvg:
+#      #   vg: "vg_docker"
+#      #   pvs: "/dev/sdb1"
+#     when: docker_storage_setup
+
+    
+
+
