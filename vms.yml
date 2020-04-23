@@ -62,4 +62,5 @@
   roles:
     - role: vmware_vm_provisioning
       tags: vmware_vm_provisioning
-      
+      when: >
+        inventory_hostname == 'localhost'      
