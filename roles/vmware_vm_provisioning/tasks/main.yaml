@@ -1,5 +1,5 @@
 ---
-- name: Set vmware_vm_provisioning_vm_tmpb
+- name: Set abc
   set_fact:
     vmware_vm_provisioning_vm_tmpb: "{{ (vmware_vm_provisioning_vms | selectattr('name', 'match', '^%s$' % inventory_hostname) | list)[0] }}"
     
