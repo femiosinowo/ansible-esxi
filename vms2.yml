@@ -1,0 +1,66 @@
+---
+- name: Deploying VMs to ESXI
+  hosts: localhost
+  #connection: local
+  gather_facts: no
+  vars:
+    # Default login details
+    vmware_vm_provisioning_hostname: "{{ vcenter_ip }}"
+    vmware_vm_provisioning_username: "{{ vcenter_username }}"
+    vmware_vm_provisioning_password: "{{ vcenter_password }}"
+    vmware_vm_provisioning_validate_certs: no
+    vmware_vm_provisioning_state: present
+
+    # Default template
+    vmware_vm_provisioning_template: centos-7-template-esxi
+
+    # Default HW configuration
+    vmware_vm_provisioning_hardware: &vmware_vm_provisioning_hardware
+      num_cpus: 2
+      memory_mb: 1024
+
+    # Disk configuration (size corresponds with the disk size from the template)
+    vmware_vm_provisioning_disk__image: &vmware_vm_provisioning_disk__image
+      size_gb: 15
+      autoselect_datastore: yes
+
+    # Default list of disks
+    vmware_vm_provisioning_disk:
+      - "{{ vmware_vm_provisioning_disk__image }}"
+
+    # Network configuration for MyNET1
+    vmware_vm_provisioning_networks__mynet1: &vmware_vm_provisioning_networks__mynet1
+      - name: VM Network
+        netmask: 255.255.255.0
+        gateway: 10.10.10.1
+
+    # DC1 - Cluster1
+    vmware_vm_provisioning__dc1_cluster1: &vmware_vm_provisioning__dc1_cluster1
+      datacenter: "{{ datacenter_name }}"
+      esxi_hostname: "{{ esxi_hostname }}"
+      folder: /
+
+    vmware_vm_provisioning_customization: &vmware_vm_provisioning_customization
+      domain: "{{ guest_domain }}"
+      dns_servers:
+        - 10.10.10.11
+        - 8.8.8.8
+      dns_suffix:
+        - paosin.locall
+      
+    # List of VMs to provision
+    vmware_vm_provisioning_vms:
+      # First VM
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: bootstrap.ocp4-cluster-001.paosin.local
+        state: present
+        networks:
+          # Include the default network configuration
+          - <<: *vmware_vm_provisioning_networks__mynet1
+            # And jsut add the IP
+            ip: 10.10.10.58
+  roles:
+    - role: vmware_vm_provisioning
+      tags: vmware_vm_provisioning
+      when: >
+        inventory_hostname == 'localhost'      
