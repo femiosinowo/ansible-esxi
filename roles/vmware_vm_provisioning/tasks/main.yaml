@@ -184,7 +184,7 @@
         port: "{{ vmware_vm_provisioning_vm.port | default(vmware_vm_provisioning_port | default(omit)) }}"
         resource_pool: "{{ vmware_vm_provisioning_vm.resource_pool | default(vmware_vm_provisioning_resource_pool | default(omit)) }}"
         snapshot_src: "{{ vmware_vm_provisioning_vm.snapshot_src | default(vmware_vm_provisioning_snapshot_src | default(omit)) }}"
-        state: present
+        state: poweredon
         state_change_timeout: "{{ vmware_vm_provisioning_vm.state_change_timeout | default(vmware_vm_provisioning_state_change_timeout | default(omit)) }}"
         template: "{{ vmware_vm_provisioning_vm.template | default(vmware_vm_provisioning_template | default(omit)) }}"
         username: "{{ vmware_vm_provisioning_vm.username | default(vmware_vm_provisioning_username | default(omit)) }}"
