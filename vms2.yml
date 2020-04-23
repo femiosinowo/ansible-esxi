@@ -21,7 +21,7 @@
 
     # Disk configuration (size corresponds with the disk size from the template)
     vmware_vm_provisioning_disk__image: &vmware_vm_provisioning_disk__image
-      size_gb: 15
+      size_gb: 18
       autoselect_datastore: yes
 
     # Default list of disks
@@ -53,7 +53,6 @@
       # First VM
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: bootstrap.ocp4-cluster-001.paosin.local
-        state: present
         networks:
           # Include the default network configuration
           - <<: *vmware_vm_provisioning_networks__mynet1
@@ -61,6 +60,4 @@
             ip: 10.10.10.58
   roles:
     - role: vmware_vm_provisioning
-      tags: vmware_vm_provisioning
-      when: >
-        inventory_hostname == 'localhost'      
+      tags: vmware_vm_provisioning      

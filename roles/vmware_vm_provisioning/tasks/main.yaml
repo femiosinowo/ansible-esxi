@@ -1,10 +1,7 @@
 ---
-- debug:
-    msg: System {{ inventory_hostname }}
-    
 - name: Set variable with VM details
   set_fact:
-    vmware_vm_provisioning_vm_tmp: "{{ (vmware_vm_provisioning_vms | selectattr('name', 'match', '^%s$' % inventory_hostname) | list)[0] }}"
+    vmware_vm_provisioning_vm_tmp: "{{ (vmware_vm_provisioning_vms | list)[0] }}"
   when: >
     vmware_vm_provisioning_vms | selectattr('name', 'match', '^%s$' % inventory_hostname) | list | length > 0
 
