@@ -1,6 +1,6 @@
 ---
 - name: Deploying VMs to ESXI
-  hosts: all
+  hosts: localhost
   connection: local
   gather_facts: no
   vars:
