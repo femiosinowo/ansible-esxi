@@ -1,7 +1,7 @@
 ---
 - name: Deploying VMs to ESXI
-  hosts: all
-  connection: local
+  hosts: localhost
+  #connection: local
   gather_facts: no
   vars:
     # Default login details
