@@ -23,7 +23,7 @@
           gateway: 10.10.10.1
       wait_for_ip_address: False
       disk:
-      - size_gb: 15
+      - size_gb: 17
         type: thin
         datastore: datastore
       hardware:
