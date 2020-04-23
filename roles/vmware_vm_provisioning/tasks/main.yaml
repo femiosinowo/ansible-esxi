@@ -197,7 +197,7 @@
             'state' not in vmware_vm_provisioning_vm or
             vmware_vm_provisioning_vm.state != 'absent'
         ) and vmware_vm_provisioning_state != 'absent'
-
+      with_items: "{{ vmware_vm_provisioning_vms }}"
     - name: Change VM state
       local_action:
         module: vmware_guest
