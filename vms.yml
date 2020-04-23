@@ -13,7 +13,7 @@
       name: lb.ocp4-cluster-001.paosin.local
       template: centos-7-template-esxi
       datacenter: "{{ datacenter_name }}"
-      folder: /DC1/vm
+      folder: /
       state: poweredon
       esxi_hostname: "{{ esxi_hostname }}"
       networks:
