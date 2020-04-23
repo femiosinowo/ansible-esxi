@@ -20,6 +20,7 @@
         - name: VM Network
           ip: 10.10.10.64
           netmask: 255.255.255.0
+          gateway: 10.10.10.1
       wait_for_ip_address: False
       disk:
       - size_gb: 50
