@@ -15,7 +15,7 @@
       datacenter: "{{ datacenter_name }}"
       folder: /DC1/vm
       state: poweredon
-      cluster: "{{ cluster_name }}"
+      esxi_hostname: "{{ esxi_hostname }}"
       networks:
         - name: VM Network
           ip: 10.10.10.64
