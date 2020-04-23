@@ -1,9 +1,9 @@
 ---
 - name: Set variable with VM details
   set_fact:
-    vmware_vm_provisioning_vm_tmp: "{{ (vmware_vm_provisioning_vms | list)[0] }}"
+    vmware_vm_provisioning_vm_tmp: "{{ (vmware_vm_provisioning_vms | selectattr('name', 'match', '^%s$' % inventory_hostname) | list)[0] }}"
   when: >
-    vmware_vm_provisioning_vms | list | length > 0
+    vmware_vm_provisioning_vms | selectattr('name', 'match', '^%s$' % inventory_hostname) | list | length > 0
 
 - block:
     - name: Check if the VM already exists
@@ -197,7 +197,7 @@
             'state' not in vmware_vm_provisioning_vm or
             vmware_vm_provisioning_vm.state != 'absent'
         ) and vmware_vm_provisioning_state != 'absent'
-      with_items: "{{ vmware_vm_provisioning_vms }}"
+     # with_items: "{{ vmware_vm_provisioning_vms }}"
     - name: Change VM state
       local_action:
         module: vmware_guest
