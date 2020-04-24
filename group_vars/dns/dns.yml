@@ -29,7 +29,7 @@ bind_zone_networks:
   - "10.10.10"
 
 bind_zone_domains:
-  - name: ocp.local
+  - name: ocp4-cluster-001.ocp.local
     networks:
     - "10.10.12"
     services:
