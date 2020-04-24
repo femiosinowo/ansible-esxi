@@ -125,7 +125,21 @@ bind_zone_domains:
         ip: 10.10.10.77 
       - name: ocp-glusterfs3
         ip: 10.10.10.78 
-
+        
+      - name: ocp4-lb.cluster-001
+        ip: 10.10.10.58
+      - name: ocp4-bootstrap.cluster-001
+        ip: 10.10.10.59
+      - name: ocp4-control-plane-0.cluster-001
+        ip: 10.10.10.60 
+      - name: ocp4-control-plane-1.cluster-001
+        ip: 10.10.10.61 
+      - name: ocp4-control-plane-2.cluster-001
+        ip: 10.10.10.62 
+      - name: ocp4-compute-0.cluster-001
+        ip: 10.10.10.63
+      - name: ocp4-compute-1.cluster-001
+        ip: 10.10.10.64 
         
     
 
