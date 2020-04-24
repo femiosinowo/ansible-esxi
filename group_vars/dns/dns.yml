@@ -29,6 +29,20 @@ bind_zone_networks:
   - "10.10.10"
 
 bind_zone_domains:
+  - name: ocp.local
+    networks:
+    - "10.10.12"
+    hosts:
+      - name: '@'
+        ip: 10.10.10.11
+    ### Openshift
+      - name: '*.apps.ocp4-cluster-001.ocp.local 300'
+        ip: 10.10.10.58
+        donotadd_reverse: true
+      - name: '*'
+        ip: 10.10.10.58
+        donotadd_reverse: true
+                            
   - name: kube.local
     networks:
     - "10.10.11"
@@ -100,9 +114,9 @@ bind_zone_domains:
       - name: '*.apps.paosin.local 300'
         ip: 10.10.10.80
         donotadd_reverse: true
-      - name: '*.kube.paosin.local 300'
-        ip: 10.10.10.40
-        donotadd_reverse: true
+#      - name: '*.kube.paosin.local 300'
+#        ip: 10.10.10.40
+#        donotadd_reverse: true
     ### Openshift
       - name: '*'
         ip: 10.10.10.80
@@ -165,10 +179,7 @@ bind_zone_domains:
         ip: 10.10.10.63
       - name: compute-1.ocp4-cluster-001
         ip: 10.10.10.64 
-    ### Openshift
-      - name: '*.apps.ocp4-cluster-001.paosin.local 300'
-        ip: 10.10.10.58
-        donotadd_reverse: true        
+   
     
 
 gateway: 10.10.10.1
