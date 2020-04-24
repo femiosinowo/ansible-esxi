@@ -152,7 +152,10 @@ bind_zone_domains:
         ip: 10.10.10.63
       - name: compute-1.ocp4-cluster-001
         ip: 10.10.10.64 
-        
+    ### Openshift
+      - name: '*.apps.ocp4-cluster-001.paosin.local 300'
+        ip: 10.10.10.58
+        donotadd_reverse: true        
     
 
 gateway: 10.10.10.1
