@@ -32,6 +32,19 @@ bind_zone_domains:
   - name: ocp.local
     networks:
     - "10.10.12"
+    services:
+      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
+        weight: 10
+        port: 2380
+        target: etcd-0.ocp4-cluster-001
+      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
+        weight: 10
+        port: 2380
+        target: etcd-1.ocp4-cluster-001
+      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
+        weight: 10
+        port: 2380
+        target: etcd-2.ocp4-cluster-001
     hosts:
       - name: '@'
         ip: 10.10.10.11
