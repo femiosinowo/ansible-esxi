@@ -29,6 +29,61 @@ bind_zone_networks:
   - "10.10.10"
 
 bind_zone_domains:
+  - name: ocp4-cluster-001.ocp.local
+    networks:
+    - "10.10.12"
+    services:
+      - name: _etcd-server-ssl._tcp
+        weight: 10
+        port: 2380
+        target: etcd-0
+      - name: _etcd-server-ssl._tcp
+        weight: 10
+        port: 2380
+        target: etcd-1
+      - name: _etcd-server-ssl._tcp
+        weight: 10
+        port: 2380
+        target: etcd-2
+    hosts:
+      - name: '@'
+        ip: 10.10.10.11
+    ### Openshift4
+      - name: '*.apps.ocp4-cluster-001.ocp.local 300'
+        ip: 10.10.10.58
+        donotadd_reverse: true
+      - name: '*'
+        ip: 10.10.10.58
+        donotadd_reverse: true
+      - name: api
+        ip: 10.10.10.58           
+      - name: api-int
+        ip: 10.10.10.58                  
+      - name: lb
+        ip: 10.10.10.58
+        
+      - name: control-plane-0
+        ip: 10.10.10.60 
+      - name: control-plane-1
+        ip: 10.10.10.61 
+      - name: control-plane-2
+        ip: 10.10.10.62 
+        
+      - name: bootstrap
+        ip: 10.10.10.59
+        
+      - name: etcd-0
+        ip: 10.10.10.60 
+      - name: etcd-1
+        ip: 10.10.10.61 
+      - name: etcd-2
+        ip: 10.10.10.62 
+        
+      - name: compute-0
+        ip: 10.10.10.63
+      - name: compute-1
+        ip: 10.10.10.64 
+                                    
   - name: kube.local
     networks:
     - "10.10.11"
@@ -46,19 +101,6 @@ bind_zone_domains:
   - name: paosin.local
     networks:
     - "10.10.10"
-    services:
-      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
-        weight: 10
-        port: 2380
-        target: etcd-0.ocp4-cluster-001
-      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
-        weight: 10
-        port: 2380
-        target: etcd-1.ocp4-cluster-001
-      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
-        weight: 10
-        port: 2380
-        target: etcd-2.ocp4-cluster-001
     hosts:
       - name: '@'
         ip: 10.10.10.11
@@ -100,9 +142,9 @@ bind_zone_domains:
       - name: '*.apps.paosin.local 300'
         ip: 10.10.10.80
         donotadd_reverse: true
-      - name: '*.kube.paosin.local 300'
-        ip: 10.10.10.40
-        donotadd_reverse: true
+#      - name: '*.kube.paosin.local 300'
+#        ip: 10.10.10.40
+#        donotadd_reverse: true
     ### Openshift
       - name: '*'
         ip: 10.10.10.80
@@ -137,38 +179,8 @@ bind_zone_domains:
       - name: ocp-glusterfs3
         ip: 10.10.10.78 
 
-      - name: api.ocp4-cluster-001
-        ip: 10.10.10.58           
-      - name: api-int.ocp4-cluster-001
-        ip: 10.10.10.58                  
-      - name: lb.ocp4-cluster-001
-        ip: 10.10.10.58
-        
-      - name: control-plane-0.ocp4-cluster-001
-        ip: 10.10.10.60 
-      - name: control-plane-1.ocp4-cluster-001
-        ip: 10.10.10.61 
-      - name: control-plane-2.ocp4-cluster-001
-        ip: 10.10.10.62 
-        
-      - name: bootstrap.ocp4-cluster-001
-        ip: 10.10.10.59
-        
-      - name: etcd-0.ocp4-cluster-001
-        ip: 10.10.10.60 
-      - name: etcd-1.ocp4-cluster-001
-        ip: 10.10.10.61 
-      - name: etcd-2.ocp4-cluster-001
-        ip: 10.10.10.62 
-        
-      - name: compute-0.ocp4-cluster-001
-        ip: 10.10.10.63
-      - name: compute-1.ocp4-cluster-001
-        ip: 10.10.10.64 
-    ### Openshift
-      - name: '*.apps.ocp4-cluster-001.paosin.local 300'
-        ip: 10.10.10.58
-        donotadd_reverse: true        
+
+   
     
 
 gateway: 10.10.10.1
