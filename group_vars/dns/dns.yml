@@ -108,8 +108,6 @@ bind_zone_domains:
         ip: 10.10.10.11
       - name: vcenter
         ip: 10.10.10.6
-      - name: ansible
-        ip: 10.10.10.21
       - name: awx-ansible
         ip: 10.10.10.22
       - name: harbor
@@ -122,10 +120,6 @@ bind_zone_domains:
         ip: 10.10.10.25
       - name: k8s-master1
         ip: 10.10.10.30
-      - name: k8s-master2
-        ip: 10.10.10.31
-      - name: k8s-router
-        ip: 10.10.10.40
       - name: k8s-node1
         ip: 10.10.10.32
       - name: k8s-node2

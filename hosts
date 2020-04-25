@@ -1,3 +1,39 @@
+[awx-servers]
+awx-ansible.paosin.local  ansible_ssh_host=10.10.10.22
+
+[harbor]
+harbor.paosin.local ansible_ssh_host=10.10.10.23
+
+[gogs]
+gogs.paosin.local ansible_ssh_host=10.10.10.24
+
+[postgresql-servers]
+postgresql.paosin.local ansible_ssh_host=10.10.10.27
+
+[jenkins-servers]
+jenkins.paosin.local ansible_ssh_host=10.10.10.25
+
+[media-servers]
+emby.paosin.local ansible_ssh_host=10.10.10.102
+plex.paosin.local ansible_ssh_host=10.10.10.101
+        
+[ocp4-workers]
+compute-0.ocp4-cluster-001.ocp.local
+compute-1.ocp4-cluster-001.ocp.local
+
+[ocp4-masters]
+control-plane-0.ocp4-cluster-001.ocp.local
+control-plane-1.ocp4-cluster-001.ocp.local
+control-plane-2.ocp4-cluster-001.ocp.local
+
+[ocp4-lbs]
+ocp4-lb.ocp4-cluster-001.ocp.local
+
+[ocp4:children]
+ocp4-workers
+ocp4-masters
+ocp4-lbs
+
 [k8s-masters]
 k8s-master1.paosin.local ansible_ssh_host=10.10.10.30 ansible_user=root
 k8s-master2.paosin.local ansible_ssh_host=10.10.10.31 ansible_user=root
