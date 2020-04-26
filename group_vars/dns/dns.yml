@@ -83,8 +83,8 @@ bind_zone_domains:
         ip: 10.10.10.63
       - name: compute-1.ocp4-cluster-001
         ip: 10.10.10.64 
-      #- name: masterdns
-      #  ip: 10.10.10.11
+      - name: masterdns.ocp4-cluster-001
+        ip: 10.10.10.11
                                     
   - name: kube.local
     networks:
