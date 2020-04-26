@@ -52,9 +52,9 @@ bind_zone_domains:
       - name: '*.apps.ocp4-cluster-001.ocp.local 300'
         ip: 10.10.10.58
         donotadd_reverse: true
-      - name: '*'
-        ip: 10.10.10.58
-        donotadd_reverse: true
+#      - name: '*'
+#        ip: 10.10.10.58
+#        donotadd_reverse: true
       - name: api
         ip: 10.10.10.58           
       - name: api-int
@@ -83,6 +83,8 @@ bind_zone_domains:
         ip: 10.10.10.63
       - name: compute-1
         ip: 10.10.10.64 
+      - name: masterdns
+        ip: 10.10.10.11
                                     
   - name: kube.local
     networks:
@@ -93,6 +95,8 @@ bind_zone_domains:
       - name: '*.apps.kube.local 300'
         ip: 10.10.10.40
         donotadd_reverse: true
+#      - name: masterdns
+#        ip: 10.10.10.11
     ### kube
       - name: '*'
         ip: 10.10.10.40
