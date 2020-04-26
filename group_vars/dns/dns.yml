@@ -204,7 +204,7 @@ bind_zone_domains:
         ip: 10.10.10.58           
       - name: api-int.ocp-v4
         ip: 10.10.10.58                  
-      - name: lb.ocp4
+      - name: lb.ocp4-v4
         ip: 10.10.10.58
         
       - name: control-plane-0.ocp-v4
