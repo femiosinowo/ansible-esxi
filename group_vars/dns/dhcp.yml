@@ -6,9 +6,10 @@ dhcp_subnets:
       - 8.8.8.8
     range_begin: 10.10.10.150
     range_end: 10.10.10.252
+    routers: 10.10.10.1
     
 dhcp_global_ntp_servers:
  - 10.10.10.11
 
-#dhcp_global_routers:
-# - 10.10.10.1
+dhcp_global_routers:
+ - "10.10.10.1"
