@@ -109,15 +109,15 @@ bind_zone_domains:
       - name: _etcd-server-ssl._tcp.ocp-v4
         weight: 10
         port: 2380
-        target: etcd-0.ocp4.paosin.local
+        target: etcd-0.ocp-v4.paosin.local
       - name: _etcd-server-ssl._tcp.ocp-v4
         weight: 10
         port: 2380
-        target: etcd-1.ocp4.paosin.local
+        target: etcd-1.ocp-v4.paosin.local
       - name: _etcd-server-ssl._tcp.ocp-v4
         weight: 10
         port: 2380
-        target: etcd-2.ocp4.paosin.local
+        target: etcd-2.ocp-v4.paosin.local
     hosts:
       - name: '@'
         ip: 10.10.10.11
@@ -204,7 +204,7 @@ bind_zone_domains:
         ip: 10.10.10.58           
       - name: api-int.ocp-v4
         ip: 10.10.10.58                  
-      - name: lb.ocp4-v4
+      - name: lb.ocp-v4
         ip: 10.10.10.58
         
       - name: control-plane-0.ocp-v4
