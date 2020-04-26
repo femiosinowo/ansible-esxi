@@ -90,17 +90,17 @@ bind_zone_domains:
     networks:
     - "10.10.11"
     hosts:
-      - name: '@'
-        ip: 10.10.10.11
-      - name: '*.apps.kube.local 300'
-        ip: 10.10.10.40
-        donotadd_reverse: true
-#      - name: masterdns
+#      - name: '@'
 #        ip: 10.10.10.11
-    ### kube
-      - name: '*'
+      - name: '*.apps 300'
         ip: 10.10.10.40
         donotadd_reverse: true
+      - name: masterdns
+        ip: 10.10.10.11
+    ### kube
+#      - name: '*'
+#        ip: 10.10.10.40
+#        donotadd_reverse: true
 
   - name: paosin.local
     networks:
@@ -137,16 +137,16 @@ bind_zone_domains:
       - name: plex
         ip: 10.10.10.101          
     ### Openshift
-      - name: '*.apps.paosin.local 300'
+      - name: '*.apps 300'
         ip: 10.10.10.80
         donotadd_reverse: true
 #      - name: '*.kube.paosin.local 300'
 #        ip: 10.10.10.40
 #        donotadd_reverse: true
     ### Openshift
-      - name: '*'
-        ip: 10.10.10.80
-        donotadd_reverse: true
+#      - name: '*'
+#        ip: 10.10.10.80
+#        donotadd_reverse: true
                
       - name: ocp-infra1
         ip: 10.10.10.80
@@ -176,10 +176,6 @@ bind_zone_domains:
         ip: 10.10.10.77 
       - name: ocp-glusterfs3
         ip: 10.10.10.78 
-
-
-   
-    
 
 gateway: 10.10.10.1
 vlan_id: 1
