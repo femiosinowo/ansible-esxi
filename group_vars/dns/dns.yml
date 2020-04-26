@@ -189,7 +189,10 @@ bind_zone_domains:
         ip: 10.10.10.77 
       - name: ocp-glusterfs3
         ip: 10.10.10.78 
-        
+   ### K8s domain     
+      - name: '*.apps.k8s 300'
+        ip: 10.10.10.40
+        donotadd_reverse: true
     ### Openshift4
       - name: '*.apps.ocp4 300'
         ip: 10.10.10.58
