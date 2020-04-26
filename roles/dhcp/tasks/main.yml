@@ -58,7 +58,7 @@
     owner: root
     group: root
     mode: 0644
-    validate: 'dhcpd -t -cf %s'
+    #validate: 'dhcpd -t -cf %s'
   notify: restart dhcp
   tags: dhcp
 
