@@ -1,5 +1,3 @@
-booting: yes
-
 dhcp_subnets:
   - ip: 10.10.10.0
     netmask: 255.255.255.0
@@ -8,16 +6,9 @@ dhcp_subnets:
       - 8.8.8.8
     range_begin: 10.10.10.150
     range_end: 10.10.10.252
-    routers: 10.10.10.1
-    default_lease_time: 3600
-    max_lease_time: 7200
     
 dhcp_global_ntp_servers:
  - 10.10.10.11
 
-dhcp_global_domain_name_servers:
-  - 10.10.10.11
-  - 8.8.8.8
-  
 dhcp_global_routers:
  - 10.10.10.1
