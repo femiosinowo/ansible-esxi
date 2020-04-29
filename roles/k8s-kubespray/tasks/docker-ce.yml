@@ -33,13 +33,19 @@
   command:  /usr/bin/container-storage-setup
  # ignore_errors: yes
 
-- name: "Create Docker Storage Daemon"
-  copy:
-    src: docker/daemon.json
-    dest: /etc/docker/daemon.json
       
 - name: enable and start docker 
   service: 
    name: docker 
    state: started  
    enabled: yes  
+   
+- name: "Create Docker Storage Daemon"
+  copy:
+    src: docker/daemon.json
+    dest: /etc/docker/daemon.json
+    
+- name: enable and start docker 
+  service: 
+   name: docker 
+   state: restarted  
