@@ -17,9 +17,32 @@
     - python36 
     - python36-pip
     - rhel-system-roles
+    - kubelet 
+    - kubeadm 
+    - kubectl
+    - glusterfs-fuse     
   ignore_errors: True
   
-
+- name: Remove swapfile from /etc/fstab
+  mount:
+    name: swap
+    fstype: swap
+    state: absent
+    
+- name: Disable swap
+  command: swapoff -a
+  
+- name: adding sysctl for kube
+  sysctl:
+    name: "{{ item }}"
+    sysctl_file: /etc/sysctl.d/k8s.conf
+    value: 1
+    state: present
+  loop:
+    - net.bridge.bridge-nf-call-ip6tables
+    - net.bridge.bridge-nf-call-iptables
+  ignore_errors: True 
+  
 
 - name: execute the role and catch errors
   block:
@@ -37,7 +60,7 @@
 
   - name: reapply the role
     include_role:
-      name: rhel-system-roles.selinux
+      name: linux-system-roles.selinux
 
 - name: disable firewalld
   service:
