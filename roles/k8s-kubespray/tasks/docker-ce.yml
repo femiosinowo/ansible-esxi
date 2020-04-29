@@ -20,14 +20,11 @@
 - name: yum install docker-ce
   yum:
     name: "{{ item }}"
-    state: "18.09"
+    state: present
   loop:
-    - docker-ce
+    - docker-ce-18.09
 
-#- name: setup docker-storage
-#  import_tasks: volume_docker_setup.yml
-# when: docker_storage_setup
-    
+
 - name: enable and start docker 
   service: 
    name: docker 
