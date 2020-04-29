@@ -7,7 +7,7 @@
 - name: Install Docker
   yum: 
    name: docker
-   state: present
+   state: absent
 
 
 - name: "Create Docker Storage Daemon"
