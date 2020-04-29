@@ -4,6 +4,21 @@
   args:
     creates: /etc/yum.repos.d/docker-ce.repo 
 
+- name: Install Docker
+  yum: 
+   name: docker
+   state: present
+
+
+- name: "Create Docker Storage Daemon"
+  copy:
+    src: docker/docker-storage-setup
+    dest: /etc/sysconfig/docker-storage-setup 
+
+    
+- name:  Run Docker Storage Setup
+  command: /usr/bin/docker-storage-setup
+  ignore_errors: yes
 
 - name: yum install packages for k8s
   yum:

@@ -48,8 +48,9 @@
 
 
 - include_tasks: mounts.yml
+- include_tasks: docker-ce.yml
   when: docker_storage_setup
   
-- include_tasks: docker-ce.yml
+
 
    

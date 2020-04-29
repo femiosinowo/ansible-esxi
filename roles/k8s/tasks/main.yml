@@ -88,7 +88,7 @@
       name: rhel-system-roles.selinux
 
 
-- include_tasks: volume_docker_setup.yml
-  when: docker_storage_setup
+#- include_tasks: volume_docker_setup.yml
+#  when: docker_storage_setup
 
    
