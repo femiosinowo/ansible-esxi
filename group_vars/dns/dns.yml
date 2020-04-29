@@ -90,17 +90,17 @@ bind_zone_domains:
     networks:
     - "10.10.11"
     hosts:
-#      - name: '@'
-#        ip: 10.10.10.11
+      - name: '@'
+        ip: 10.10.10.11
       - name: '*.apps 300'
         ip: 10.10.10.40
         donotadd_reverse: true
       - name: masterdns
         ip: 10.10.10.11
     ### kube
-#      - name: '*'
-#        ip: 10.10.10.40
-#        donotadd_reverse: true
+      - name: '*'
+        ip: 10.10.10.40
+        donotadd_reverse: true
 
   - name: paosin.local
     networks:
