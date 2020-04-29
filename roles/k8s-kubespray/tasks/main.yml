@@ -67,7 +67,11 @@
     name: firewalld
     state: stopped
     enabled: false
-
+    
+- name: enable kubelet
+  service:
+    name: kubelet
+    enabled: true
 
 
 - include_tasks: mounts.yml
