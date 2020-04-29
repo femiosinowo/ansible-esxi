@@ -46,16 +46,10 @@
         - 10.10.10.11
         - 8.8.8.8
       dns_suffix:
-        - paosin.locall
+        - paosin.local
       
     # List of VMs to provision
     vmware_vm_provisioning_vms:
-      - <<: *vmware_vm_provisioning__dc1_cluster1
-        name: ocp4-lb.cluster-001.paosin.local
-        networks:
-          - <<: *vmware_vm_provisioning_networks__mynet1
-            ip: 10.10.10.58
-      # Second VM
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: ocp4-bootstrap.cluster-001.paosin.local
         networks:
@@ -70,6 +64,71 @@
           - size_gb: 50
             type: thin
             autoselect_datastore: yes
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: k8s-master1.paosin.local
+        networks:
+          # Include the default network configuration
+          - <<: *vmware_vm_provisioning_networks__mynet1
+            # And jsut add the IP
+            ip: 10.10.10.30
+        disks:
+          # Include the default disk configuration
+          - <<: *vmware_vm_provisioning_disk__image
+          # Add one more disk (500G)
+          - size_gb: 50
+            type: thin
+            autoselect_datastore: yes
+        hardware:
+          # Include the default hardware settings
+          <<: *vmware_vm_provisioning_hardware
+          # And override memory size
+          memory_mb: 8192
+          # And add one more additional option
+          num_cpus: 2
+          
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: k8s-node1.paosin.local
+        networks:
+          # Include the default network configuration
+          - <<: *vmware_vm_provisioning_networks__mynet1
+            # And jsut add the IP
+            ip: 10.10.10.31
+        disks:
+          # Include the default disk configuration
+          - <<: *vmware_vm_provisioning_disk__image
+          # Add one more disk (500G)
+          - size_gb: 50
+            type: thin
+            autoselect_datastore: yes
+        hardware:
+          # Include the default hardware settings
+          <<: *vmware_vm_provisioning_hardware
+          # And override memory size
+          memory_mb: 16384
+          # And add one more additional option
+          num_cpus: 2
+          
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: k8s-node2.paosin.local
+        networks:
+          # Include the default network configuration
+          - <<: *vmware_vm_provisioning_networks__mynet1
+            # And jsut add the IP
+            ip: 10.10.10.32
+        disks:
+          # Include the default disk configuration
+          - <<: *vmware_vm_provisioning_disk__image
+          # Add one more disk (500G)
+          - size_gb: 50
+            type: thin
+            autoselect_datastore: yes
+        hardware:
+          # Include the default hardware settings
+          <<: *vmware_vm_provisioning_hardware
+          # And override memory size
+          memory_mb: 16384
+          # And add one more additional option
+          num_cpus: 4
   roles:
     - role: vmware_vm_provisioning
       tags: vmware_vm_provisioning      
