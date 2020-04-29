@@ -38,7 +38,7 @@
     vmware_vm_provisioning__dc1_cluster1: &vmware_vm_provisioning__dc1_cluster1
       datacenter: "{{ datacenter_name }}"
       esxi_hostname: "{{ esxi_hostname }}"
-      cluster: "{{ cluster }}"
+      #cluster: "{{ cluster }}"
       folder: /
 
     vmware_vm_provisioning_customization: &vmware_vm_provisioning_customization
