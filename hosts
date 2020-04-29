@@ -38,9 +38,9 @@ ocp4-lbs
 k8s-master1.paosin.local ansible_ssh_host=10.10.10.30 ansible_user=root
 
 [k8s-nodes]
-k8s-node1.paosin.local ansible_ssh_host=10.10.10.32
-k8s-node2.paosin.local ansible_ssh_host=10.10.10.33
-#k8s-node3.paosin.local ansible_ssh_host=10.10.10.34
+k8s-node1.paosin.local ansible_ssh_host=10.10.10.31
+k8s-node2.paosin.local ansible_ssh_host=10.10.10.32
+
 
 
 [dns]
