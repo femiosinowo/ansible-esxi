@@ -45,9 +45,11 @@
     state: stopped
     enabled: false
 
-- include_tasks: docker-ce.yml
+
 
 - include_tasks: mounts.yml
   when: docker_storage_setup
+  
+- include_tasks: docker-ce.yml
 
    

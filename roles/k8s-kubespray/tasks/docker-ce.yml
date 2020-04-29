@@ -11,8 +11,7 @@
     state: latest
   loop:
     - yum-utils 
-    - device-mapper-persistent-
-    - data 
+    - device-mapper-persistent-data 
     - lvm2
   ignore_errors: True
   
