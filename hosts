@@ -1,3 +1,6 @@
+[apim]
+apim.paosin.local  ansible_ssh_host=10.10.10.45
+
 [awx-servers]
 awx-ansible.paosin.local  ansible_ssh_host=10.10.10.22
 
