@@ -1,5 +1,5 @@
 [apim]
-apim.paosin.local  ansible_ssh_host=10.10.10.45
+apim.paosin.local  ansible_ssh_host=10.10.10.46
 
 [awx-servers]
 awx-ansible.paosin.local  ansible_ssh_host=10.10.10.22

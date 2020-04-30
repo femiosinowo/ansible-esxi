@@ -57,7 +57,7 @@
           # Include the default network configuration
           - <<: *vmware_vm_provisioning_networks__mynet1
             # And jsut add the IP
-            ip: 10.10.10.45
+            ip: 10.10.10.46
         disks:
           # Include the default disk configuration
           - <<: *vmware_vm_provisioning_disk__image
