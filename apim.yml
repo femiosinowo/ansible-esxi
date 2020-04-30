@@ -1,0 +1,10 @@
+---
+- hosts: apim
+  force_handlers: True
+  roles:
+    - apim
+
+
+    
+
+
