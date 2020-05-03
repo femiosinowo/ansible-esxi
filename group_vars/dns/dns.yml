@@ -28,7 +28,23 @@ bind_zone_name_servers:
 bind_zone_networks:
   - "10.10.10"
 
-bind_zone_domains:                               
+bind_zone_domains:    
+  - name: k8s-2.local
+    networks:
+    - "10.10.12"
+    hosts:
+      - name: '@'
+        ip: 10.10.10.11
+      - name: '*.apps 300'
+        ip: 10.10.10.37
+        donotadd_reverse: true
+      - name: masterdns
+        ip: 10.10.10.11
+    ### kube
+      - name: '*'
+        ip: 10.10.10.37
+        donotadd_reverse: true
+                                   
   - name: kube.local
     networks:
     - "10.10.11"
