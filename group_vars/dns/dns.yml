@@ -28,64 +28,7 @@ bind_zone_name_servers:
 bind_zone_networks:
   - "10.10.10"
 
-bind_zone_domains:
-  - name: ocp.local
-    networks:
-    - "10.10.12"
-    services:
-      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
-        weight: 10
-        port: 2380
-        target: etcd-0.ocp4-cluster-001.ocp.local
-      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
-        weight: 10
-        port: 2380
-        target: etcd-1.ocp4-cluster-001.ocp.local
-      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
-        weight: 10
-        port: 2380
-        target: etcd-2.ocp4-cluster-001.ocp.local
-    hosts:
-#      - name: '@'
-#        ip: 10.10.10.11
-    ### Openshift4
-      - name: '*.apps.ocp4-cluster-001 300'
-        ip: 10.10.10.58
-        donotadd_reverse: true
-#      - name: '*'
-#        ip: 10.10.10.58
-#        donotadd_reverse: true
-      - name: api.ocp4-cluster-001
-        ip: 10.10.10.58           
-      - name: api-int.ocp4-cluster-001
-        ip: 10.10.10.58                  
-      - name: lb.ocp4-cluster-001
-        ip: 10.10.10.58
-        
-      - name: control-plane-0.ocp4-cluster-001
-        ip: 10.10.10.60 
-      - name: control-plane-1.ocp4-cluster-001
-        ip: 10.10.10.61 
-      - name: control-plane-2.ocp4-cluster-001
-        ip: 10.10.10.62 
-        
-      - name: bootstrap.ocp4-cluster-001
-        ip: 10.10.10.59
-        
-      - name: etcd-0.ocp4-cluster-001
-        ip: 10.10.10.60 
-      - name: etcd-1.ocp4-cluster-001
-        ip: 10.10.10.61 
-      - name: etcd-2.ocp4-cluster-001
-        ip: 10.10.10.62 
-        
-      - name: compute-0.ocp4-cluster-001
-        ip: 10.10.10.63
-      - name: compute-1.ocp4-cluster-001
-        ip: 10.10.10.64 
-      - name: masterdns
-        ip: 10.10.10.11
-                                    
+bind_zone_domains:                               
   - name: kube.local
     networks:
     - "10.10.11"
@@ -137,12 +80,14 @@ bind_zone_domains:
         ip: 10.10.10.25
       - name: k8s-master1
         ip: 10.10.10.30
+      - name: k8s-master1-cluster-02
+        ip: 10.10.10.35
       - name: k8s-node1
         ip: 10.10.10.32
       - name: k8s-node2
         ip: 10.10.10.33
-      - name: k8s-node3
-        ip: 10.10.10.34
+      - name: k8s-node1-cluster-02
+        ip: 10.10.10.36
       - name: apim
         ip: 10.10.10.46
       - name: ocp-nfs
