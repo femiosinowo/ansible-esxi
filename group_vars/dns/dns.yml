@@ -45,37 +45,53 @@ bind_zone_domains:
         ip: 10.10.10.37
         donotadd_reverse: true
 
-  - name: k8s-istio.local
+  - name: k8s-cluster-001.local
     networks:
     - "10.10.13"
     hosts:
       - name: '@'
         ip: 10.10.10.11
       - name: '*.apps 300'
-        ip: 10.10.10.38
+        ip: 10.10.10.41
         donotadd_reverse: true
       - name: masterdns
         ip: 10.10.10.11
     ### kube
       - name: '*'
-        ip: 10.10.10.38
+        ip: 10.10.10.41
         donotadd_reverse: true
-                                           
-  - name: kube.local
+
+  - name: k8s-cluster-002.local
     networks:
-    - "10.10.11"
+    - "10.10.14"
     hosts:
       - name: '@'
         ip: 10.10.10.11
       - name: '*.apps 300'
-        ip: 10.10.10.40
+        ip: 10.10.10.38
         donotadd_reverse: true
       - name: masterdns
         ip: 10.10.10.11
     ### kube
       - name: '*'
-        ip: 10.10.10.40
+        ip: 10.10.10.38
         donotadd_reverse: true
+                                                   
+#  - name: kube.local
+#    networks:
+#    - "10.10.11"
+#    hosts:
+#      - name: '@'
+#        ip: 10.10.10.11
+#      - name: '*.apps 300'
+#        ip: 10.10.10.40
+#        donotadd_reverse: true
+#      - name: masterdns
+#        ip: 10.10.10.11
+#    ### kube
+#      - name: '*'
+#        ip: 10.10.10.40
+#        donotadd_reverse: true
 
   - name: paosin.local
     networks:
