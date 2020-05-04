@@ -44,7 +44,23 @@ bind_zone_domains:
       - name: '*'
         ip: 10.10.10.37
         donotadd_reverse: true
-                                   
+
+  - name: k8s-istio.local
+    networks:
+    - "10.10.12"
+    hosts:
+      - name: '@'
+        ip: 10.10.10.11
+      - name: '*.apps 300'
+        ip: 10.10.10.38
+        donotadd_reverse: true
+      - name: masterdns
+        ip: 10.10.10.11
+    ### kube
+      - name: '*'
+        ip: 10.10.10.38
+        donotadd_reverse: true
+                                           
   - name: kube.local
     networks:
     - "10.10.11"
