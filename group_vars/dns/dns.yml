@@ -47,7 +47,7 @@ bind_zone_domains:
 
   - name: k8s-istio.local
     networks:
-    - "10.10.12"
+    - "10.10.13"
     hosts:
       - name: '@'
         ip: 10.10.10.11
