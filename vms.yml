@@ -175,7 +175,7 @@
           num_cpus: 2
           
       - <<: *vmware_vm_provisioning__dc1_cluster1
-        name: k8s-node2-cluster-002=1.paosin.local
+        name: k8s-node2-cluster-002.paosin.local
         networks:
           # Include the default network configuration
           - <<: *vmware_vm_provisioning_networks__mynet1
