@@ -10,11 +10,11 @@
    docker_storage_location: /data/docker
    selinux_reboot_required: True
    
-#  pre_tasks:
-#   - name: configure create vg for docker
-#     block:
-#      - name: partition /sdb
-#        command: parted --script /dev/sdb mklabel gpt mkpart primary 1MiB 100%
+  pre_tasks:
+   - name: rm cobbler repo
+     block:
+      - name: rm cobbler repo
+        command: rm -rf /etc/yum.repos.d/cobbler-config.repo
 #        args:
 #          creates: /dev/sdb1      
 #      - name: Ensure Volume Group vg_docker Exist
