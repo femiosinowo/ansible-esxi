@@ -52,13 +52,13 @@ bind_zone_domains:
       - name: '@'
         ip: 10.10.10.11
       - name: '*.apps 300'
-        ip: 10.10.10.41
+        ip: 10.10.10.40
         donotadd_reverse: true
       - name: masterdns
         ip: 10.10.10.11
     ### kube
       - name: '*'
-        ip: 10.10.10.41
+        ip: 10.10.10.40
         donotadd_reverse: true
 
   - name: k8s-cluster-002.local
@@ -68,13 +68,13 @@ bind_zone_domains:
       - name: '@'
         ip: 10.10.10.11
       - name: '*.apps 300'
-        ip: 10.10.10.38
+        ip: 10.10.10.37
         donotadd_reverse: true
       - name: masterdns
         ip: 10.10.10.11
     ### kube
       - name: '*'
-        ip: 10.10.10.38
+        ip: 10.10.10.37
         donotadd_reverse: true
                                                    
 #  - name: kube.local
@@ -188,7 +188,7 @@ bind_zone_domains:
         ip: 10.10.10.78 
    ### K8s domain     
       - name: '*.apps.k8s 300'
-        ip: 10.10.10.40
+        ip: 10.10.10.41
         donotadd_reverse: true
     ### Openshift4
       - name: '*.apps.ocp-v4 300'
