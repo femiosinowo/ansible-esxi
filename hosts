@@ -33,8 +33,10 @@ ocp-nodes
 ocp-masters
 
 [ocp-masters:vars]
-openshift_origin_node_type=true
+openshift_origin_node_type=master
 
+[ocp-nodes:vars]
+openshift_origin_node_type=node
 
 [ocp4-workers]
 compute-0.ocp4-cluster-001.ocp.local
