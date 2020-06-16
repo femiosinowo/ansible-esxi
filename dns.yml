@@ -3,7 +3,7 @@
   force_handlers: True
   roles:
     - bertvv.bind
-    - dhcp
+    #- dhcp
     #- terraform
 
     

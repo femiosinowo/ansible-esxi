@@ -188,20 +188,20 @@ bind_zone_domains:
         
         
       - name: ocp-node1
-        ip: 10.10.10.71
+        ip: 10.10.10.83
         
       - name: ocp-node2
-        ip: 10.10.10.72
+        ip: 10.10.10.84
         
       - name: ocp-node3
-        ip: 10.10.10.73
+        ip: 10.10.10.85
        
       - name: ocp-glusterfs1
-        ip: 10.10.10.76
+        ip: 10.10.10.86
       - name: ocp-glusterfs2
-        ip: 10.10.10.77 
+        ip: 10.10.10.87 
       - name: ocp-glusterfs3
-        ip: 10.10.10.78 
+        ip: 10.10.10.88 
    ### K8s domain     
     #  - name: '*.apps.k8s 300'
     #    ip: 10.10.10.41
