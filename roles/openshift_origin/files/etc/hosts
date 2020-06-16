@@ -3,6 +3,6 @@
 
 10.10.10.81     ocp-master1.paosin.local ocp-master1 openshift-int.paosin.local openshift-int
 10.10.10.80     ocp-infra1.paosin.local ocp-infra1
-10.10.10.71     ocp-node1.paosin.local ocp-node1
-10.10.10.72     ocp-node2.paosin.local ocp-node2
+10.10.10.83     ocp-node1.paosin.local ocp-node1
+10.10.10.84     ocp-node2.paosin.local ocp-node2
 10.10.10.55     ocp-nfs.paosin.local ocp-nfs
