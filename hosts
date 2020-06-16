@@ -20,6 +20,12 @@ jenkins.paosin.local ansible_ssh_host=10.10.10.25
 emby.paosin.local ansible_ssh_host=10.10.10.102
 plex.paosin.local ansible_ssh_host=10.10.10.101
         
+[openshift-origin]
+ocp-master1.paosin.local  ansible_ssh_host=10.10.10.81
+ocp-infra1.paosin.local  ansible_ssh_host=10.10.10.80
+ocp-node1.paosin.local  ansible_ssh_host=10.10.10.83
+ocp-node2.paosin.local  ansible_ssh_host=10.10.10.84
+
 [ocp4-workers]
 compute-0.ocp4-cluster-001.ocp.local
 compute-1.ocp4-cluster-001.ocp.local
@@ -50,6 +56,8 @@ k8s-node2-cluster-002.paosin.local ansible_ssh_host=10.10.10.39
 
 [dns]
 masterdns.paosin.local ansible_ssh_host=10.10.10.11
+
+
 
 [k8s:children]
 k8s-masters
