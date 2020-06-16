@@ -20,11 +20,21 @@ jenkins.paosin.local ansible_ssh_host=10.10.10.25
 emby.paosin.local ansible_ssh_host=10.10.10.102
 plex.paosin.local ansible_ssh_host=10.10.10.101
         
-[openshift-origin]
-ocp-master1.paosin.local  ansible_ssh_host=10.10.10.81
+[ocp-nodes]
 ocp-infra1.paosin.local  ansible_ssh_host=10.10.10.80
 ocp-node1.paosin.local  ansible_ssh_host=10.10.10.83
 ocp-node2.paosin.local  ansible_ssh_host=10.10.10.84
+
+[ocp-masters]
+ocp-master1.paosin.local  ansible_ssh_host=10.10.10.81
+
+[openshift-origin:children]
+ocp-nodes
+ocp-masters
+
+[ocp-masters:vars]
+openshift_origin_node_type=true
+
 
 [ocp4-workers]
 compute-0.ocp4-cluster-001.ocp.local
