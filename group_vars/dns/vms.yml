@@ -241,7 +241,7 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"   
           
-  - hostname: bootstrap
+  - hostname: bootstrap.ocp4-cluster-001
     ram: 1024
     vcpu: 2
     disks:
