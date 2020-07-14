@@ -116,11 +116,11 @@ bind_zone_domains:
       - name: _etcd-server-ssl._tcp.ocp4-cluster-001
         weight: 10
         port: 2380
-        target: etcd-0.ocp-v4
+        target: etcd-0.ocp4-cluster-001
       - name: _etcd-server-ssl._tcp.ocp4-cluster-001
         weight: 10
         port: 2380
-        target: etcd-1.ocp-v4
+        target: etcd-1.ocp4-cluster-001
       - name: _etcd-server-ssl._tcp.ocp4-cluster-001
         weight: 10
         port: 2380
