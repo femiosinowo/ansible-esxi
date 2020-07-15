@@ -226,7 +226,10 @@ bind_zone_domains:
         ip: 10.10.10.61 
       - name: control-plane-2.ocp4-cluster-001
         ip: 10.10.10.62 
-        
+
+      - name: bastion.ocp4-cluster-001
+        ip: 10.10.10.65
+                
       - name: bootstrap.ocp4-cluster-001
         ip: 10.10.10.59
         
