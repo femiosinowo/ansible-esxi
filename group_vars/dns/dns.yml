@@ -207,7 +207,7 @@ bind_zone_domains:
     #    ip: 10.10.10.41
     #    donotadd_reverse: true
     ### Openshift4
-      - name: '*.apps.ocp-v4 300'
+      - name: '*.apps.ocp4-cluster-001 300'
         ip: 10.10.10.58
         donotadd_reverse: true
 #      - name: '*'
