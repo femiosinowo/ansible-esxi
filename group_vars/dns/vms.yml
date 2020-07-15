@@ -253,4 +253,16 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"   
-          
+
+  - hostname: freeipa
+    ram: 1024
+    vcpu: 2
+    disks:
+     - 20
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.12"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"         

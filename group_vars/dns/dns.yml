@@ -130,6 +130,9 @@ bind_zone_domains:
         ip: 10.10.10.11
       - name: masterdns
         ip: 10.10.10.11
+      - name: freeipa
+        ip: 10.10.10.12
+        
       - name: vcenter
         ip: 10.10.10.6
       - name: awx-ansible
@@ -142,6 +145,7 @@ bind_zone_domains:
         ip: 10.10.10.27
       - name: jenkins
         ip: 10.10.10.25
+        
       - name: k8s-master1-cluster-001
         ip: 10.10.10.30
       - name: k8s-node1-cluster-001
@@ -198,15 +202,18 @@ bind_zone_domains:
        
       - name: ocp-glusterfs1
         ip: 10.10.10.86
+        
       - name: ocp-glusterfs2
         ip: 10.10.10.87 
+        
       - name: ocp-glusterfs3
         ip: 10.10.10.88 
    ### K8s domain     
     #  - name: '*.apps.k8s 300'
     #    ip: 10.10.10.41
     #    donotadd_reverse: true
-    ### Openshift4
+    
+    ### Openshift4 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###  
       - name: '*.apps.ocp4-cluster-001 300'
         ip: 10.10.10.58
         donotadd_reverse: true
