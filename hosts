@@ -5,7 +5,7 @@ apim.paosin.local  ansible_ssh_host=10.10.10.46
 awx-ansible.paosin.local  ansible_ssh_host=10.10.10.22
 
 [freeipa]
-freeipa.paosin.local ansible_ssh_host=10.10.10.12
+ldap.paosin.local ansible_ssh_host=10.10.10.12
 
 [harbor]
 harbor.paosin.local ansible_ssh_host=10.10.10.23

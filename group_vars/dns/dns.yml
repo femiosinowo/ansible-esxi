@@ -130,7 +130,7 @@ bind_zone_domains:
         ip: 10.10.10.11
       - name: masterdns
         ip: 10.10.10.11
-      - name: freeipa
+      - name: ldap
         ip: 10.10.10.12
         
       - name: vcenter

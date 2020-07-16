@@ -318,7 +318,7 @@
           
                
       - <<: *vmware_vm_provisioning__dc1_cluster1
-        name: freeipa.paosin.local
+        name: ldap.paosin.local
         networks:
           # Include the default network configuration
           - <<: *vmware_vm_provisioning_networks__mynet1
@@ -335,9 +335,9 @@
           # Include the default hardware settings
           <<: *vmware_vm_provisioning_hardware
           # And override memory size
-          memory_mb: 1024
+          memory_mb: 3096
           # And add one more additional option
-          num_cpus: 1          
+          num_cpus: 2
                     
   roles:
     - role: vmware_vm_provisioning
