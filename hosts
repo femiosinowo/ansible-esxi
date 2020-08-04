@@ -7,6 +7,9 @@ awx-ansible.paosin.local  ansible_ssh_host=10.10.10.22
 [ldap]
 ldap.paosin.local ansible_ssh_host=10.10.10.12
 
+[automation]
+automation.paosin.local
+
 [harbor]
 harbor.paosin.local ansible_ssh_host=10.10.10.23
 
