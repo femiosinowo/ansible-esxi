@@ -10,6 +10,9 @@ ldap.paosin.local ansible_ssh_host=10.10.10.12
 [automation]
 automation.paosin.local
 
+[wso2]
+wso2.paosin.local ansible_ssh_host=10.10.10.47
+
 [harbor]
 harbor.paosin.local ansible_ssh_host=10.10.10.23
 
