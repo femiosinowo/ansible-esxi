@@ -162,7 +162,7 @@ bind_zone_domains:
         ip: 10.10.10.46
       - name: wso2
         ip: 10.10.10.47
-      - name: splunk
+      - name: conjur
         ip: 10.10.10.48
       - name: ocp-nfs
         ip: 10.10.10.55

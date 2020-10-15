@@ -13,8 +13,8 @@ automation.paosin.local
 [wso2]
 wso2.paosin.local ansible_ssh_host=10.10.10.47
 
-[splunk]
-splunk.paosin.local ansible_ssh_host=10.10.10.48
+[conjur]
+conjur.paosin.local ansible_ssh_host=10.10.10.48
 
 
 [harbor]
