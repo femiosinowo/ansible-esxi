@@ -91,6 +91,7 @@ dns.paosin.local ansible_ssh_host=10.10.10.12
 k8s-masters
 k8s-nodes
 
+
 [k8s:vars]
 selinux_state=permissive
 nfsmount=/mnt/nfs/var/nfsshare
