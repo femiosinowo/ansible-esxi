@@ -20,7 +20,7 @@ acls:
       - "10.10.10.11"
         
 bind_zone_name_servers:
-  - masterdns
+  - dns
 
 
 
@@ -38,7 +38,7 @@ bind_zone_domains:
       - name: '*.apps 300'
         ip: 10.10.10.41
         donotadd_reverse: true
-      - name: masterdns
+      - name: dns
         ip: 10.10.10.11
     ### kube
       - name: '*'
@@ -54,7 +54,7 @@ bind_zone_domains:
       - name: '*.apps 300'
         ip: 10.10.10.38
         donotadd_reverse: true
-      - name: masterdns
+      - name: dns
         ip: 10.10.10.11
     ### kube
       - name: '*'
@@ -70,7 +70,7 @@ bind_zone_domains:
       - name: '*.apps 300'
         ip: 10.10.10.40
         donotadd_reverse: true
-      - name: masterdns
+      - name: dns
         ip: 10.10.10.11
     ### kube
       - name: '*'
@@ -86,7 +86,7 @@ bind_zone_domains:
       - name: '*.apps 300'
         ip: 10.10.10.37
         donotadd_reverse: true
-      - name: masterdns
+      - name: dns
         ip: 10.10.10.11
     ### kube
       - name: '*'
@@ -128,7 +128,7 @@ bind_zone_domains:
     hosts:
       - name: '@'
         ip: 10.10.10.11
-      - name: masterdns
+      - name: dns
         ip: 10.10.10.11
       - name: ldap
         ip: 10.10.10.12
