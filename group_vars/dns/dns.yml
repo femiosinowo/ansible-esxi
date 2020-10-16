@@ -135,7 +135,7 @@ bind_zone_domains:
         
       - name: vcenter
         ip: 10.10.10.6
-      - name: awx-ansible
+      - name: awx
         ip: 10.10.10.22
       - name: harbor
         ip: 10.10.10.23 

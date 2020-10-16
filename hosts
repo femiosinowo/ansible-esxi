@@ -2,7 +2,7 @@
 apim.paosin.local  ansible_ssh_host=10.10.10.46
 
 [awx-servers]
-awx-ansible.paosin.local  ansible_ssh_host=10.10.10.22
+awx.paosin.local  ansible_ssh_host=10.10.10.22
 
 [ldap]
 ldap.paosin.local ansible_ssh_host=10.10.10.12

@@ -409,6 +409,29 @@
           memory_mb: 2048
           # And add one more additional option
           num_cpus: 2
+
+
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: awx.paosin.local
+        networks:
+          # Include the default network configuration
+          - <<: *vmware_vm_provisioning_networks__mynet1
+            # And jsut add the IP
+            ip: 10.10.10.22
+        disks:
+          # Include the default disk configuration
+          - <<: *vmware_vm_provisioning_disk__image
+          # Add one more disk (500G)
+          - size_gb: 50
+            type: thin
+            autoselect_datastore: yes
+        hardware:
+          # Include the default hardware settings
+          <<: *vmware_vm_provisioning_hardware
+          # And override memory size
+          memory_mb: 4096
+          # And add one more additional option
+          num_cpus: 2
                                         
   roles:
     - role: vmware_vm_provisioning
