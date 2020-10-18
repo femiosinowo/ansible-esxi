@@ -70,13 +70,13 @@ bootstrap.ocp4-cluster-001.paosin.local
 
 
 [okd4-workers]
-compute-0.okd4-cluster-001.paosin.local
 compute-1.okd4-cluster-001.paosin.local
+compute-2.okd4-cluster-001.paosin.local
 
 [okd4-masters]
-control-plane-0.okd4-cluster-001.paosin.local
 control-plane-1.okd4-cluster-001.paosin.local
 control-plane-2.okd4-cluster-001.paosin.local
+control-plane-3.okd4-cluster-001.paosin.local
 
 [okd4-lbs]
 lb.okd4-cluster-001.paosin.local
