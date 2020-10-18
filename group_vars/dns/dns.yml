@@ -126,6 +126,19 @@ bind_zone_domains:
         weight: 10
         port: 2380
         target: etcd-2.ocp4-cluster-001
+################ OKD4 #########################################
+      - name: _etcd-server-ssl._tcp.okd4-cluster-001
+        weight: 10
+        port: 2380
+        target: etcd-0.okd4-cluster-001
+      - name: _etcd-server-ssl._tcp.okd4-cluster-001
+        weight: 10
+        port: 2380
+        target: etcd-1.okd4-cluster-001
+      - name: _etcd-server-ssl._tcp.okd4-cluster-001
+        weight: 10
+        port: 2380
+        target: etcd-2.okd4-cluster-001
     hosts:
       - name: '@'
         ip: 10.10.10.11
@@ -257,22 +270,51 @@ bind_zone_domains:
       - name: compute-1.ocp4-cluster-001
         ip: 10.10.10.64 
         
-################ OKD4  ################ 
-      - name: control-plane-1.okd4-cluster-001
-        ip: 10.10.10.70 
-      - name: control-plane-2.okd4-cluster-001
-        ip: 10.10.10.71 
-      - name: control-plane-3.okd4-cluster-001
-        ip: 10.10.10.72 
-      - name: compute-0.okd4-cluster-001
-        ip: 10.10.10.73
-      - name: compute-1.okd4-cluster-001
-        ip: 10.10.10.74 
-      - name: lb.okd4-cluster-001
-        ip: 10.10.10.75
-      - name: bootstrap.okd4-cluster-001
-        ip: 10.10.10.76       
+
+      - name: '*.apps.ocp4-c01 300'
+        ip: 10.10.10.70
+        donotadd_reverse: true
+      - name: api.ocp4-c01
+        ip: 10.10.10.71   
         
+        
+################ OKD4  ################ 
+
+#       - name: control-plane-1.okd4-cluster-001
+#         ip: 10.10.10.70 
+#       - name: control-plane-2.okd4-cluster-001
+#         ip: 10.10.10.71 
+#       - name: control-plane-3.okd4-cluster-001
+#         ip: 10.10.10.72 
+#       - name: compute-1.okd4-cluster-001
+#         ip: 10.10.10.73
+#       - name: compute-2.okd4-cluster-001
+#         ip: 10.10.10.74 
+#       - name: lb.okd4-cluster-001
+#         ip: 10.10.10.75
+#       - name: bootstrap.okd4-cluster-001
+#         ip: 10.10.10.76       
+# 
+# 
+#       - name: api.okd4-cluster-001
+#         ip: 10.10.10.70           
+#       - name: api-int.okd4-cluster-001
+#         ip: 10.10.10.70                  
+#       - name: lb.okd4-cluster-001
+#         ip: 10.10.10.75
+#         
+#       - name: '*.apps.okd4-cluster-001 300'
+#         ip: 10.10.10.70
+#         donotadd_reverse: true
+#         
+#       - name: etcd-0.okd4-cluster-001
+#         ip: 10.10.10.70 
+#       - name: etcd-1.okd4-cluster-001
+#         ip: 10.10.10.71 
+#       - name: etcd-2.okd4-cluster-001
+#         ip: 10.10.10.72         
+        
+                
                            
 gateway: 10.10.10.1
 vlan_id: 1

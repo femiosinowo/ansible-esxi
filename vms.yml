@@ -451,6 +451,7 @@
 
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: compute-1.okd4-cluster-001.paosin.local
+        state: off
         template: okd-coreos
         folder: okd4
         disks:
@@ -468,6 +469,7 @@
 
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: compute-2.okd4-cluster-001.paosin.local
+        state: off
         template: okd-coreos
         folder: okd4
         disks:
@@ -485,6 +487,7 @@
           
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: control-plane-1.okd4-cluster-001.paosin.local
+        state: off
         template: okd-coreos
         folder: okd4
         disks:
@@ -502,6 +505,7 @@
         
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: control-plane-2.okd4-cluster-001.paosin.local
+        state: off
         folder: okd4
         template: okd-coreos
         disks:
@@ -520,6 +524,7 @@
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: control-plane-3.okd4-cluster-001.paosin.local
         template: okd-coreos
+        state: off
         folder: okd4
         disks:
           # Add one more disk (60G)
@@ -536,6 +541,7 @@
           
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: lb.okd4-cluster-001.paosin.local
+        state: off
         folder: okd4
         networks:
           # Include the default network configuration
@@ -557,6 +563,7 @@
           
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: bootstrap.okd4-cluster-001.paosin.local
+        state: off
         folder: okd4
         template: okd-coreos
         disks:
