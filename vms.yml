@@ -448,7 +448,7 @@
 
 
       - <<: *vmware_vm_provisioning__dc1_cluster1
-        name: centos8.paosin.local
+        name: centos-8.paosin.local
         template: centos-8-template-esxi
         networks:
           # Include the default network configuration

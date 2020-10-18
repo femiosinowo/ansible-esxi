@@ -257,7 +257,7 @@ bind_zone_domains:
       - name: compute-1.ocp4-cluster-001
         ip: 10.10.10.64 
         
-      - name: centos8.paosin.local
+      - name: centos-8.paosin.local
         ip: 10.10.10.26
                            
 gateway: 10.10.10.1
