@@ -536,8 +536,12 @@
           
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: lb.okd4-cluster-001.paosin.local
-        template: okd-coreos
         folder: okd4
+        networks:
+          # Include the default network configuration
+          - <<: *vmware_vm_provisioning_networks__mynet1
+            # And jsut add the IP
+            ip: 10.10.10.75
         disks:
           # Add one more disk (60G)
           - size_gb: 20
@@ -547,7 +551,7 @@
           # Include the default hardware settings
           <<: *vmware_vm_provisioning_hardware
           # And override memory size
-          memory_mb: 1024
+          memory_mb: 2048
           # And add one more additional option
           num_cpus: 1
           
