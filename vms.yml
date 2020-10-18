@@ -452,7 +452,7 @@
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: compute-1.okd4-cluster-001.paosin.local
         template: okd-coreos
-        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        folder: /Resources/okd4
         disks:
           # Add one more disk (60G)
           - size_gb: 100
@@ -469,7 +469,7 @@
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: compute-2.okd4-cluster-001.paosin.local
         template: okd-coreos
-        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        folder: Resources/okd4
         disks:
           # Add one more disk (60G)
           - size_gb: 100
@@ -486,7 +486,7 @@
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: control-plane-1.okd4-cluster-001.paosin.local
         template: okd-coreos
-        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        folder: /Resources/okd4
         disks:
           # Add one more disk (60G)
           - size_gb: 100
@@ -502,7 +502,7 @@
         
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: control-plane-2.okd4-cluster-001.paosin.local
-        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        folder: /Resources/okd4
         template: okd-coreos
         disks:
           # Add one more disk (60G)
@@ -520,7 +520,7 @@
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: control-plane-3.okd4-cluster-001.paosin.local
         template: okd-coreos
-        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        folder: /Resources/okd4
         disks:
           # Add one more disk (60G)
           - size_gb: 100
@@ -537,7 +537,7 @@
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: lb.okd4-cluster-001.paosin.local
         template: okd-coreos
-        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        folder: /Resources/okd4
         disks:
           # Add one more disk (60G)
           - size_gb: 20
@@ -553,7 +553,7 @@
           
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: bootstrap.okd4-cluster-001.paosin.local
-        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        folder: /Resources/okd4
         template: okd-coreos
         disks:
           # Add one more disk (60G)
