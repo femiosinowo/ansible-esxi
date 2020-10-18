@@ -450,11 +450,6 @@
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: centos-8.paosin.local
         template: okd-coreos
-        networks:
-          # Include the default network configuration
-          - <<: *vmware_vm_provisioning_networks__mynet1
-            # And jsut add the IP
-            ip: 10.10.10.26
         hardware:
           # Include the default hardware settings
           <<: *vmware_vm_provisioning_hardware
