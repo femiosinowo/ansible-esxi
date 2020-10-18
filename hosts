@@ -1,4 +1,4 @@
-
+[centos8]
 centos8.paosin.local ansible_ssh_host=10.10.10.26
 
 [apim]
