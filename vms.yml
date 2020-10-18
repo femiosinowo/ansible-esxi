@@ -447,17 +447,126 @@
           num_cpus: 2
 
 
+################### OKD4 VMS ################################
+
       - <<: *vmware_vm_provisioning__dc1_cluster1
-        name: centos-8.paosin.local
+        name: compute-1.okd4-cluster-001.paosin.local
         template: okd-coreos
+        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        disks:
+          # Add one more disk (60G)
+          - size_gb: 100
+            type: thin
+            autoselect_datastore: yes
         hardware:
           # Include the default hardware settings
           <<: *vmware_vm_provisioning_hardware
           # And override memory size
-          memory_mb: 2048
+          memory_mb: 16384
           # And add one more additional option
-          num_cpus: 2
+          num_cpus: 4
 
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: compute-2.okd4-cluster-001.paosin.local
+        template: okd-coreos
+        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        disks:
+          # Add one more disk (60G)
+          - size_gb: 100
+            type: thin
+            autoselect_datastore: yes
+        hardware:
+          # Include the default hardware settings
+          <<: *vmware_vm_provisioning_hardware
+          # And override memory size
+          memory_mb: 16384
+          # And add one more additional option
+          num_cpus: 4
+          
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: control-plane-1.okd4-cluster-001.paosin.local
+        template: okd-coreos
+        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        disks:
+          # Add one more disk (60G)
+          - size_gb: 100
+            type: thin
+            autoselect_datastore: yes
+        hardware:
+          # Include the default hardware settings
+          <<: *vmware_vm_provisioning_hardware
+          # And override memory size
+          memory_mb: 16384
+          # And add one more additional option
+          num_cpus: 4
+        
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: control-plane-2.okd4-cluster-001.paosin.local
+        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        template: okd-coreos
+        disks:
+          # Add one more disk (60G)
+          - size_gb: 100
+            type: thin
+            autoselect_datastore: yes
+        hardware:
+          # Include the default hardware settings
+          <<: *vmware_vm_provisioning_hardware
+          # And override memory size
+          memory_mb: 16384
+          # And add one more additional option
+          num_cpus: 4
+          
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: control-plane-3.okd4-cluster-001.paosin.local
+        template: okd-coreos
+        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        disks:
+          # Add one more disk (60G)
+          - size_gb: 100
+            type: thin
+            autoselect_datastore: yes
+        hardware:
+          # Include the default hardware settings
+          <<: *vmware_vm_provisioning_hardware
+          # And override memory size
+          memory_mb: 16348
+          # And add one more additional option
+          num_cpus: 4
+          
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: lb.okd4-cluster-001.paosin.local
+        template: okd-coreos
+        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        disks:
+          # Add one more disk (60G)
+          - size_gb: 20
+            type: thin
+            autoselect_datastore: yes
+        hardware:
+          # Include the default hardware settings
+          <<: *vmware_vm_provisioning_hardware
+          # And override memory size
+          memory_mb: 1024
+          # And add one more additional option
+          num_cpus: 1
+          
+      - <<: *vmware_vm_provisioning__dc1_cluster1
+        name: bootstrap.okd4-cluster-001.paosin.local
+        folder: /PAOSIN/host/CLUSTER001/Resources/okd4
+        template: okd-coreos
+        disks:
+          # Add one more disk (60G)
+          - size_gb: 50
+            type: thin
+            autoselect_datastore: yes
+        hardware:
+          # Include the default hardware settings
+          <<: *vmware_vm_provisioning_hardware
+          # And override memory size
+          memory_mb: 8192
+          # And add one more additional option
+          num_cpus: 2 
                                         
   roles:
     - role: vmware_vm_provisioning
