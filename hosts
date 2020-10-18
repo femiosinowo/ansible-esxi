@@ -1,3 +1,5 @@
+centos-8.paosin.local ansible_ssh_host=10.10.10.26
+
 [apim]
 apim.paosin.local  ansible_ssh_host=10.10.10.46
 
