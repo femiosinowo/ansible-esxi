@@ -274,9 +274,11 @@ bind_zone_domains:
       - name: '*.apps.ocp4-c01 300'
         ip: 10.10.10.77
         donotadd_reverse: true
+        
       - name: api.ocp4-c01
         ip: 10.10.10.78   
-        
+      - name: api-int.ocp4-c01
+        ip: 10.10.10.78         
         
 ################ OKD4  ################ 
 
