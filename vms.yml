@@ -454,19 +454,16 @@
             # And jsut add the IP
             ip: 10.10.10.28
         disks:
-          # Include the default disk configuration
-          - <<: *vmware_vm_provisioning_disk__image
-          # Add one more disk (500G)
-          - size_gb: 50
+          - size_gb: 100
             type: thin
             autoselect_datastore: yes
         hardware:
           # Include the default hardware settings
           <<: *vmware_vm_provisioning_hardware
           # And override memory size
-          memory_mb: 1024
+          memory_mb: 2048
           # And add one more additional option
-          num_cpus: 1
+          num_cpus: 2
           
 
 ################### OKD4 VMS ################################
