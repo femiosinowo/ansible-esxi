@@ -18,6 +18,8 @@ wso2.paosin.local ansible_ssh_host=10.10.10.47
 [conjur]
 conjur.paosin.local ansible_ssh_host=10.10.10.48
 
+[tanzu]
+tanzu.paosin.local ansible_ssh_host=10.10.10.28
 
 [harbor]
 harbor.paosin.local ansible_ssh_host=10.10.10.23
