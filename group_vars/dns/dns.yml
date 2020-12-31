@@ -142,8 +142,6 @@ bind_zone_domains:
         ip: 10.10.10.23 
       - name: gogs
         ip: 10.10.10.24
-      - name: postgresql
-        ip: 10.10.10.27
       - name: tanzu
         ip: 10.10.10.28
       - name: jenkins
