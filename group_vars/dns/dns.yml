@@ -151,6 +151,8 @@ bind_zone_domains:
         
       - name: k8s-master1-cluster-001
         ip: 10.10.10.30
+      - name: database
+        ip: 10.10.10.27
       - name: k8s-node1-cluster-001
         ip: 10.10.10.32
       - name: k8s-node2-cluster-001
