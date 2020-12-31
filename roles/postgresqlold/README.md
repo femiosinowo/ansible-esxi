@@ -1,6 +1,6 @@
 # Ansible Role: PostgreSQL
 
-[![CI](https://github.com/geerlingguy/ansible-role-postgresql/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-postgresql/actions?query=workflow%3ACI)
+[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-postgresql.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-postgresql)
 
 Installs and configures PostgreSQL server on RHEL/CentOS or Debian/Ubuntu servers.
 
@@ -105,10 +105,6 @@ A list of databases to ensure exist on the server. Only the `name` is required; 
         state: # defaults to 'present'
 
 A list of users to ensure exist on the server. Only the `name` is required; all other properties are optional.
-
-    postgres_users_no_log: true
-
-Whether to output user data (which may contain sensitive information, like passwords) when managing users.
 
     postgresql_version: [OS-specific]
     postgresql_data_dir: [OS-specific]
