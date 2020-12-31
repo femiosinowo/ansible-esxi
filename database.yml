@@ -1,0 +1,11 @@
+---
+- hosts: database
+  roles:
+    - postgresql
+    - mysql
+    #- dhcp
+    #- terraform
+
+    
+
+

@@ -19,6 +19,7 @@ postgresql_users:
 
 postgresql_databases:
   - name: FAAST_V3
+  - name: PETSTORE
 
 postgresql_schemas:
   - database: FAAST_V3           # database name
