@@ -2,7 +2,7 @@
 - hosts: database
   roles:
     - postgresql
-    - mysql
+    #- mysql
     #- dhcp
     #- terraform
 
