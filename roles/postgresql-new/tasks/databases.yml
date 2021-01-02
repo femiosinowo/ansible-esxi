@@ -15,7 +15,7 @@
     state: "{{ item.state | default('present') }}"
   with_items: "{{ postgresql_databases }}"
   become: true
-  become_user: "{{ postgresql_user }}"
+  become_user: "{{ postgresql_user_name }}"
   # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
   vars:
     ansible_ssh_pipelining: true
