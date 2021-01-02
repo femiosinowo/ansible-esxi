@@ -12,3 +12,13 @@ postgresql_pg_hba_conf:
  - host all all 127.0.0.1/32   trust
  - host all all ::1/128   trust
  - host all all 0.0.0.0/0   md5
+
+# List of users to be created (optional)
+postgresql_users:
+  - name: postgres
+    pass: admin
+    encrypted: no       # denotes if the password is already encrypted.
+
+postgresql_databases:
+  - name: FAAST_V3
+  - name: PETSTORE
