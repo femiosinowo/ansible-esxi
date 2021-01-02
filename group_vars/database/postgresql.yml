@@ -1,6 +1,6 @@
 postgresql_version: 11
 postgresql_conf:
-   - listen_addresses: "*"    # disable network listening (listen on unix socket only)
+   - listen_addresses: "'*'"    # disable network listening (listen on unix socket only)
    - max_connections: 50       # decrease connection limit
    
    
