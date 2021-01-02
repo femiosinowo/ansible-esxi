@@ -1,11 +1,16 @@
 ---
 - hosts: database
   roles:
-    - postgresqlold
-    #- mysql
-    #- dhcp
-    #- terraform
-
-    
-
-
+    - postgresql-new
+  pre_tasks:
+    - name: enable firewalld service
+      service:
+        name: firewalld
+        enabled: true
+        state: started
+    - name: enable firewalld port
+      firewalld:
+        port: "{{ postgres_http_port }}/tcp"
+        state: enabled
+        immediate: yes
+        permanent: yes
