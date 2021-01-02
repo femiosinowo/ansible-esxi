@@ -1,6 +1,6 @@
 
 postgresql_version: 11
-postgresql_enablerepo: "https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm"
+postgresql_enablerepo: "pgdg11"
 #postgresql_data_directory: "/var/lib/{{ postgresql_varlib_directory_name }}/{{ postgresql_version }}/{{ postgresql_cluster_name }}"
 #postgresql_conf_directory: "/var/lib/{{ postgresql_varlib_directory_name }}/{{ postgresql_version }}/{{ postgresql_cluster_name }}"
 
