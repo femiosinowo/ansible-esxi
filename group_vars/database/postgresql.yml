@@ -1,6 +1,6 @@
 
 postgresql_version: 11
- 
+postgresql_enablerepo: true
 #postgresql_data_directory: "/var/lib/{{ postgresql_varlib_directory_name }}/{{ postgresql_version }}/{{ postgresql_cluster_name }}"
 #postgresql_conf_directory: "/var/lib/{{ postgresql_varlib_directory_name }}/{{ postgresql_version }}/{{ postgresql_cluster_name }}"
 
