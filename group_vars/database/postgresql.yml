@@ -16,8 +16,8 @@ postgresql_pg_hba_conf:
 # List of users to be created (optional)
 postgresql_users:
   - name: postgres
-    pass: admin
-    encrypted: no       # denotes if the password is already encrypted.
+    pass: md521232f297a57a5a743894a0e4a801fc3 #admin
+   # encrypted: no       # denotes if the password is already encrypted.
 
 postgresql_databases:
   - name: FAAST_V3
