@@ -67,3 +67,9 @@
   when: >-
     ansible_distribution_major_version is version(7, '>=')
       and (pgdata_stat.stat.isdir is not defined or not pgdata_stat.stat.isdir)
+      
+      
+- name: Ensure PostgreSQL Python libraries are installed.
+  yum:
+    name: "{{ postgresql_python_library }}"
+    state: present
