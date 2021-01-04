@@ -5,7 +5,18 @@
     - bertvv.bind
     #- dhcp
     #- terraform
-
+  pre_tasks:
+    - name: enable firewalld service
+      service:
+        name: firewalld
+        enabled: true
+        state: started
+    - name: enable firewalld port
+      firewalld:
+        port: "53/udp"
+        state: enabled
+        immediate: yes
+        permanent: yes
     
 
 
