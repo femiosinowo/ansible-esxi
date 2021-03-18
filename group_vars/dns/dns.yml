@@ -169,6 +169,8 @@ bind_zone_domains:
         ip: 10.10.10.48
       - name: ocp-nfs
         ip: 10.10.10.55
+      - name: quay
+        ip: 10.10.10.66
       - name: emby
         ip: 10.10.10.102
       - name: plex

@@ -240,6 +240,19 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"   
+
+  - hostname: harbor
+    ram: 4048
+    vcpu: 2
+    disks:
+     - 200
+    network_params:
+      label: "{{ interface_label }}"
+      ipv4_address: "10.10.10.66"
+      domain: "{{ domain }}"
+      vlan_id: "{{ vlan_id }}"
+      prefix_length: "{{ prefix_length }}"
+      gateway: "{{ gateway }}"
           
   - hostname: bootstrap.ocp4-cluster-001
     ram: 1024

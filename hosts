@@ -11,7 +11,7 @@ ldap.paosin.local ansible_ssh_host=10.10.10.12
 
 [automation]
 automation.paosin.local
-
+2756
 [wso2]
 wso2.paosin.local ansible_ssh_host=10.10.10.47
 
@@ -37,6 +37,9 @@ jenkins.paosin.local ansible_ssh_host=10.10.10.25
 emby.paosin.local ansible_ssh_host=10.10.10.102
 plex.paosin.local ansible_ssh_host=10.10.10.101
         
+[quay]
+quay.paosin.local ansible_ssh_host=10.10.10.66
+
 [ocp-nodes]
 ocp-infra1.paosin.local  ansible_ssh_host=10.10.10.80
 ocp-node1.paosin.local  ansible_ssh_host=10.10.10.83
