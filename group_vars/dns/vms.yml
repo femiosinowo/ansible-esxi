@@ -126,6 +126,7 @@ terraform_vms:
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"
+      
   - hostname: ocp-node2
     ram: 16000
     vcpu: 6

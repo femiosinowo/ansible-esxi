@@ -101,7 +101,7 @@ bootstrap.okd4-cluster-001.paosin.local
 #k8s-master1-cluster-001.paosin.local ansible_ssh_host=10.10.10.30 ansible_user=root
 #k8s-master1-cluster-002.paosin.local ansible_ssh_host=10.10.10.35
 
-[k8s-nodes]
+#[k8s-nodes]
 #k8s-node1-cluster-001.paosin.local ansible_ssh_host=10.10.10.31
 #k8s-node2-cluster-001.paosin.local ansible_ssh_host=10.10.10.32
 #k8s-node1-cluster-002.paosin.local ansible_ssh_host=10.10.10.36
