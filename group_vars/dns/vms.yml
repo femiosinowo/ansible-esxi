@@ -241,7 +241,7 @@ terraform_vms:
       prefix_length: "{{ prefix_length }}"
       gateway: "{{ gateway }}"   
 
-  - hostname: harbor
+  - hostname: quay
     ram: 4048
     vcpu: 2
     disks:
