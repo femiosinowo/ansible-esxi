@@ -9,8 +9,8 @@ awx.paosin.local  ansible_ssh_host=10.10.10.22
 [ldap]
 ldap.paosin.local ansible_ssh_host=10.10.10.12
 
-[automation]
-automation.paosin.local
+#[automation]
+#automation.paosin.local
 
 [wso2]
 wso2.paosin.local ansible_ssh_host=10.10.10.47
@@ -40,29 +40,29 @@ plex.paosin.local ansible_ssh_host=10.10.10.101
 [quay]
 quay.paosin.local ansible_ssh_host=10.10.10.66
 
-[ocp-nodes]
+#[ocp-nodes]
 #ocp-infra1.paosin.local  ansible_ssh_host=10.10.10.80
 #ocp-node1.paosin.local  ansible_ssh_host=10.10.10.83
 #ocp-node2.paosin.local  ansible_ssh_host=10.10.10.84
 
-[ocp-masters]
+#[ocp-masters]
 #ocp-master1.paosin.local  ansible_ssh_host=10.10.10.81
 
-[openshift-origin:children]
-ocp-nodes
-ocp-masters
+#[openshift-origin:children]
+#ocp-nodes
+#ocp-masters
 
-[ocp-masters:vars]
-openshift_origin_node_type=master
+#[ocp-masters:vars]
+#openshift_origin_node_type=master
 
-[ocp-nodes:vars]
-openshift_origin_node_type=node
+#[ocp-nodes:vars]
+#openshift_origin_node_type=node
 
-[ocp4-workers]
-compute-0.ocp4-cluster-001.paosin.local
-compute-1.ocp4-cluster-001.paosin.local
+#[ocp4-workers]
+#compute-0.ocp4-cluster-001.paosin.local
+#compute-1.ocp4-cluster-001.paosin.local
 
-[ocp4-masters]
+#[ocp4-masters]
 #control-plane-0.ocp4-cluster-001.paosin.local
 #control-plane-1.ocp4-cluster-001.paosin.local
 #control-plane-2.ocp4-cluster-001.paosin.local
@@ -74,11 +74,11 @@ ocp4-lb.ocp4-cluster-001.paosin.local
 bootstrap.ocp4-cluster-001.paosin.local
 
 
-[okd4-workers]
+#[okd4-workers]
 #compute-1.okd4-cluster-001.paosin.local
 #compute-2.okd4-cluster-001.paosin.local
 
-[okd4-masters]
+#[okd4-masters]
 #control-plane-1.okd4-cluster-001.paosin.local
 #control-plane-2.okd4-cluster-001.paosin.local
 #control-plane-3.okd4-cluster-001.paosin.local
@@ -92,12 +92,12 @@ bootstrap.okd4-cluster-001.paosin.local
 
 
 
-[ocp4:children]
-ocp4-workers
-ocp4-masters
-ocp4-lbs
+#[ocp4:children]
+#ocp4-workers
+#ocp4-masters
+#ocp4-lbs
 
-[k8s-masters]
+#[k8s-masters]
 #k8s-master1-cluster-001.paosin.local ansible_ssh_host=10.10.10.30 ansible_user=root
 #k8s-master1-cluster-002.paosin.local ansible_ssh_host=10.10.10.35
 
