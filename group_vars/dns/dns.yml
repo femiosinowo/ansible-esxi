@@ -222,6 +222,10 @@ bind_zone_domains:
       - name: bootstrap.ocp4-cluster-001
         ip: 10.10.10.59
 
+      - name: '*.apps.argocd 300'
+        ip: 10.10.10.42
+        donotadd_reverse: true
+
 ################ OCP4  ################ 
       - name: '*.apps.ocp4-c01 300'
         ip: 10.10.10.76
