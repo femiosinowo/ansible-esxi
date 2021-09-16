@@ -226,6 +226,13 @@ bind_zone_domains:
         ip: 10.10.10.221
         donotadd_reverse: true
 
+      - name: '*.apps.argocd 300'
+        ip: 10.10.10.221
+        donotadd_reverse: true
+
+      - name: '*.apps.dev 300'
+        ip: 10.10.10.45
+        donotadd_reverse: true
 ################ OCP4  ################ 
       - name: '*.apps.ocp4-c01 300'
         ip: 10.10.10.76
