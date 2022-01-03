@@ -491,7 +491,7 @@
 
 
 
-: okd-coreos
+#: okd-coreos
 #         folder: okd4
 #         disks:
           #Add one more disk (60G)
