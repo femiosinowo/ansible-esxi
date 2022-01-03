@@ -157,7 +157,7 @@
           # Include the default disk configuration
           - <<: *vmware_vm_provisioning_disk__image
           # Add one more disk (500G)
-          - size_gb: 100
+          - size_gb: 50
             type: thin
             autoselect_datastore: yes
         hardware:
