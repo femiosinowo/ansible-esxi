@@ -147,6 +147,7 @@
                  
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: k3s.paosin.local
+        template: rhel8-template
         networks:
           # Include the default network configuration
           - <<: *vmware_vm_provisioning_networks__mynet1
@@ -486,7 +487,11 @@
 #       - <<: *vmware_vm_provisioning__dc1_cluster1
 #         name: compute-2.okd4-cluster-001.paosin.local
 #         state: off
-#         template: okd-coreos
+#         
+
+
+
+: okd-coreos
 #         folder: okd4
 #         disks:
           #Add one more disk (60G)
