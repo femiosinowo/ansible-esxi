@@ -161,7 +161,7 @@ bind_zone_domains:
         ip: 10.10.10.36
       - name: k8s-node2-cluster-002
         ip: 10.10.10.39
-      - name: apim
+      - name: k3s
         ip: 10.10.10.46
       - name: wso2
         ip: 10.10.10.47
