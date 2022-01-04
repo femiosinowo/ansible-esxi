@@ -113,19 +113,19 @@ bind_zone_domains:
   - name: paosin.local
     networks:
     - "10.10.10"
-    services:
-      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
-        weight: 10
-        port: 2380
-        target: etcd-0.ocp4-cluster-001
-      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
-        weight: 10
-        port: 2380
-        target: etcd-1.ocp4-cluster-001
-      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
-        weight: 10
-        port: 2380
-        target: etcd-2.ocp4-cluster-001
+#    services:
+#      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
+#        weight: 10
+#        port: 2380
+#        target: etcd-0.ocp4-cluster-001
+#      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
+#        weight: 10
+#        port: 2380
+#        target: etcd-1.ocp4-cluster-001
+#      - name: _etcd-server-ssl._tcp.ocp4-cluster-001
+#        weight: 10
+#        port: 2380
+#        target: etcd-2.ocp4-cluster-001
     hosts:
       - name: '@'
         ip: 10.10.10.11
@@ -133,7 +133,7 @@ bind_zone_domains:
         ip: 10.10.10.11
       - name: ldap
         ip: 10.10.10.12
-        
+
       - name: vcenter
         ip: 10.10.10.6
       - name: awx
@@ -146,46 +146,21 @@ bind_zone_domains:
         ip: 10.10.10.28
       - name: jenkins
         ip: 10.10.10.25
-        
-      - name: k8s-master1-cluster-001
-        ip: 10.10.10.30
+
       - name: database
         ip: 10.10.10.27
-      - name: k8s-node1-cluster-001
-        ip: 10.10.10.32
-      - name: k8s-node2-cluster-001
-        ip: 10.10.10.33
-      - name: k8s-master1-cluster-002
-        ip: 10.10.10.35
-      - name: k8s-node1-cluster-002
-        ip: 10.10.10.36
-      - name: k8s-node2-cluster-002
-        ip: 10.10.10.39
       - name: k3s
         ip: 10.10.10.46
-      - name: wso2
-        ip: 10.10.10.47
-      - name: conjur
-        ip: 10.10.10.48
       - name: ocp-nfs
         ip: 10.10.10.55
       - name: quay
         ip: 10.10.10.66
-      - name: emby
-        ip: 10.10.10.102
       - name: plex
         ip: 10.10.10.101          
     ### Openshift
       - name: '*.apps 300'
         ip: 10.10.10.80
         donotadd_reverse: true
-#      - name: '*.kube.paosin.local 300'
-#        ip: 10.10.10.40
-#        donotadd_reverse: true
-    ### Openshift
-#      - name: '*'
-#        ip: 10.10.10.80
-#        donotadd_reverse: true
                
       - name: ocp-infra1
         ip: 10.10.10.80
@@ -209,26 +184,14 @@ bind_zone_domains:
       - name: ocp-node3
         ip: 10.10.10.85
        
-      - name: ocp-glusterfs1
-        ip: 10.10.10.86
-        
-      - name: ocp-glusterfs2
-        ip: 10.10.10.87 
-        
-      - name: ocp-glusterfs3
-        ip: 10.10.10.88 
-   ### K8s domain     
+   
                 
-      - name: bootstrap.ocp4-cluster-001
-        ip: 10.10.10.59
 
+        
       - name: '*.apps.argocd 300'
         ip: 10.10.10.221
         donotadd_reverse: true
 
-      - name: '*.apps.argocd 300'
-        ip: 10.10.10.221
-        donotadd_reverse: true
 
       - name: '*.apps.dev 300'
         ip: 10.10.10.45
@@ -237,10 +200,33 @@ bind_zone_domains:
       - name: '*.apps.ocp4-c01 300'
         ip: 10.10.10.76
         donotadd_reverse: true
+        
       - name: api.ocp4-c01
         ip: 10.10.10.77   
+        
       - name: api-int.ocp4-c01
-        ip: 10.10.10.77         
+        ip: 10.10.10.77    
+        
+      - name: bastion.ocp4-c01.paosin.local
+        ip: 10.10.10.30
+        
+      - name: master01.ocp4-c01.paosin.local
+        ip: 10.10.10.31
+        
+      - name: master02.ocp4-c01.paosin.local
+        ip: 10.10.10.32
+        
+      - name: master03.ocp4-c01.paosin.local
+        ip: 10.10.10.33
+        
+      - name: worker01.ocp4-c01.paosin.local
+        ip: 10.10.10.34
+        
+      - name: worker02.ocp4-c01.paosin.local
+        ip: 10.10.10.35
+        
+      - name: worker03.ocp4-c01.paosin.local
+        ip: 10.10.10.36
         
 ################ OKD4  ################ 
       - name: '*.apps.okd4-c01 300'

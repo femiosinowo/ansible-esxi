@@ -60,10 +60,10 @@ quay.paosin.local ansible_ssh_host=10.10.10.66
 #control-plane-2.ocp4-cluster-001.paosin.local
 
 [ocp4-lbs]
-ocp4-lb.ocp4-cluster-001.paosin.local
+bastion.ocp4-c01.paosin.local
 
 [ocp4-bastion]
-bootstrap.ocp4-cluster-001.paosin.local
+bastion.ocp4.paosin.local
 
 
 #[okd4-workers]
