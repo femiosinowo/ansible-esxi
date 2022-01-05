@@ -198,35 +198,35 @@ bind_zone_domains:
         donotadd_reverse: true
 ################ OCP4  ################ 
       - name: '*.apps.ocp4-c01 300'
-        ip: 10.10.10.76
+        ip: 10.10.10.30
         donotadd_reverse: true
         
       - name: api.ocp4-c01
-        ip: 10.10.10.77   
+        ip: 10.10.10.30  
         
       - name: api-int.ocp4-c01
-        ip: 10.10.10.77    
+        ip: 10.10.10.30   
         
       - name: bastion.ocp4-c01
         ip: 10.10.10.30
         
-      - name: master01.ocp4-c01
+      - name: bootstrap.ocp4-c01
+        ip: 10.10.10.29
+        
+      - name: master1.ocp4-c01
         ip: 10.10.10.31
         
-      - name: master02.ocp4-c01
+      - name: infra1.ocp4-c01
         ip: 10.10.10.32
-        
-      - name: master03.ocp4-c01
+               
+      - name: worker1.ocp4-c01
         ip: 10.10.10.33
         
-      - name: worker01.ocp4-c01
+      - name: worker2.ocp4-c01
         ip: 10.10.10.34
         
-      - name: worker02.ocp4-c01
+      - name: worker3.ocp4-c01
         ip: 10.10.10.35
-        
-      - name: worker03.ocp4-c01
-        ip: 10.10.10.36
         
 ################ OKD4  ################ 
       - name: '*.apps.okd4-c01 300'
