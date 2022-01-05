@@ -81,7 +81,7 @@
           # Include the default hardware settings
           <<: *vmware_vm_provisioning_hardware
           # And override memory size
-          memory_mb: 2046
+          memory_mb: 2048
           # And add one more additional option
           num_cpus: 2
           
