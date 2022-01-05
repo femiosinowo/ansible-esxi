@@ -207,25 +207,25 @@ bind_zone_domains:
       - name: api-int.ocp4-c01
         ip: 10.10.10.77    
         
-      - name: bastion.ocp4-c01.paosin.local
+      - name: bastion.ocp4-c01
         ip: 10.10.10.30
         
-      - name: master01.ocp4-c01.paosin.local
+      - name: master01.ocp4-c01
         ip: 10.10.10.31
         
-      - name: master02.ocp4-c01.paosin.local
+      - name: master02.ocp4-c01
         ip: 10.10.10.32
         
-      - name: master03.ocp4-c01.paosin.local
+      - name: master03.ocp4-c01
         ip: 10.10.10.33
         
-      - name: worker01.ocp4-c01.paosin.local
+      - name: worker01.ocp4-c01
         ip: 10.10.10.34
         
-      - name: worker02.ocp4-c01.paosin.local
+      - name: worker02.ocp4-c01
         ip: 10.10.10.35
         
-      - name: worker03.ocp4-c01.paosin.local
+      - name: worker03.ocp4-c01
         ip: 10.10.10.36
         
 ################ OKD4  ################ 
