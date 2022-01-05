@@ -206,6 +206,9 @@ bind_zone_domains:
         
       - name: api-int.ocp4-c01
         ip: 10.10.10.30   
+    
+      - name: bastion
+        ip: 10.10.10.30
         
       - name: bastion.ocp4-c01
         ip: 10.10.10.30
