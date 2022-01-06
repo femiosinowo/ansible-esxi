@@ -102,7 +102,7 @@
                  
       - <<: *vmware_vm_provisioning__dc1_cluster1
         name: k3s.paosin.local
-        template: "rhel8-template"
+        template: "RHCOS"
         networks:
           # Include the default network configuration
           - <<: *vmware_vm_provisioning_networks__mynet1
