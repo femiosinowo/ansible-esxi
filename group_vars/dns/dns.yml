@@ -231,6 +231,15 @@ bind_zone_domains:
       - name: worker3.ocp4-c01
         ip: 10.10.10.35
         
+      - name: ocs01.ocp4-c01
+        ip: 10.10.10.36
+        
+      - name: ocs02.ocp4-c01
+        ip: 10.10.10.37
+        
+      - name: ocs03.ocp4-c01
+        ip: 10.10.10.38
+                
 ################ OKD4  ################ 
       - name: '*.apps.okd4-c01 300'
         ip: 10.10.10.78
