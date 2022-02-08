@@ -210,34 +210,34 @@ bind_zone_domains:
       - name: bastion
         ip: 10.10.10.30
         
-      - name: bastion.ocp4-c01
-        ip: 10.10.10.30
+      #- name: bastion.rnd
+      #  ip: 10.10.10.30
         
-      - name: bootstrap.ocp4-c01
+      - name: bootstrap.rnd
         ip: 10.10.10.29
         
-      - name: master1.ocp4-c01
+      - name: master1.rnd
         ip: 10.10.10.31
         
-      - name: infra1.ocp4-c01
+      - name: infra1.rnd
         ip: 10.10.10.32
                
-      - name: worker1.ocp4-c01
+      - name: worker1.rnd
         ip: 10.10.10.33
         
-      - name: worker2.ocp4-c01
+      - name: worker2.rnd
         ip: 10.10.10.34
         
-      - name: worker3.ocp4-c01
+      - name: worker3.rnd
         ip: 10.10.10.35
         
-      - name: ocs01.ocp4-c01
+      - name: ocs01.rnd
         ip: 10.10.10.36
         
-      - name: ocs02.ocp4-c01
+      - name: ocs02.rnd
         ip: 10.10.10.37
         
-      - name: ocs03.ocp4-c01
+      - name: ocs03.rnd
         ip: 10.10.10.38
                 
 ################ OKD4  ################ 
