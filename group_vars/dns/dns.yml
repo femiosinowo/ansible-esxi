@@ -241,31 +241,31 @@ bind_zone_domains:
         ip: 10.10.10.38
         
  ########
-      - name: bootstrap
+      - name: bootstrap.ocp4-c01
         ip: 10.10.10.29
         
-      - name: master1
+      - name: master1.ocp4-c01
         ip: 10.10.10.31
         
-      - name: infra1
+      - name: infra1.ocp4-c01
         ip: 10.10.10.32
                
-      - name: worker1
+      - name: worker1.ocp4-c01
         ip: 10.10.10.33
         
-      - name: worker2
+      - name: worker2.ocp4-c01
         ip: 10.10.10.34
         
-      - name: worker3
+      - name: worker3.ocp4-c01
         ip: 10.10.10.35
         
-      - name: ocs01
+      - name: ocs01.ocp4-c01
         ip: 10.10.10.36
         
-      - name: ocs02
+      - name: ocs02.ocp4-c01
         ip: 10.10.10.37
         
-      - name: ocs03
+      - name: ocs03.ocp4-c01
         ip: 10.10.10.38
                 
 ################ OKD4  ################ 
