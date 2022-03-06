@@ -1,9 +1,6 @@
 [ocp4-bastion]
 ocp4-bastion.paosin.local ansible_ssh_host=10.10.10.30
 
-[k3s]
-k3s.paosin.local  ansible_ssh_host=10.10.10.46
-
 [awx-servers]
 awx.paosin.local  ansible_ssh_host=10.10.10.22
 
@@ -26,9 +23,6 @@ database.paosin.local ansible_ssh_host=10.10.10.27
 [jenkins-servers]
 jenkins.paosin.local ansible_ssh_host=10.10.10.25
 
-[media-servers]
-emby.paosin.local ansible_ssh_host=10.10.10.102
-plex.paosin.local ansible_ssh_host=10.10.10.101
         
 [quay]
 quay.paosin.local ansible_ssh_host=10.10.10.66
@@ -45,75 +39,14 @@ quay.paosin.local ansible_ssh_host=10.10.10.66
 #ocp-nodes
 #ocp-masters
 
-#[ocp-masters:vars]
-#openshift_origin_node_type=master
-
-#[ocp-nodes:vars]
-#openshift_origin_node_type=node
-
-#[ocp4-workers]
-#compute-0.ocp4-cluster-001.paosin.local
-#compute-1.ocp4-cluster-001.paosin.local
-
-#[ocp4-masters]
-#control-plane-0.ocp4-cluster-001.paosin.local
-#control-plane-1.ocp4-cluster-001.paosin.local
-#control-plane-2.ocp4-cluster-001.paosin.local
 
 [ocp4-lbs]
 bastion.ocp4-c01.paosin.local
 
-[ocp4-bastion]
-bastion.ocp4.paosin.local
-
-
-#[okd4-workers]
-#compute-1.okd4-cluster-001.paosin.local
-#compute-2.okd4-cluster-001.paosin.local
-
-#[okd4-masters]
-#control-plane-1.okd4-cluster-001.paosin.local
-#control-plane-2.okd4-cluster-001.paosin.local
-#control-plane-3.okd4-cluster-001.paosin.local
-
 [okd4-lbs]
 lb.okd4-cluster-001.paosin.local
 
-[okd4-bastion]
-bootstrap.okd4-cluster-001.paosin.local
-
-
-
-
-#[ocp4:children]
-#ocp4-workers
-#ocp4-masters
-#ocp4-lbs
-
-#[k8s-masters]
-#k8s-master1-cluster-001.paosin.local ansible_ssh_host=10.10.10.30 ansible_user=root
-#k8s-master1-cluster-002.paosin.local ansible_ssh_host=10.10.10.35
-
-#[k8s-nodes]
-#k8s-node1-cluster-001.paosin.local ansible_ssh_host=10.10.10.31
-#k8s-node2-cluster-001.paosin.local ansible_ssh_host=10.10.10.32
-#k8s-node1-cluster-002.paosin.local ansible_ssh_host=10.10.10.36
-#k8s-node2-cluster-002.paosin.local ansible_ssh_host=10.10.10.39
 
 
 [dns]
 dns.paosin.local ansible_ssh_host=10.10.10.11
-
-
-#[k8s:children]
-#k8s-masters
-#k8s-nodes
-
-
-#[k8s:vars]
-#selinux_state=permissive
-#nfsmount=/mnt/nfs/var/nfsshare
-#nfsserver=10.10.10.35
-#nfspath=/DATA/nfsshare
-#nfsoptions="defaults,nodev,nosuid,noexec"
-#yumrepo_repos=[{'name': 'kubernetes', 'baseurl': 'https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64', 'enabled': '1', 'gpgcheck': '1', 'gpgkey': 'https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg'}]
