@@ -19,26 +19,14 @@ vsphere_server: "10.10.10.15"
 
 
 terraform_vms:
-  - hostname: plex
-    ram: 4024
+  - hostname: haas
+    ram: 5024
     vcpu: 4
     disks:
-     - 100
+     - 200
     network_params:
       label: "{{ interface_label }}"
       ipv4_address: "10.10.10.101"
-      domain: "{{ domain }}"
-      vlan_id: "{{ vlan_id }}"
-      prefix_length: "{{ prefix_length }}"
-      gateway: "{{ gateway }}"
-  - hostname: emby
-    ram: 4024
-    vcpu: 4
-    disks:
-     - 100
-    network_params:
-      label: "{{ interface_label }}"
-      ipv4_address: "10.10.10.102"
       domain: "{{ domain }}"
       vlan_id: "{{ vlan_id }}"
       prefix_length: "{{ prefix_length }}"
