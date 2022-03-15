@@ -155,7 +155,7 @@ bind_zone_domains:
         ip: 10.10.10.55
       - name: quay
         ip: 10.10.10.66
-      - name: plex
+      - name: haas
         ip: 10.10.10.101          
     ### Openshift
       - name: '*.apps 300'
