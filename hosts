@@ -7,6 +7,8 @@ awx.paosin.local  ansible_ssh_host=10.10.10.22
 [ldap]
 ldap.paosin.local ansible_ssh_host=10.10.10.12
 
+[haas]
+haas.paosin.local ansible_ssh_host=10.10.10.101
 
 [tanzu]
 tanzu.paosin.local ansible_ssh_host=10.10.10.28
