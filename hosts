@@ -1,8 +1,8 @@
 [ocp4-bastion]
 ocp4-bastion.paosin.local ansible_ssh_host=10.10.10.30
 
-[awx-servers]
-awx.paosin.local  ansible_ssh_host=10.10.10.22
+#[awx-servers]
+#awx.paosin.local  ansible_ssh_host=10.10.10.22
 
 [ldap]
 ldap.paosin.local ansible_ssh_host=10.10.10.12
