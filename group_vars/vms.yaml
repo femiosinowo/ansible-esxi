@@ -1,0 +1,310 @@
+# Default login details
+vmware_vm_provisioning_hostname: "{{ vcenter_ip }}"
+vmware_vm_provisioning_username: "{{ vcenter_username }}"
+vmware_vm_provisioning_password: "{{ vcenter_password }}"
+vmware_vm_provisioning_validate_certs: no
+vmware_vm_provisioning_state: present
+
+#
+datacenter_name: "PAOSIN"
+esxi_hostname: "10.10.10.7"
+gateway_ip: "10.10.10.1"
+vcenter_ip: "10.10.10.6"
+vcenter_password: "*****"
+vcenter_username: "administrator@paosin.local"
+guest_domain: "paosin.local"
+template_name: "centos-7-template-esxi"
+#
+
+# Default template
+vmware_vm_provisioning_template: "{{ template_name }}" #centos-7-template-esxi
+
+# Default HW configuration
+vmware_vm_provisioning_hardware: &vmware_vm_provisioning_hardware
+  num_cpus: 2
+  memory_mb: 1024
+
+# Disk configuration (size corresponds with the disk size from the template)
+vmware_vm_provisioning_disk__image: &vmware_vm_provisioning_disk__image
+  size_gb: 18
+  autoselect_datastore: yes
+  
+vmware_vm_provisioning_rhel8_disk__image: &vmware_vm_provisioning_rhel8_disk__image
+  size_gb: 50
+  autoselect_datastore: yes
+
+# Default list of disks
+vmware_vm_provisioning_disk:
+  - "{{ vmware_vm_provisioning_disk__image }}"
+
+# Network configuration for MyNET1
+vmware_vm_provisioning_networks__mynet1: &vmware_vm_provisioning_networks__mynet1
+  - name: VM Network
+    netmask: 255.255.255.0
+    gateway: "{{ gateway_ip }}"
+
+# DC1 - Cluster1
+vmware_vm_provisioning__dc1_cluster1: &vmware_vm_provisioning__dc1_cluster1
+  datacenter: "{{ datacenter_name }}"
+  esxi_hostname: "{{ esxi_hostname }}"
+  #cluster: "{{ cluster }}"
+  folder: /
+
+vmware_vm_provisioning_customization: &vmware_vm_provisioning_customization
+  domain: "{{ guest_domain }}"
+  dns_servers:
+    - 10.10.10.11
+    - 8.8.8.8
+  dns_suffix:
+    - paosin.local
+    
+  # List of VMs to provision
+vmware_vm_provisioning_vms:
+      
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: database.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.27
+    disks:
+      # Include the default disk configuration
+      - <<: *vmware_vm_provisioning_disk__image
+      # Add one more disk (500G)
+      - size_gb: 200
+        type: thin
+        autoselect_datastore: yes
+              
+
+      
+
+################################ Openshift 3.11 ########################################
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: ocp-infra1.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.80
+    disks:
+      # Include the default disk configuration
+      - <<: *vmware_vm_provisioning_disk__image
+      # Add one more disk (500G)
+      - size_gb: 50
+        type: thin
+        autoselect_datastore: yes
+    hardware:
+      # Include the default hardware settings
+      <<: *vmware_vm_provisioning_hardware
+      # And override memory size
+      memory_mb: 4096
+      # And add one more additional option
+      num_cpus: 2
+      
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: ocp-master1.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.81
+    disks:
+      # Include the default disk configuration
+      - <<: *vmware_vm_provisioning_disk__image
+      # Add one more disk (500G)
+      - size_gb: 50
+        type: thin
+        autoselect_datastore: yes
+      - size_gb: 50
+        type: thin
+        autoselect_datastore: yes
+    hardware:
+      # Include the default hardware settings
+      <<: *vmware_vm_provisioning_hardware
+      # And override memory size
+      memory_mb: 16384
+      # And add one more additional option
+      num_cpus: 4
+
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: ocp-node1.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.83
+    disks:
+      # Include the default disk configuration
+      - <<: *vmware_vm_provisioning_disk__image
+      # Add one more disk (500G)
+      - size_gb: 50
+        type: thin
+        autoselect_datastore: yes
+      - size_gb: 50
+        type: thin
+        autoselect_datastore: yes
+    hardware:
+      # Include the default hardware settings
+      <<: *vmware_vm_provisioning_hardware
+      # And override memory size
+      memory_mb: 16384
+      # And add one more additional option
+      num_cpus: 16
+      
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: ocp-node2.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.84
+    disks:
+      # Include the default disk configuration
+      - <<: *vmware_vm_provisioning_disk__image
+      # Add one more disk (500G)
+      - size_gb: 50
+        type: thin
+        autoselect_datastore: yes
+      - size_gb: 50
+        type: thin
+        autoselect_datastore: yes
+    hardware:
+      # Include the default hardware settings
+      <<: *vmware_vm_provisioning_hardware
+      # And override memory size
+      memory_mb: 16384
+      # And add one more additional option
+      num_cpus: 16      
+################################# End Openshift 3.11 ####################################          
+################################ Openshift 4 ########################################
+      
+            
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: ldap.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.12
+    disks:
+      # Include the default disk configuration
+      - <<: *vmware_vm_provisioning_disk__image
+      # Add one more disk (500G)
+      - size_gb: 20
+        type: thin
+        autoselect_datastore: yes
+    hardware:
+      # Include the default hardware settings
+      <<: *vmware_vm_provisioning_hardware
+      # And override memory size
+      memory_mb: 3096
+      # And add one more additional option
+      num_cpus: 2
+
+
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: haas.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.95
+    disks:
+      # Include the default disk configuration
+      - <<: *vmware_vm_provisioning_disk__image
+      # Add one more disk (500G)
+      - size_gb: 200
+        type: thin
+        autoselect_datastore: yes
+    hardware:
+      # Include the default hardware settings
+      <<: *vmware_vm_provisioning_hardware
+      # And override memory size
+      memory_mb: 4096
+      # And add one more additional option
+      num_cpus: 4
+
+
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: dns.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.11
+    disks:
+      # Include the default disk configuration
+      - <<: *vmware_vm_provisioning_disk__image
+      # Add one more disk (500G)
+      - size_gb: 20
+        type: thin
+        autoselect_datastore: yes
+    hardware:
+      # Include the default hardware settings
+      <<: *vmware_vm_provisioning_hardware
+      # And override memory size
+      memory_mb: 2048
+      # And add one more additional option
+      num_cpus: 2
+
+
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: awx.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.22
+    disks:
+      # Include the default disk configuration
+      - <<: *vmware_vm_provisioning_disk__image
+      # Add one more disk (500G)
+      - size_gb: 50
+        type: thin
+        autoselect_datastore: yes
+    hardware:
+      # Include the default hardware settings
+      <<: *vmware_vm_provisioning_hardware
+      # And override memory size
+      memory_mb: 4096
+      # And add one more additional option
+      num_cpus: 2
+
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: tanzu.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.28
+    disks:
+      - size_gb: 100
+        type: thin
+        autoselect_datastore: yes
+    hardware:
+      # Include the default hardware settings
+      <<: *vmware_vm_provisioning_hardware
+      # And override memory size
+      memory_mb: 2048
+      # And add one more additional option
+      num_cpus: 2
+
+  - <<: *vmware_vm_provisioning__dc1_cluster1
+    name: quay.paosin.local
+    networks:
+      # Include the default network configuration
+      - <<: *vmware_vm_provisioning_networks__mynet1
+        # And jsut add the IP
+        ip: 10.10.10.66
+    disks:
+      - size_gb: 200
+        type: thin
+        autoselect_datastore: yes
+    hardware:
+      # Include the default hardware settings
+      <<: *vmware_vm_provisioning_hardware
+      # And override memory size
+      memory_mb: 4048
+      # And add one more additional option
+      num_cpus: 2
