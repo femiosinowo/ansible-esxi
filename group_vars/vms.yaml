@@ -250,12 +250,12 @@ vmware_vm_provisioning_vms:
 
 
   - <<: *vmware_vm_provisioning__dc1_cluster1
-    name: awx.paosin.local
+    name: k3s.paosin.local
     networks:
       # Include the default network configuration
       - <<: *vmware_vm_provisioning_networks__mynet1
         # And jsut add the IP
-        ip: 10.10.10.22
+        ip: 10.10.10.56
     disks:
       # Include the default disk configuration
       - <<: *vmware_vm_provisioning_disk__image
