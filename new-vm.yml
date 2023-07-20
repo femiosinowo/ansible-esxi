@@ -11,7 +11,7 @@
       name: "{{ vm_name }}"
       template: "{{ vm_template }}"
       datacenter: "{{ datacenter_name }}"
-      folder: /DC1/vm
+      folder: "{{ cluster_folder_name }}"
       state: poweredon
       cluster: "{{ cluster_name }}"
       wait_for_ip_address: yes
