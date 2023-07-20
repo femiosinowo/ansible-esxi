@@ -29,7 +29,7 @@
         - name: VM Network
           ip: 10.10.10.46
           netmask: 255.255.255.0
-      wait_for_ip_address: false
+      wait_for_ip_address: true
       customization:
         dns_servers:
           - 10.10.10.11
