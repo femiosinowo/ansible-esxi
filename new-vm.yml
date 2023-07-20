@@ -9,6 +9,7 @@
       password: "{{ vcenter_password }}"
       datacenter: "{{ datacenter }}"
       state: present
+      validate_certs: False
       folder: "{{ cluster_folder_name }}"
       template: "{{ vm_template }}"
       name: "{{ vm_name }}"
