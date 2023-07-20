@@ -1,17 +1,24 @@
-- name: Create a VM from a template
-  hosts: localhost
-  gather_facts: no
-  tasks:
-  - name: Clone the template
-    vmware_guest:
-      hostname: "{{ vcenter_ip }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
-      validate_certs: False
-      name: "{{ vm_name }}"
-      template: "{{ vm_template }}"
-      datacenter: "{{ datacenter_name }}"
-      folder: "{{ cluster_folder_name }}"
-      state: poweredon
-      cluster: "{{ cluster_name }}"
-      wait_for_ip_address: yes
+- name:  Clone a virtual machine from Linux template and customize
+  community.vmware.vmware_guest:
+    hostname: "{{ vcenter_ip }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    datacenter: "{{ datacenter }}"
+    state: present
+    folder: "{{ cluster_folder_name }}"
+    template: "{{ template }}"
+    name: "{{ vm_name }}"
+    cluster: "{{ cluster_name }}"
+    networks:
+      - name: VM Network
+        ip: 10.10.10.46
+        netmask: 255.255.255.0
+    wait_for_ip_address: true
+    customization:
+      domain: "{{ guest_domain }}"
+      dns_servers:
+        - 10.10.10.11
+        - 8.8.8.8
+      dns_suffix:
+        - paosin.local
+  delegate_to: localhost
