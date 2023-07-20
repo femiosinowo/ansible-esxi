@@ -23,6 +23,9 @@ jenkins.paosin.local ansible_ssh_host=10.10.10.25
 [quay]
 quay.paosin.local ansible_ssh_host=10.10.10.66
 
+[k3s]
+k3s.paosin.local ansible_ssh_host=10.10.10.46
+
 
 [dns]
 dns.paosin.local ansible_ssh_host=10.10.10.11
