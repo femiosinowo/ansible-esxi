@@ -1,8 +1,3 @@
-[ocp4-bastion]
-ocp4-bastion.paosin.local ansible_ssh_host=10.10.10.30
-
-#[awx-servers]
-#awx.paosin.local  ansible_ssh_host=10.10.10.22
 
 [ldap]
 ldap.paosin.local ansible_ssh_host=10.10.10.12
@@ -25,28 +20,8 @@ database.paosin.local ansible_ssh_host=10.10.10.27
 [jenkins-servers]
 jenkins.paosin.local ansible_ssh_host=10.10.10.25
 
-        
 [quay]
 quay.paosin.local ansible_ssh_host=10.10.10.66
-
-#[ocp-nodes]
-#ocp-infra1.paosin.local  ansible_ssh_host=10.10.10.80
-#ocp-node1.paosin.local  ansible_ssh_host=10.10.10.83
-#ocp-node2.paosin.local  ansible_ssh_host=10.10.10.84
-
-#[ocp-masters]
-#ocp-master1.paosin.local  ansible_ssh_host=10.10.10.81
-
-#[openshift-origin:children]
-#ocp-nodes
-#ocp-masters
-
-
-[ocp4-lbs]
-bastion.ocp4-c01.paosin.local
-
-[okd4-lbs]
-lb.okd4-cluster-001.paosin.local
 
 [k3s]
 k3s.paosin.local ansible_ssh_host=10.10.10.46
