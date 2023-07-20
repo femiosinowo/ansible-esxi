@@ -49,7 +49,7 @@ bastion.ocp4-c01.paosin.local
 lb.okd4-cluster-001.paosin.local
 
 [k3s]
-dns.paosin.local ansible_ssh_host=10.10.10.46
+k3s.paosin.local ansible_ssh_host=10.10.10.46
 
 [dns]
 dns.paosin.local ansible_ssh_host=10.10.10.11
