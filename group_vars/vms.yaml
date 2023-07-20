@@ -13,7 +13,7 @@ vcenter_ip: "10.10.10.6"
 vcenter_password: "*****"
 vcenter_username: "administrator@paosin.local"
 guest_domain: "paosin.local"
-template_name: "centos-7-template-esxi"
+template_name: "centos-8-template-esxi"
 #
 
 # Default template
@@ -255,7 +255,7 @@ vmware_vm_provisioning_vms:
       # Include the default network configuration
       - <<: *vmware_vm_provisioning_networks__mynet1
         # And jsut add the IP
-        ip: 10.10.10.56
+        ip: 10.10.10.46
     disks:
       # Include the default disk configuration
       - <<: *vmware_vm_provisioning_disk__image
