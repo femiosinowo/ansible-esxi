@@ -10,7 +10,7 @@
       datacenter: "{{ datacenter }}"
       state: present
       folder: "{{ cluster_folder_name }}"
-      template: "{{ template }}"
+      template: "{{ vm_template }}"
       name: "{{ vm_name }}"
       cluster: "{{ cluster_name }}"
       disk:
