@@ -11,6 +11,7 @@
       state: present
       folder: "{{ cluster_folder_name }}"
       template: "{{ vm_template }}"
+      validate_certs: false
       name: "{{ vm_name }}"
       cluster: "{{ cluster_name }}"
       disk:
