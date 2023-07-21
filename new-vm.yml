@@ -25,11 +25,15 @@
         #hotadd_cpu: true
         #hotremove_cpu: true
         #hotadd_memory: true
+      wait_for_ip_address: true
+      wait_for_ip_address_timeout: 600
       networks:
         - name: VM Network
           ip: 10.10.10.46
           netmask: 255.255.255.0
-      wait_for_ip_address: true
+          start_connected: true
+          type: static
+          connected: true
       customization:
         dns_servers:
           - 10.10.10.11
