@@ -34,6 +34,7 @@
           start_connected: true
           type: static
           connected: true
+          gateway: 10.10.10.1
       customization:
         dns_servers:
           - 10.10.10.11
