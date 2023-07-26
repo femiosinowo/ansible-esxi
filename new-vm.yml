@@ -15,12 +15,12 @@
       name: "{{ vm_name }}"
       cluster: "{{ cluster_name }}"
       disk:
-      - size_gb: 60
+      - size_gb: "{{ vm_hdd_size_gb }}"
         type: thin
         datastore: datastore
       hardware:
-        memory_mb: 4048
-        num_cpus: 2
+        memory_mb: "{{ vm_ram_size_mb }}"
+        num_cpus: "{{ vm_num_cpus }}"
         num_cpu_cores_per_socket: 2
         hotadd_cpu: true
         hotremove_cpu: true
